@@ -885,11 +885,11 @@
       "url": "_framework\/RecipeProj.Shared.pdb"
     },
     {
-      "hash": "sha256-w7bNB0K3r5McMzWdsNt7EmK\/sg2ZCTgF5LbilPMZOC0=",
+      "hash": "sha256-cJXuhQ52fPmz6mVfZcepDJjw+EMe1uh3cL\/IZL\/l0iA=",
       "url": "_framework\/RecipeProj.Client.dll"
     },
     {
-      "hash": "sha256-5Yig4TaSQCv9LCA+jOJqUVtl1SD4bArQo5zLsf4nU8Y=",
+      "hash": "sha256-KWnS0aXqpfhY5tZGT5Szr0veGv\/XYEPgL9\/4njb\/ovQ=",
       "url": "_framework\/RecipeProj.Client.pdb"
     },
     {
@@ -897,7 +897,7 @@
       "url": "_framework\/blazor.webassembly.js"
     },
     {
-      "hash": "sha256-a7hFwK7SXThj9E59aqqWD0CucQICFhUCKyywjidRLpE=",
+      "hash": "sha256-va1v0MeeG2NolXEBqep1V\/7kDVTU4C5hpKQeqvxZ\/BU=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -905,5 +905,5 @@
       "url": "_content\/Microsoft.AspNetCore.Components.WebAssembly.Authentication\/AuthenticationService.js"
     }
   ],
-  "version": "IdBgd0\/A"
+  "version": "Z9l7RcNx"
 };
