@@ -9,17 +9,17 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = RecipeProj.Server
 build_property.RootNamespace = RecipeProj.Server
-build_property.ProjectDir = /Users/alexbrodsky/Desktop/Recipe_Proj/RecipeProj/RecipeProj/Server/
+build_property.ProjectDir = /Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Server/
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /Users/alexbrodsky/Desktop/Recipe_Proj/RecipeProj/RecipeProj/Server
+build_property.MSBuildProjectDirectory = /Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Server
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/alexbrodsky/Desktop/Recipe_Proj/RecipeProj/RecipeProj/Server/Areas/Identity/Pages/Shared/_LoginPartial.cshtml]
+[/Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Server/Areas/Identity/Pages/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvU2hhcmVkL19Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/alexbrodsky/Desktop/Recipe_Proj/RecipeProj/RecipeProj/Server/Pages/Error.cshtml]
+[/Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Server/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

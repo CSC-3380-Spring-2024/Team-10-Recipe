@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "X7I+y5gO2Pbg9foyIgY7hrVdn5ICkgdyvKD4+BDjuW4GFS25E1h1M8QG7ddvm3q0rWZz5XBScf78UrXYmcEM7g==",
+  "dgSpecHash": "TnTRXEkoLbFuYe0ul+EcCRSldTbhn4btRJFYnFtewF3pGVAbZLGfO1dta6GwjAa/raHJq6yC5XeXWAZqkusAvA==",
   "success": true,
-  "projectFilePath": "/Users/alexbrodsky/Desktop/Recipe_Proj/RecipeProj/RecipeProj/Server/RecipeProj.Server.csproj",
+  "projectFilePath": "/Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Server/RecipeProj.Server.csproj",
   "expectedPackageFiles": [
     "/Users/alexbrodsky/.nuget/packages/automapper/11.0.0/automapper.11.0.0.nupkg.sha512",
     "/Users/alexbrodsky/.nuget/packages/duende.identityserver/6.0.4/duende.identityserver.6.0.4.nupkg.sha512",

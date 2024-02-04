@@ -3668,11 +3668,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/alexbrodsky/Desktop/Recipe_Proj/RecipeProj/RecipeProj/Server/RecipeProj.Server.csproj",
+      "projectUniqueName": "/Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Server/RecipeProj.Server.csproj",
       "projectName": "RecipeProj.Server",
-      "projectPath": "/Users/alexbrodsky/Desktop/Recipe_Proj/RecipeProj/RecipeProj/Server/RecipeProj.Server.csproj",
+      "projectPath": "/Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Server/RecipeProj.Server.csproj",
       "packagesPath": "/Users/alexbrodsky/.nuget/packages/",
-      "outputPath": "/Users/alexbrodsky/Desktop/Recipe_Proj/RecipeProj/RecipeProj/Server/obj/",
+      "outputPath": "/Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Server/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/alexbrodsky/.nuget/NuGet/NuGet.Config"
@@ -3688,11 +3688,11 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "/Users/alexbrodsky/Desktop/Recipe_Proj/RecipeProj/RecipeProj/Client/RecipeProj.Client.csproj": {
-              "projectPath": "/Users/alexbrodsky/Desktop/Recipe_Proj/RecipeProj/RecipeProj/Client/RecipeProj.Client.csproj"
+            "/Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Client/RecipeProj.Client.csproj": {
+              "projectPath": "/Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Client/RecipeProj.Client.csproj"
             },
-            "/Users/alexbrodsky/Desktop/Recipe_Proj/RecipeProj/RecipeProj/Shared/RecipeProj.Shared.csproj": {
-              "projectPath": "/Users/alexbrodsky/Desktop/Recipe_Proj/RecipeProj/RecipeProj/Shared/RecipeProj.Shared.csproj"
+            "/Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Shared/RecipeProj.Shared.csproj": {
+              "projectPath": "/Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Shared/RecipeProj.Shared.csproj"
             }
           }
         }

@@ -877,19 +877,19 @@
       "url": "_framework\/icudt_no_CJK.dat"
     },
     {
-      "hash": "sha256-yNywBV+qoFORWREDdopXwD2nh7W8u1tXIzBVykPhddo=",
+      "hash": "sha256-QpZahptJ4eeDgjBzvX4opSTLD2splpw8fwtFXgFhdto=",
       "url": "_framework\/RecipeProj.Shared.dll"
     },
     {
-      "hash": "sha256-X4mnL8cLSit6trtwV5l61pPOg8gdW0mnBoKivBlElBE=",
+      "hash": "sha256-KQoRqdFs8w26qvox1SDlFqY+E0jwyY5Sn\/Rc3kPRQ68=",
       "url": "_framework\/RecipeProj.Shared.pdb"
     },
     {
-      "hash": "sha256-9QrDB96S9CcpETN3jXpf\/I8zXQmy3AcSTQWcfaiYtPs=",
+      "hash": "sha256-w7bNB0K3r5McMzWdsNt7EmK\/sg2ZCTgF5LbilPMZOC0=",
       "url": "_framework\/RecipeProj.Client.dll"
     },
     {
-      "hash": "sha256-lykcv+cEszCliOCisDzlVFAQ8l9uobfEpuNvIxkmy0c=",
+      "hash": "sha256-5Yig4TaSQCv9LCA+jOJqUVtl1SD4bArQo5zLsf4nU8Y=",
       "url": "_framework\/RecipeProj.Client.pdb"
     },
     {
@@ -897,7 +897,7 @@
       "url": "_framework\/blazor.webassembly.js"
     },
     {
-      "hash": "sha256-NctCMPKrRqN+lMPrjWwK8F5eRLe46fTDaaJs6kFvZGY=",
+      "hash": "sha256-a7hFwK7SXThj9E59aqqWD0CucQICFhUCKyywjidRLpE=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -905,5 +905,5 @@
       "url": "_content\/Microsoft.AspNetCore.Components.WebAssembly.Authentication\/AuthenticationService.js"
     }
   ],
-  "version": "dy4PIGIh"
+  "version": "IdBgd0\/A"
 };

@@ -8,4 +8,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows,browser
 build_property.RootNamespace = RecipeProj.Shared
-build_property.ProjectDir = /Users/alexbrodsky/Desktop/Recipe_Proj/RecipeProj/RecipeProj/Shared/
+build_property.ProjectDir = /Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Shared/

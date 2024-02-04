@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YLZJafs1fdA21gSvbYUsHCDsWE+d3eOK8j1u3ABZH1JGJlE6bawbfDijGgI3tUKYhAbQlvC+7uQTu0yFIhwDjQ==",
+  "dgSpecHash": "HYw8GVjwMwRWUv10D2i6kQFgOS/ND1xAZ9FqFnYujsUk3yz541bpd0iKKjjiEtbmmbywyyDDNWX3mbf8E5BlFw==",
   "success": true,
-  "projectFilePath": "/Users/alexbrodsky/Desktop/Recipe_Proj/RecipeProj/RecipeProj/Client/RecipeProj.Client.csproj",
+  "projectFilePath": "/Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Client/RecipeProj.Client.csproj",
   "expectedPackageFiles": [
     "/Users/alexbrodsky/.nuget/packages/microsoft.aspnetcore.authorization/7.0.15/microsoft.aspnetcore.authorization.7.0.15.nupkg.sha512",
     "/Users/alexbrodsky/.nuget/packages/microsoft.aspnetcore.components/7.0.15/microsoft.aspnetcore.components.7.0.15.nupkg.sha512",
