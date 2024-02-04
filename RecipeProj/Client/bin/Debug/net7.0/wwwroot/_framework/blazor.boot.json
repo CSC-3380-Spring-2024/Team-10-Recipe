@@ -201,15 +201,15 @@
       "mscorlib.dll": "sha256-fVDx40u1vKqhdy509hDF73SIx6C5q5Mst93LwfZWVQY=",
       "netstandard.dll": "sha256-ohOFXxRJKiyPbitdA1y5ebD9fSAGELDRVmhDM2nVdtA=",
       "System.Private.CoreLib.dll": "sha256-7Y6AhJbgMptcdman3NtSEbcJV520wGmyxB8QvZwrUmc=",
-      "RecipeProj.Shared.dll": "sha256-QpZahptJ4eeDgjBzvX4opSTLD2splpw8fwtFXgFhdto=",
-      "RecipeProj.Client.dll": "sha256-cJXuhQ52fPmz6mVfZcepDJjw+EMe1uh3cL\/IZL\/l0iA="
+      "RecipeProj.Shared.dll": "sha256-6xRKxVRUdNIGHe56CWyHAPCyqORj6M\/2i7fmxKRx4O4=",
+      "RecipeProj.Client.dll": "sha256-ktQj\/YrYvcvivM3qsR0pI0Q\/39CpuH3SkHVUVILsgvs="
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
-      "RecipeProj.Shared.pdb": "sha256-KQoRqdFs8w26qvox1SDlFqY+E0jwyY5Sn\/Rc3kPRQ68=",
-      "RecipeProj.Client.pdb": "sha256-KWnS0aXqpfhY5tZGT5Szr0veGv\/XYEPgL9\/4njb\/ovQ="
+      "RecipeProj.Shared.pdb": "sha256-fs3Cskt7sjGBsp7v\/Vy7oCxNZDSd+0ET5McxhILQkng=",
+      "RecipeProj.Client.pdb": "sha256-esXrm4cc6smJPn8t4vuQ5JIunOjriXC8KixwBJue8Tc="
     },
     "runtime": {
       "dotnet.7.0.15.lvfeg24kwa.js": "sha256-MHuxwxeVFybuBBTAWeZrvoStZpW+H4ThSaRcFvrfqXM=",

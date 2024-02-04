@@ -22,3 +22,15 @@
 /Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Shared/obj/Debug/net7.0/refint/RecipeProj.Shared.dll
 /Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Shared/obj/Debug/net7.0/RecipeProj.Shared.pdb
 /Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Shared/obj/Debug/net7.0/ref/RecipeProj.Shared.dll
+/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Shared/bin/Debug/net7.0/RecipeProj.Shared.deps.json
+/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Shared/bin/Debug/net7.0/RecipeProj.Shared.dll
+/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Shared/bin/Debug/net7.0/RecipeProj.Shared.pdb
+/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Shared/obj/Debug/net7.0/RecipeProj.Shared.csproj.AssemblyReference.cache
+/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Shared/obj/Debug/net7.0/RecipeProj.Shared.GeneratedMSBuildEditorConfig.editorconfig
+/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Shared/obj/Debug/net7.0/RecipeProj.Shared.AssemblyInfoInputs.cache
+/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Shared/obj/Debug/net7.0/RecipeProj.Shared.AssemblyInfo.cs
+/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Shared/obj/Debug/net7.0/RecipeProj.Shared.csproj.CoreCompileInputs.cache
+/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Shared/obj/Debug/net7.0/RecipeProj.Shared.dll
+/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Shared/obj/Debug/net7.0/refint/RecipeProj.Shared.dll
+/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Shared/obj/Debug/net7.0/RecipeProj.Shared.pdb
+/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Shared/obj/Debug/net7.0/ref/RecipeProj.Shared.dll

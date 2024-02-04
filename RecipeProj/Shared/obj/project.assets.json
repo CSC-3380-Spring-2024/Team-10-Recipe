@@ -8,19 +8,19 @@
     "net7.0": []
   },
   "packageFolders": {
-    "/Users/alexbrodsky/.nuget/packages/": {}
+    "/Users/lillianbeck/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Shared/RecipeProj.Shared.csproj",
+      "projectUniqueName": "/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Shared/RecipeProj.Shared.csproj",
       "projectName": "RecipeProj.Shared",
-      "projectPath": "/Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Shared/RecipeProj.Shared.csproj",
-      "packagesPath": "/Users/alexbrodsky/.nuget/packages/",
-      "outputPath": "/Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Shared/obj/",
+      "projectPath": "/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Shared/RecipeProj.Shared.csproj",
+      "packagesPath": "/Users/lillianbeck/.nuget/packages/",
+      "outputPath": "/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Shared/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/alexbrodsky/.nuget/NuGet/NuGet.Config"
+        "/Users/lillianbeck/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"

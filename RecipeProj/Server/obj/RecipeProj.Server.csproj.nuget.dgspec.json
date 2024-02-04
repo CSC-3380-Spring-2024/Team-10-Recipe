@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Server/RecipeProj.Server.csproj": {}
+    "/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Server/RecipeProj.Server.csproj": {}
   },
   "projects": {
-    "/Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Client/RecipeProj.Client.csproj": {
+    "/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Client/RecipeProj.Client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Client/RecipeProj.Client.csproj",
+        "projectUniqueName": "/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Client/RecipeProj.Client.csproj",
         "projectName": "RecipeProj.Client",
-        "projectPath": "/Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Client/RecipeProj.Client.csproj",
-        "packagesPath": "/Users/alexbrodsky/.nuget/packages/",
-        "outputPath": "/Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Client/obj/",
+        "projectPath": "/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Client/RecipeProj.Client.csproj",
+        "packagesPath": "/Users/lillianbeck/.nuget/packages/",
+        "outputPath": "/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Client/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/alexbrodsky/.nuget/NuGet/NuGet.Config"
+          "/Users/lillianbeck/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -26,8 +26,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "/Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Shared/RecipeProj.Shared.csproj": {
-                "projectPath": "/Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Shared/RecipeProj.Shared.csproj"
+              "/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Shared/RecipeProj.Shared.csproj": {
+                "projectPath": "/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Shared/RecipeProj.Shared.csproj"
               }
             }
           }
@@ -85,17 +85,17 @@
         }
       }
     },
-    "/Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Server/RecipeProj.Server.csproj": {
+    "/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Server/RecipeProj.Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Server/RecipeProj.Server.csproj",
+        "projectUniqueName": "/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Server/RecipeProj.Server.csproj",
         "projectName": "RecipeProj.Server",
-        "projectPath": "/Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Server/RecipeProj.Server.csproj",
-        "packagesPath": "/Users/alexbrodsky/.nuget/packages/",
-        "outputPath": "/Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Server/obj/",
+        "projectPath": "/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Server/RecipeProj.Server.csproj",
+        "packagesPath": "/Users/lillianbeck/.nuget/packages/",
+        "outputPath": "/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Server/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/alexbrodsky/.nuget/NuGet/NuGet.Config"
+          "/Users/lillianbeck/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -108,11 +108,11 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "/Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Client/RecipeProj.Client.csproj": {
-                "projectPath": "/Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Client/RecipeProj.Client.csproj"
+              "/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Client/RecipeProj.Client.csproj": {
+                "projectPath": "/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Client/RecipeProj.Client.csproj"
               },
-              "/Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Shared/RecipeProj.Shared.csproj": {
-                "projectPath": "/Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Shared/RecipeProj.Shared.csproj"
+              "/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Shared/RecipeProj.Shared.csproj": {
+                "projectPath": "/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Shared/RecipeProj.Shared.csproj"
               }
             }
           }
@@ -179,17 +179,17 @@
         }
       }
     },
-    "/Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Shared/RecipeProj.Shared.csproj": {
+    "/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Shared/RecipeProj.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Shared/RecipeProj.Shared.csproj",
+        "projectUniqueName": "/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Shared/RecipeProj.Shared.csproj",
         "projectName": "RecipeProj.Shared",
-        "projectPath": "/Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Shared/RecipeProj.Shared.csproj",
-        "packagesPath": "/Users/alexbrodsky/.nuget/packages/",
-        "outputPath": "/Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Shared/obj/",
+        "projectPath": "/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Shared/RecipeProj.Shared.csproj",
+        "packagesPath": "/Users/lillianbeck/.nuget/packages/",
+        "outputPath": "/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Shared/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/alexbrodsky/.nuget/NuGet/NuGet.Config"
+          "/Users/lillianbeck/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"

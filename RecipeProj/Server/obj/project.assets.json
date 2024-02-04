@@ -3663,19 +3663,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/alexbrodsky/.nuget/packages/": {}
+    "/Users/lillianbeck/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Server/RecipeProj.Server.csproj",
+      "projectUniqueName": "/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Server/RecipeProj.Server.csproj",
       "projectName": "RecipeProj.Server",
-      "projectPath": "/Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Server/RecipeProj.Server.csproj",
-      "packagesPath": "/Users/alexbrodsky/.nuget/packages/",
-      "outputPath": "/Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Server/obj/",
+      "projectPath": "/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Server/RecipeProj.Server.csproj",
+      "packagesPath": "/Users/lillianbeck/.nuget/packages/",
+      "outputPath": "/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Server/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/alexbrodsky/.nuget/NuGet/NuGet.Config"
+        "/Users/lillianbeck/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -3688,11 +3688,11 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "/Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Client/RecipeProj.Client.csproj": {
-              "projectPath": "/Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Client/RecipeProj.Client.csproj"
+            "/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Client/RecipeProj.Client.csproj": {
+              "projectPath": "/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Client/RecipeProj.Client.csproj"
             },
-            "/Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Shared/RecipeProj.Shared.csproj": {
-              "projectPath": "/Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/RecipeProj/Shared/RecipeProj.Shared.csproj"
+            "/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Shared/RecipeProj.Shared.csproj": {
+              "projectPath": "/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Shared/RecipeProj.Shared.csproj"
             }
           }
         }
