@@ -1,4 +1,8 @@
 is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = 
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
 build_property.TargetFramework = net7.0
 build_property.TargetPlatformMinVersion = 
 build_property.UsingMicrosoftNETSdkWeb = 
@@ -9,53 +13,55 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = browser
 build_property.RootNamespace = RecipeProj.Client
 build_property.RootNamespace = RecipeProj.Client
-build_property.ProjectDir = /Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Client/
+build_property.ProjectDir = /Users/ethanlancaster/Documents/GitHub/Team-10-Recipe/RecipeProj/Client/
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Client
+build_property.MSBuildProjectDirectory = /Users/ethanlancaster/Documents/GitHub/Team-10-Recipe/RecipeProj/Client
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Client/App.razor]
+[/Users/ethanlancaster/Documents/GitHub/Team-10-Recipe/RecipeProj/Client/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Client/Pages/Authentication.razor]
+[/Users/ethanlancaster/Documents/GitHub/Team-10-Recipe/RecipeProj/Client/Pages/Authentication.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQXV0aGVudGljYXRpb24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Client/Pages/Counter.razor]
+[/Users/ethanlancaster/Documents/GitHub/Team-10-Recipe/RecipeProj/Client/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ291bnRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Client/Pages/FetchData.razor]
+[/Users/ethanlancaster/Documents/GitHub/Team-10-Recipe/RecipeProj/Client/Pages/FetchData.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRmV0Y2hEYXRhLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Client/Pages/Index.razor]
+[/Users/ethanlancaster/Documents/GitHub/Team-10-Recipe/RecipeProj/Client/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Client/Shared/LoginDisplay.razor]
+[/Users/ethanlancaster/Documents/GitHub/Team-10-Recipe/RecipeProj/Client/Shared/LoginDisplay.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL0xvZ2luRGlzcGxheS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Client/Shared/RedirectToLogin.razor]
+[/Users/ethanlancaster/Documents/GitHub/Team-10-Recipe/RecipeProj/Client/Shared/RedirectToLogin.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1JlZGlyZWN0VG9Mb2dpbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Client/Shared/SurveyPrompt.razor]
+[/Users/ethanlancaster/Documents/GitHub/Team-10-Recipe/RecipeProj/Client/Shared/SurveyPrompt.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1N1cnZleVByb21wdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Client/_Imports.razor]
+[/Users/ethanlancaster/Documents/GitHub/Team-10-Recipe/RecipeProj/Client/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Client/Shared/MainLayout.razor]
+[/Users/ethanlancaster/Documents/GitHub/Team-10-Recipe/RecipeProj/Client/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL01haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-glt69gqfp7
 
-[/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Client/Shared/NavMenu.razor]
+[/Users/ethanlancaster/Documents/GitHub/Team-10-Recipe/RecipeProj/Client/Shared/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL05hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-yo20zp6ivz

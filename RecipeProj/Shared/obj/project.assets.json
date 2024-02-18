@@ -8,19 +8,19 @@
     "net7.0": []
   },
   "packageFolders": {
-    "/Users/lillianbeck/.nuget/packages/": {}
+    "/Users/ethanlancaster/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Shared/RecipeProj.Shared.csproj",
+      "projectUniqueName": "/Users/ethanlancaster/Documents/GitHub/Team-10-Recipe/RecipeProj/Shared/RecipeProj.Shared.csproj",
       "projectName": "RecipeProj.Shared",
-      "projectPath": "/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Shared/RecipeProj.Shared.csproj",
-      "packagesPath": "/Users/lillianbeck/.nuget/packages/",
-      "outputPath": "/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Shared/obj/",
+      "projectPath": "/Users/ethanlancaster/Documents/GitHub/Team-10-Recipe/RecipeProj/Shared/RecipeProj.Shared.csproj",
+      "packagesPath": "/Users/ethanlancaster/.nuget/packages/",
+      "outputPath": "/Users/ethanlancaster/Documents/GitHub/Team-10-Recipe/RecipeProj/Shared/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/lillianbeck/.nuget/NuGet/NuGet.Config"
+        "/Users/ethanlancaster/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -54,12 +54,22 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[7.0.15, 7.0.15]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[7.0.15, 7.0.15]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.312/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.101/RuntimeIdentifierGraph.json"
       }
     }
   }

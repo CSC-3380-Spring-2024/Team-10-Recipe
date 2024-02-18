@@ -34,3 +34,15 @@
 /Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Shared/obj/Debug/net7.0/refint/RecipeProj.Shared.dll
 /Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Shared/obj/Debug/net7.0/RecipeProj.Shared.pdb
 /Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Shared/obj/Debug/net7.0/ref/RecipeProj.Shared.dll
+/Users/ethanlancaster/Documents/GitHub/Team-10-Recipe/RecipeProj/Shared/bin/Debug/net7.0/RecipeProj.Shared.deps.json
+/Users/ethanlancaster/Documents/GitHub/Team-10-Recipe/RecipeProj/Shared/bin/Debug/net7.0/RecipeProj.Shared.dll
+/Users/ethanlancaster/Documents/GitHub/Team-10-Recipe/RecipeProj/Shared/bin/Debug/net7.0/RecipeProj.Shared.pdb
+/Users/ethanlancaster/Documents/GitHub/Team-10-Recipe/RecipeProj/Shared/obj/Debug/net7.0/RecipeProj.Shared.GeneratedMSBuildEditorConfig.editorconfig
+/Users/ethanlancaster/Documents/GitHub/Team-10-Recipe/RecipeProj/Shared/obj/Debug/net7.0/RecipeProj.Shared.AssemblyInfoInputs.cache
+/Users/ethanlancaster/Documents/GitHub/Team-10-Recipe/RecipeProj/Shared/obj/Debug/net7.0/RecipeProj.Shared.AssemblyInfo.cs
+/Users/ethanlancaster/Documents/GitHub/Team-10-Recipe/RecipeProj/Shared/obj/Debug/net7.0/RecipeProj.Shared.csproj.CoreCompileInputs.cache
+/Users/ethanlancaster/Documents/GitHub/Team-10-Recipe/RecipeProj/Shared/obj/Debug/net7.0/RecipeProj.Shared.sourcelink.json
+/Users/ethanlancaster/Documents/GitHub/Team-10-Recipe/RecipeProj/Shared/obj/Debug/net7.0/RecipeProj.Shared.dll
+/Users/ethanlancaster/Documents/GitHub/Team-10-Recipe/RecipeProj/Shared/obj/Debug/net7.0/refint/RecipeProj.Shared.dll
+/Users/ethanlancaster/Documents/GitHub/Team-10-Recipe/RecipeProj/Shared/obj/Debug/net7.0/RecipeProj.Shared.pdb
+/Users/ethanlancaster/Documents/GitHub/Team-10-Recipe/RecipeProj/Shared/obj/Debug/net7.0/ref/RecipeProj.Shared.dll

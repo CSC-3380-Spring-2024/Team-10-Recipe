@@ -69,6 +69,10 @@
       "url": "manifest.json"
     },
     {
+      "hash": "sha256-lOCs45frNf+D7me6lKLgUhRCdt4VwHCp9H6Ct+YWzfs=",
+      "url": "_framework\/blazor.webassembly.js"
+    },
+    {
       "hash": "sha256-RxvTBbCzJNH2E2Dxjk7GT9Z0jJ8MzVR150xhieI+hxg=",
       "url": "RecipeProj.Client.styles.css"
     },
@@ -850,7 +854,7 @@
     },
     {
       "hash": "sha256-MHuxwxeVFybuBBTAWeZrvoStZpW+H4ThSaRcFvrfqXM=",
-      "url": "_framework\/dotnet.7.0.15.lvfeg24kwa.js"
+      "url": "_framework\/dotnet.7.0.15.uo467q5y4b.js"
     },
     {
       "hash": "sha256-aHk3Pm2JXopn6UPLJtovAqIdIk8GyIMzGm450cli9UE=",
@@ -859,10 +863,6 @@
     {
       "hash": "sha256-fMuaMGy\/7q8rXL+GyH9Gu04mJDwQ\/OSYXD9ezf+Fz4k=",
       "url": "_framework\/dotnet.wasm"
-    },
-    {
-      "hash": "sha256-tO5O5YzMTVSaKBboxAqezOQL9ewmupzV2JrB5Rkc8a4=",
-      "url": "_framework\/icudt.dat"
     },
     {
       "hash": "sha256-SZLtQnRc0JkwqHab0VUVP7T3uBPSeYzxzDnpxPpUnHk=",
@@ -877,27 +877,23 @@
       "url": "_framework\/icudt_no_CJK.dat"
     },
     {
-      "hash": "sha256-QpZahptJ4eeDgjBzvX4opSTLD2splpw8fwtFXgFhdto=",
+      "hash": "sha256-CMTxk5Mmqff0uHS7gtFsx1+Ce0TqpEXBxW4UR+6wYXM=",
       "url": "_framework\/RecipeProj.Shared.dll"
     },
     {
-      "hash": "sha256-KQoRqdFs8w26qvox1SDlFqY+E0jwyY5Sn\/Rc3kPRQ68=",
+      "hash": "sha256-k4+DusN1VWVFk3mssoL6W8PCYP52HJ7631EZ5pVzuzo=",
       "url": "_framework\/RecipeProj.Shared.pdb"
     },
     {
-      "hash": "sha256-cJXuhQ52fPmz6mVfZcepDJjw+EMe1uh3cL\/IZL\/l0iA=",
+      "hash": "sha256-TkQqq8IFRZEB9+saMpebzk3rt9kNyxBKo8cZ3OetCyE=",
       "url": "_framework\/RecipeProj.Client.dll"
     },
     {
-      "hash": "sha256-KWnS0aXqpfhY5tZGT5Szr0veGv\/XYEPgL9\/4njb\/ovQ=",
+      "hash": "sha256-GgYqMf0v1n0i79wsJ+4ApqmHXEdqLEgurTnefB4Uz0k=",
       "url": "_framework\/RecipeProj.Client.pdb"
     },
     {
-      "hash": "sha256-lOCs45frNf+D7me6lKLgUhRCdt4VwHCp9H6Ct+YWzfs=",
-      "url": "_framework\/blazor.webassembly.js"
-    },
-    {
-      "hash": "sha256-va1v0MeeG2NolXEBqep1V\/7kDVTU4C5hpKQeqvxZ\/BU=",
+      "hash": "sha256-xEsTICGkmBihY6FzWZNEN2xTmWUd3F0gTzeZMw8o8wE=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -905,5 +901,5 @@
       "url": "_content\/Microsoft.AspNetCore.Components.WebAssembly.Authentication\/AuthenticationService.js"
     }
   ],
-  "version": "Z9l7RcNx"
+  "version": "UItN770G"
 };

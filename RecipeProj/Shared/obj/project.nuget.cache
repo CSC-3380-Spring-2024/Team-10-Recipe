@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "X87BqfYw4rgMZqYjM7I//e765QV9ZVSZBZl96qOwwNCmsqWHFe5GRVC1CZ8J6q4hml99b1Hl6WRfQDUkdOjTfA==",
+  "dgSpecHash": "WF9vfqkSu//xwSabDf/hMsvpbBERRJbSckSbqo4gsyPbyuQ1Kz8bnYZGkwAwflnPmX1G5RFLlPYc+NJyONhzbA==",
   "success": true,
-  "projectFilePath": "/Users/lillianbeck/Desktop/Team-10-Recipe/RecipeProj/Shared/RecipeProj.Shared.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "/Users/ethanlancaster/Documents/GitHub/Team-10-Recipe/RecipeProj/Shared/RecipeProj.Shared.csproj",
+  "expectedPackageFiles": [
+    "/Users/ethanlancaster/.nuget/packages/microsoft.netcore.app.ref/7.0.15/microsoft.netcore.app.ref.7.0.15.nupkg.sha512",
+    "/Users/ethanlancaster/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.15/microsoft.aspnetcore.app.ref.7.0.15.nupkg.sha512"
+  ],
   "logs": []
 }
