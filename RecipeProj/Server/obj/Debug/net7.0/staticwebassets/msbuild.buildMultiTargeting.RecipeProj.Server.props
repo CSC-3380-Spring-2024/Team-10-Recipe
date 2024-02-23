@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="../build/RecipeProj.Server.props" />
-</Project>
