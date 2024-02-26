@@ -1,14 +1,115 @@
 #OS generated files:
-.DS_Store
+##.DS_Store
 
 #Package Managers:
-node_modules/
+##node_modules/
 
 #Environment Variable Files:
-.env
+##.env
 
 #Logs
-*.log
+##*.log
 
 #IDE Files:
+##.vscode/
+
+
+## from chatgpt:
+## General
+bin/
+obj/
 .vscode/
+.vs/
+*.user
+*.userosscache
+*.suo
+*.userprefs
+*.ds_store
+*.idea/
+ReSharper/
+ReSharperCaches/
+*.swp
+*.*~
+project.lock.json
+project.fragment.lock.json
+artifacts/
+*.csproj.DotSettings
+*.kproj
+*.sln.ide
+
+## ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+## Visual Studio Code
+.history/
+.settings/
+tasks.json
+launch.json
+
+## Visual Studio for Mac
+.idea/
+
+## Rider
+.idea/
+
+## User-specific files
+*.rsuser
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.psess
+*.cache
+*.csproj.DotSettings.user
+*.vbproj.user
+
+## Mono Auto Generated Files
+mono_crash.*
+
+## Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+## Folder config file
+Desktop.ini
+
+## Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+## Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+## Windows shortcuts
+*.lnk
+
+## macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+
+## Thumbnails
+._*
+
+## Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+## Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+## Blazor specific
+wwwroot/dist/
