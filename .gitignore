@@ -1,0 +1,14 @@
+#OS generated files:
+.DS_Store
+
+#Package Managers:
+node_modules/
+
+#Environment Variable Files:
+.env
+
+#Logs
+*.log
+
+#IDE Files:
+.vscode/
