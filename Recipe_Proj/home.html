@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipe Generator</title>
     <style>
-        /* General Styles */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -35,7 +34,6 @@
             background-color: #ddd;
             color: black;
         }
-        /* Homepage Styles */
         .homepage {
             background-image: url('https://images.assetsdelivery.com/compings_v2/yupiramos/yupiramos1812/yupiramos181204706.jpg');
             background-size: cover;
@@ -55,7 +53,6 @@
         .homepage p {
             font-size: 24px;
         }
-        /* About Us Styles */
         .about-page {
             background-image: url('https://miro.medium.com/v2/resize:fit:720/format:webp/1*QGWyxDaFhavZa495eJBO9Q.jpeg');
             background-size: cover;
@@ -70,7 +67,6 @@
         .about-page .container {
             text-align: right;
         }
-        /* Ingredients Styles */
         .ingredients-page {
             background-image: url('https://www.foodingredientfacts.org/wp-content/uploads/2017/11/AdobeStock_49033437-dont-fear-ingredients-in-your-food-1024x783.jpeg');
             background-size: cover;
@@ -149,12 +145,38 @@
 
 <div id="ingredients-list" class="ingredients-list" style="display: none;">
     <h2>Ingredients List</h2>
-    <ul>
-        <li>Salt</li>
-        <li>Pepper</li>
-        <!-- Add more ingredients here -->
-    </ul>
-    <button class="btn" onclick="goBack()">Generate</button>
+    <form id="ingredients-form">
+        <ul>
+            <li><input type="checkbox" id="salt" name="ingredient" value="Salt"> <label for="salt">Salt</label></li>
+            <li><input type="checkbox" id="pepper" name="ingredient" value="Pepper"> <label for="pepper">Pepper</label></li>
+            <li><input type="checkbox" id="garlic" name="ingredient" value="Garlic"> <label for="garlic">Garlic</label></li>
+            <li><input type="checkbox" id="onion" name="ingredient" value="Onion"> <label for="onion">Onion</label></li>
+            <li><input type="checkbox" id="olive-oil" name="ingredient" value="Olive Oil"> <label for="olive-oil">Olive Oil</label></li>
+            <li><input type="checkbox" id="butter" name="ingredient" value="Butter"> <label for="butter">Butter</label></li>
+            <li><input type="checkbox" id="flour" name="ingredient" value="Flour"> <label for="flour">Flour</label></li>
+            <li><input type="checkbox" id="sugar" name="ingredient" value="Sugar"> <label for="sugar">Sugar</label></li>
+            <li><input type="checkbox" id="eggs" name="ingredient" value="Eggs"> <label for="eggs">Eggs</label></li>
+            <li><input type="checkbox" id="milk" name="ingredient" value="Milk"> <label for="milk">Milk</label></li>
+            <li><input type="checkbox" id="tomato" name="ingredient" value="Tomato"> <label for="tomato">Tomato</label></li>
+            <li><input type="checkbox" id="basil" name="ingredient" value="Basil"> <label for="basil">Basil</label></li>
+            <li><input type="checkbox" id="rosemary" name="ingredient" value="Rosemary"> <label for="rosemary">Rosemary</label></li>
+            <li><input type="checkbox" id="lemon" name="ingredient" value="Lemon"> <label for="lemon">Lemon</label></li>
+            <li><input type="checkbox" id="lime" name="ingredient" value="Lime"> <label for="lime">Lime</label></li>
+            <li><input type="checkbox" id="vinegar" name="ingredient" value="Vinegar"> <label for="vinegar">Vinegar</label></li>
+            <li><input type="checkbox" id="soy-sauce" name="ingredient" value="Soy Sauce"> <label for="soy-sauce">Soy Sauce</label></li>
+            <li><input type="checkbox" id="hot-sauce" name="ingredient" value="Hot Sauce"> <label for="hot-sauce">Hot Sauce</label></li>
+            <li><input type="checkbox" id="mustard" name="ingredient" value="Mustard"> <label for="mustard">Mustard</label></li>
+            <li><input type="checkbox" id="mayonnaise" name="ingredient" value="Mayonnaise"> <label for="mayonnaise">Mayonnaise</label></li>
+            <li><input type="checkbox" id="bbq-sauce" name="ingredient" value="BBQ Sauce"> <label for="bbq-sauce">BBQ Sauce</label></li>
+            <li><input type="checkbox" id="honey" name="ingredient" value="Honey"> <label for="honey">Honey</label></li>
+            <li><input type="checkbox" id="rolls" name="ingredient" value="Rolls"> <label for="rolls">Rolls</label></li>
+            <li><input type="checkbox" id="spaghetti" name="ingredient" value="Spaghetti"> <label for="spaghetti">Spaghetti</label></li>
+            <li><input type="checkbox" id="bread" name="ingredient" value="Bread"> <label for="bread">Bread</label></li>
+            <li><input type="checkbox" id="tortilla" name="ingredient" value="Tortilla"> <label for="tortilla">Tortilla</label></li>
+            <!-- Add more ingredients with checkboxes -->
+        </ul>
+        <button type="button" class="btn" onclick="generateRecipes()">Generate</button>
+    </form>
 </div>
 
 <script>
