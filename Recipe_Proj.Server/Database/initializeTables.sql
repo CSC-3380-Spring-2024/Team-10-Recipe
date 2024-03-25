@@ -17,12 +17,12 @@ CREATE TABLE recipe (
 
 CREATE TABLE restriction (
   restrictionID INTEGER PRIMARY KEY,
-  name VARCHAR(255)
+  restrictionName VARCHAR(255)
 );
 
 CREATE TABLE ingredient (
   ingredientID INTEGER PRIMARY KEY,
-  name VARCHAR(255)
+  ingredientName VARCHAR(255)
 );
 
 CREATE TABLE recipe_ingredient (
