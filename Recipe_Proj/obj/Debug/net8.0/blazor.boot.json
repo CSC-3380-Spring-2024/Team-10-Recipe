@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "Recipe_Proj",
   "resources": {
-    "hash": "sha256-MsbVem3NZyjhBhNgmp4iOnrd/M6L2Wd1EzkQ2r9Qgy4=",
+    "hash": "sha256-BoBQBQK69D5xOT0enodWNlhnOErqhgBWYS4edi/JaMc=",
     "jsModuleNative": {
       "dotnet.native.8.0.2.deknxu92gu.js": "sha256-gPMK16QWoJSTxorlZJqcVtbBRTniIQWlLsJN2O4cJHg="
     },
@@ -208,10 +208,10 @@
       "mscorlib.wasm": "sha256-EpWTfh4m/hEcXRFYMCR9YeYHwdUJgcm1laBaxWfq2S4=",
       "netstandard.wasm": "sha256-2kH24/YfHmU3B4eYRyRmiwebYROM4+B9eDWKvMnUdP8=",
       "System.Private.CoreLib.wasm": "sha256-CsySKiP7HYY1pS8LTDE60EkqiX5oHb3WoEZHDNd1yK0=",
-      "Recipe_Proj.wasm": "sha256-lyhnuw1CUlxBDikPlyD4CIqP2ct9zWclm2BPAEsolGQ="
+      "Recipe_Proj.wasm": "sha256-+pCNPCcbbuTf9QfCci9c2YByjzjxGnzhsIaqaBxIZWo="
     },
     "pdb": {
-      "Recipe_Proj.pdb": "sha256-bjzp2aNe01TOFiv8c4Pglgfs9dpUBczLh1H61HEof20="
+      "Recipe_Proj.pdb": "sha256-A3rZuxSOVr/k+sS6sjvHz0GhJe1hk1O6uLEH2+EWM5I="
     }
   },
   "cacheBootResources": true,

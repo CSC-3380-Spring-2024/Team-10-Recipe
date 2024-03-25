@@ -168,74 +168,8 @@
 <div id="ingredients" class="ingredients-page">
     <div class="container">
         <h1>Select Ingredients</h1>
-        <p>Click <span class="ingredients-link">here</span> to select ingredients.</p>
+        <p>Click <a href="/ingredient-list" target="_blank" class="ingredients-link">here</a> to select ingredients.</p>
     </div>
 </div>
-
-<div id="ingredients-list" class="ingredients-list" style="display: none;">
-    <h2>Ingredients List</h2>
-    <form id="ingredients-form">
-        <ul>
-            <li><input type="checkbox" id="salt" name="ingredient" value="Salt"> <label for="salt">Salt</label></li>
-            <li><input type="checkbox" id="pepper" name="ingredient" value="Pepper"> <label for="pepper">Pepper</label></li>
-            <li><input type="checkbox" id="garlic" name="ingredient" value="Garlic"> <label for="garlic">Garlic</label></li>
-            <li><input type="checkbox" id="onion" name="ingredient" value="Onion"> <label for="onion">Onion</label></li>
-            <li><input type="checkbox" id="olive-oil" name="ingredient" value="Olive Oil"> <label for="olive-oil">Olive Oil</label></li>
-            <li><input type="checkbox" id="butter" name="ingredient" value="Butter"> <label for="butter">Butter</label></li>
-            <li><input type="checkbox" id="flour" name="ingredient" value="Flour"> <label for="flour">Flour</label></li>
-            <li><input type="checkbox" id="sugar" name="ingredient" value="Sugar"> <label for="sugar">Sugar</label></li>
-            <li><input type="checkbox" id="eggs" name="ingredient" value="Eggs"> <label for="eggs">Eggs</label></li>
-            <li><input type="checkbox" id="milk" name="ingredient" value="Milk"> <label for="milk">Milk</label></li>
-            <li><input type="checkbox" id="tomato" name="ingredient" value="Tomato"> <label for="tomato">Tomato</label></li>
-            <li><input type="checkbox" id="basil" name="ingredient" value="Basil"> <label for="basil">Basil</label></li>
-            <li><input type="checkbox" id="rosemary" name="ingredient" value="Rosemary"> <label for="rosemary">Rosemary</label></li>
-            <li><input type="checkbox" id="lemon" name="ingredient" value="Lemon"> <label for="lemon">Lemon</label></li>
-            <li><input type="checkbox" id="lime" name="ingredient" value="Lime"> <label for="lime">Lime</label></li>
-            <li><input type="checkbox" id="vinegar" name="ingredient" value="Vinegar"> <label for="vinegar">Vinegar</label></li>
-            <li><input type="checkbox" id="soy-sauce" name="ingredient" value="Soy Sauce"> <label for="soy-sauce">Soy Sauce</label></li>
-            <li><input type="checkbox" id="hot-sauce" name="ingredient" value="Hot Sauce"> <label for="hot-sauce">Hot Sauce</label></li>
-            <li><input type="checkbox" id="mustard" name="ingredient" value="Mustard"> <label for="mustard">Mustard</label></li>
-            <li><input type="checkbox" id="mayonnaise" name="ingredient" value="Mayonnaise"> <label for="mayonnaise">Mayonnaise</label></li>
-            <li><input type="checkbox" id="bbq-sauce" name="ingredient" value="BBQ Sauce"> <label for="bbq-sauce">BBQ Sauce</label></li>
-            <li><input type="checkbox" id="honey" name="ingredient" value="Honey"> <label for="honey">Honey</label></li>
-            <li><input type="checkbox" id="rolls" name="ingredient" value="Rolls"> <label for="rolls">Rolls</label></li>
-            <li><input type="checkbox" id="spaghetti" name="ingredient" value="Spaghetti"> <label for="spaghetti">Spaghetti</label></li>
-            <li><input type="checkbox" id="bread" name="ingredient" value="Bread"> <label for="bread">Bread</label></li>
-            <li><input type="checkbox" id="tortilla" name="ingredient" value="Tortilla"> <label for="tortilla">Tortilla</label></li>
-            <!-- Add more ingredients with checkboxes -->
-        </ul>
-        <button type="button" class="btn" onclick="generateRecipes()">Generate</button>
-    </form>
-</div>
-
-<script>
-    document.querySelectorAll('.navbar a').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-
-            const targetSectionId = this.getAttribute('href').substring(1);
-            const targetSection = document.getElementById(targetSectionId);
-
-            // Smooth scroll to target section
-            window.scrollTo({
-                top: targetSection.offsetTop,
-                behavior: 'smooth'
-            });
-        });
-    });
-
-    document.querySelector('.ingredients-link').addEventListener('click', function() {
-        document.getElementById('ingredients-list').style.display = 'block';
-        window.scrollTo({
-            top: document.getElementById('ingredients-list').offsetTop,
-            behavior: 'smooth'
-        });
-    });
-
-    function goBack() {
-        document.getElementById('ingredients-list').style.display = 'none';
-    }
-</script>
-
 </body>
 </html>
