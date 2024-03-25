@@ -1,15 +1,9 @@
 @page "/ingredients-list"
 
-<PageTitle>Ingredients List</PageTitle>
-
-<main>
-    <h1>Ingredients List</h1>
-</main>
-@* <div id="ingredients-list" class="ingredients-list" style="display: none;">
-    <h1>Ingredients List</h1>
-    <form id="ingredients-form">
-        <ul>
-            <li><input type="checkbox" id="salt" name="ingredient" value="Salt"> <label for="salt">Salt</label></li>
+<h2>Ingredients List</h2>
+<form>
+    <ul>
+        <li><input type="checkbox" id="salt" name="ingredient" value="Salt"> <label for="salt">Salt</label></li>
             <li><input type="checkbox" id="pepper" name="ingredient" value="Pepper"> <label for="pepper">Pepper</label></li>
             <li><input type="checkbox" id="garlic" name="ingredient" value="Garlic"> <label for="garlic">Garlic</label></li>
             <li><input type="checkbox" id="onion" name="ingredient" value="Onion"> <label for="onion">Onion</label></li>
@@ -36,36 +30,34 @@
             <li><input type="checkbox" id="bread" name="ingredient" value="Bread"> <label for="bread">Bread</label></li>
             <li><input type="checkbox" id="tortilla" name="ingredient" value="Tortilla"> <label for="tortilla">Tortilla</label></li>
             <!-- Add more ingredients with checkboxes -->
-        </ul>
-        <button type="button" class="btn" onclick="generateRecipes()">Generate</button>
-    </form>
-</div>
+    </ul>
+    <button type="button" class="btn" onclick="generateRecipes()">Generate</button>
+</form>
 
-<script>
-    document.querySelectorAll('.navbar a').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-
-            const targetSectionId = this.getAttribute('href').substring(1);
-            const targetSection = document.getElementById(targetSectionId);
-
-            // Smooth scroll to target section
-            window.scrollTo({
-                top: targetSection.offsetTop,
-                behavior: 'smooth'
-            });
-        });
-    });
-
-    document.querySelector('.ingredients-link').addEventListener('click', function() {
-        document.getElementById('ingredients-list').style.display = 'block';
-        window.scrollTo({
-            top: document.getElementById('ingredients-list').offsetTop,
-            behavior: 'smooth'
-        });
-    });
-
-    function goBack() {
-        document.getElementById('ingredients-list').style.display = 'none';
+<style>
+    .ingredients-list {
+        list-style-type: none;
+        padding: 0;
     }
-</script> *@
+    .ingredients-list li {
+        margin-bottom: 0.5em;
+    }
+    .ingredients-list label {
+        margin-left: 0.5em;
+    }
+    .btn-generate {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        display: inline-block;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+    form {
+        max-width: 600px;
+        margin: auto;
+    }
+</style>

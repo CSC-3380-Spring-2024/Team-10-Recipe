@@ -1,38 +1,11 @@
 ﻿@page "/"
 
-@* <PageTitle>Home</PageTitle>
-
-<header>
-    <nav>
-        <div class="logo">
-            <img src="Pushin-P(antry)-logo.png" alt="Pushin' P(antry) Logo">
-            <span>Pushin' P(antry)</span>
-        </div>
-        <ul class="navigation">
-            <li><a href="#how-it-works">How It Works</a></li>
-            <li><a href="#explore-recipes">Explore Recipes</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-</header>
-
-<main>
-    <section class="hero">
-        <h1>Welcome to Your Digital Pantry!</h1>
-        <p>Enter the ingredients you have and let's find something delicious for you to cook.</p>
-        <form method="post" action="FindRecipes">
-            <input type="text" id="ingredientInput" name="ingredients" placeholder="Enter ingredients..." autofocus>
-            <button type="submit">Find Recipes</button>
-        </form>
-    </section>
-</main> *@
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipe Generator</title>
+    <title>Pushin' P(antry)</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -78,9 +51,11 @@
         .homepage h1 {
             font-size: 48px;
             margin-bottom: 20px;
+            color: #000000;
         }
         .homepage p {
             font-size: 24px;
+            color: #000000;
         }
         .about-page {
             background-image: url('https://miro.medium.com/v2/resize:fit:720/format:webp/1*QGWyxDaFhavZa495eJBO9Q.jpeg');
@@ -111,19 +86,6 @@
             text-decoration: underline;
             cursor: pointer;
         }
-        /* Ingredients List Styles */
-        .ingredients-list {
-            background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 10px;
-            padding: 20px;
-            max-width: 600px;
-            margin: auto;
-            overflow-y: auto;
-            max-height: 70vh;
-        }
-        .ingredient {
-            margin-bottom: 10px;
-        }
         /* Button Styles */
         .btn {
             background-color: #4CAF50;
@@ -149,7 +111,7 @@
 
 <div id="home" class="homepage">
     <div class="container">
-        <h1>Welcome to our Recipe Generator!</h1>
+        <h1>Welcome to Pushin' P(antry)!</h1>
         <p>Choose your ingredients and get personalized recipes.</p>
     </div>
 </div>
@@ -168,8 +130,9 @@
 <div id="ingredients" class="ingredients-page">
     <div class="container">
         <h1>Select Ingredients</h1>
-        <p>Click <a href="/ingredient-list" target="_blank" class="ingredients-link">here</a> to select ingredients.</p>
+        <p>Click <a href="/ingredients-list" target="_blank" class="ingredients-link">here</a> to select ingredients.</p>
     </div>
 </div>
+
 </body>
 </html>
