@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recipe_Proj", "Recipe_Proj\Recipe_Proj.csproj", "{ADBBB7E5-D308-4792-9F13-97FBFE5BD06D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recipe_Proj.Server", "Recipe_Proj.Server\Recipe_Proj.Server.csproj", "{F98AB438-7429-45EB-A099-85BC1DE9979B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{ADBBB7E5-D308-4792-9F13-97FBFE5BD06D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADBBB7E5-D308-4792-9F13-97FBFE5BD06D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADBBB7E5-D308-4792-9F13-97FBFE5BD06D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F98AB438-7429-45EB-A099-85BC1DE9979B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F98AB438-7429-45EB-A099-85BC1DE9979B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F98AB438-7429-45EB-A099-85BC1DE9979B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F98AB438-7429-45EB-A099-85BC1DE9979B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

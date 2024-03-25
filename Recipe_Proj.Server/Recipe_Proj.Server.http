@@ -1,0 +1,6 @@
+@Recipe_Proj.Server_HostAddress = http://localhost:5123
+
+GET {{Recipe_Proj.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
