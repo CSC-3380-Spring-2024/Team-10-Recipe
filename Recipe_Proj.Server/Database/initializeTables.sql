@@ -47,7 +47,7 @@ CREATE TABLE recipeUser (
   pass VARCHAR(255)
 );
 
-CREATE TABLE recipeFavorite (
+CREATE TABLE recipe_Favorite (
   userID INTEGER,
   recipeID INTEGER,
   FOREIGN KEY (userID) REFERENCES recipeUser (userID),

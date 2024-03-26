@@ -1,5 +1,4 @@
 namespace Recipe_Proj.Server.Models;
-using System.ComponentModel.DataAnnotations;
 
 public class RecipeIngredient
 {

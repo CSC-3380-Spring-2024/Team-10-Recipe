@@ -28,7 +28,7 @@ public class Recipe
     public int Protein { get; set; }
 
     // Navigation properties
-    public ICollection<Ingredient> Ingredients { get; set; } = new List<Ingredient>();
-    public ICollection<Restriction> Restrictions { get; set; } = new List<Restriction>();
-    public ICollection<RecipeUser> FavoritedBy { get; set; } = new List<RecipeUser>();
+    public ICollection<RecipeIngredient> RecipeIngredients { get; set; } = new List<RecipeIngredient>();
+    public ICollection<RecipeRestriction> RecipeRestrictions { get; set; } = new List<RecipeRestriction>();
+    public ICollection<RecipeFavorite> FavoritedBy { get; set; } = new List<RecipeFavorite>();
 }

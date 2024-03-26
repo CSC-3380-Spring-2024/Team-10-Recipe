@@ -11,6 +11,6 @@ public class Restriction
     public string RestrictionName { get; set; }
 
     // Navigation property
-    public ICollection<Recipe> Recipes { get; set; } = new List<Recipe>();
+    public ICollection<RecipeRestriction> RecipeRestrictions { get; set; } = new List<RecipeRestriction>();
 
 }

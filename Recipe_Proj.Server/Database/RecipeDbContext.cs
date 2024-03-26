@@ -11,6 +11,10 @@ public class RecipeDbContext : DbContext
     public DbSet<RecipeUser> RecipeUsers { get; set; }
     public DbSet<RecipeFavorite> RecipeFavorites { get; set; }
 
+    public RecipeDbContext(DbContextOptions<RecipeDbContext> options) : base(options)
+    {
+    }
+
     // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     // {
     //     optionsBuilder.UseMySql("your_connection_string_here", 
@@ -19,35 +23,63 @@ public class RecipeDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        // Use Fluent API configurations here
         base.OnModelCreating(modelBuilder);
-        
-        // Configure RecipeIngredient join table
-        modelBuilder.Entity<Recipe>()
-            .HasMany(r => r.Ingredients)
-            .WithMany(i => i.Recipes)
-            .UsingEntity<Dictionary<string, object>>(
-                "RecipeIngredient", // Join entity table name
-                r => r.HasOne<Ingredient>().WithMany().HasForeignKey("IngredientID"),
-                i => i.HasOne<Recipe>().WithMany().HasForeignKey("RecipeID"));
 
-        // Configure RecipeRestriction join table
-        modelBuilder.Entity<Recipe>()
-            .HasMany(r => r.Restrictions)
-            .WithMany(r => r.Recipes)
-            .UsingEntity<Dictionary<string, object>>(
-                "RecipeRestriction", // Join entity table name
-                r => r.HasOne<Restriction>().WithMany().HasForeignKey("RestrictionID"),
-                i => i.HasOne<Recipe>().WithMany().HasForeignKey("RecipeID"));
+        // Map entity to table
+        modelBuilder.Entity<Recipe>().ToTable("recipe");
+        modelBuilder.Entity<Ingredient>().ToTable("ingredient");
+        modelBuilder.Entity<Restriction>().ToTable("restriction");
+        modelBuilder.Entity<RecipeUser>().ToTable("recipeUser");
+        modelBuilder.Entity<RecipeIngredient>().ToTable("recipe_ingredient");
+        modelBuilder.Entity<RecipeRestriction>().ToTable("recipe_restriction");
+        modelBuilder.Entity<RecipeFavorite>().ToTable("recipe_Favorite");
 
-        // For RecipeFavorite, assuming it's a direct many-to-many without extra properties
-        modelBuilder.Entity<RecipeUser>()
-            .HasMany(u => u.FavoriteRecipes)
+        // Configure primary keys
+        modelBuilder.Entity<Recipe>().HasKey(r => r.RecipeID);
+        modelBuilder.Entity<Ingredient>().HasKey(i => i.IngredientID);
+        modelBuilder.Entity<Restriction>().HasKey(r => r.RestrictionID);
+        modelBuilder.Entity<RecipeUser>().HasKey(ru => ru.UserID);
+
+        // RecipeIngredient composite key
+        modelBuilder.Entity<RecipeIngredient>().HasKey(ri => new { ri.RecipeID, ri.IngredientID });
+
+        // RecipeRestriction composite key
+        modelBuilder.Entity<RecipeRestriction>().HasKey(rr => new { rr.RecipeID, rr.RestrictionID });
+
+        // RecipeFavorite composite key
+        modelBuilder.Entity<RecipeFavorite>().HasKey(rf => new { rf.UserID, rf.RecipeID });
+
+        // Configure relationships
+        modelBuilder.Entity<RecipeIngredient>()
+            .HasOne(ri => ri.Recipe)
+            .WithMany(r => r.RecipeIngredients)
+            .HasForeignKey(ri => ri.RecipeID);
+
+        modelBuilder.Entity<RecipeIngredient>()
+            .HasOne(ri => ri.Ingredient)
+            .WithMany(i => i.RecipeIngredients)
+            .HasForeignKey(ri => ri.IngredientID);
+
+        modelBuilder.Entity<RecipeRestriction>()
+            .HasOne(rr => rr.Recipe)
+            .WithMany(r => r.RecipeRestrictions)
+            .HasForeignKey(rr => rr.RecipeID);
+
+        modelBuilder.Entity<RecipeRestriction>()
+            .HasOne(rr => rr.Restriction)
+            .WithMany(r => r.RecipeRestrictions)
+            .HasForeignKey(rr => rr.RestrictionID);
+
+        modelBuilder.Entity<RecipeFavorite>()
+            .HasOne(rf => rf.RecipeUser)
+            .WithMany(ru => ru.FavoriteRecipes)
+            .HasForeignKey(rf => rf.UserID);
+
+        modelBuilder.Entity<RecipeFavorite>()
+            .HasOne(rf => rf.Recipe)
             .WithMany(r => r.FavoritedBy)
-            .UsingEntity<Dictionary<string, object>>(
-                "RecipeFavorite", // Join entity table name
-                u => u.HasOne<Recipe>().WithMany().HasForeignKey("RecipeID"),
-                r => r.HasOne<RecipeUser>().WithMany().HasForeignKey("UserID"));
-
+            .HasForeignKey(rf => rf.RecipeID);
     }
+
+
 }

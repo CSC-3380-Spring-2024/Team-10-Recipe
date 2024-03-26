@@ -11,6 +11,6 @@ public class Ingredient
     public string IngredientName { get; set; }
 
     // Navigation property
-    public ICollection<Recipe> Recipes { get; set; } = new List<Recipe>();
+    public ICollection<RecipeIngredient> RecipeIngredients { get; set; } = new List<RecipeIngredient>();
 
 }

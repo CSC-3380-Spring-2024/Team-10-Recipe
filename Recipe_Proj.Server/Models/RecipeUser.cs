@@ -22,5 +22,6 @@ public class RecipeUser
     public string Pass { get; set; }
 
     // Navigation property for favorites
-    public ICollection<Recipe> FavoriteRecipes { get; set; } = new List<Recipe>();
+    public ICollection<RecipeFavorite> FavoriteRecipes { get; set; } = new List<RecipeFavorite>();
+
 }
