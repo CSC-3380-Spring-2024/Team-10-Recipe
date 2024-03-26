@@ -16,7 +16,7 @@
 
 ## from chatgpt:
 ## General
-bin/
+**/bin/
 **/obj/
 .vscode/
 .vs/
