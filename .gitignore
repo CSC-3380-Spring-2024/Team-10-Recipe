@@ -17,7 +17,7 @@
 ## from chatgpt:
 ## General
 bin/
-obj/
+**/obj/
 .vscode/
 .vs/
 .mono/
