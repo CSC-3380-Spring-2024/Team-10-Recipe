@@ -20,6 +20,7 @@ bin/
 obj/
 .vscode/
 .vs/
+.mono
 *.user
 *.userosscache
 *.suo
