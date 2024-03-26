@@ -1,8 +1,14 @@
 using Microsoft.EntityFrameworkCore;
-using Recipe_Proj.Server.Database;
 using Microsoft.Extensions.Configuration;
+using Recipe_Proj.Server.Database;
+
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<RecipeDbContext>(options =>
+    options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
+    ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))));
+
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

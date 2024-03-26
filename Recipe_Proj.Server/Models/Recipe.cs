@@ -26,4 +26,9 @@ public class Recipe
     public int Fiber { get; set; }
     public int Sugars { get; set; }
     public int Protein { get; set; }
+
+    // Navigation properties
+    public ICollection<Ingredient> Ingredients { get; set; } = new List<Ingredient>();
+    public ICollection<Restriction> Restrictions { get; set; } = new List<Restriction>();
+    public ICollection<RecipeUser> FavoritedBy { get; set; } = new List<RecipeUser>();
 }

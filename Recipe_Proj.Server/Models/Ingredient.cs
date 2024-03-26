@@ -10,4 +10,7 @@ public class Ingredient
     [StringLength(255)]
     public string IngredientName { get; set; }
 
+    // Navigation property
+    public ICollection<Recipe> Recipes { get; set; } = new List<Recipe>();
+
 }
