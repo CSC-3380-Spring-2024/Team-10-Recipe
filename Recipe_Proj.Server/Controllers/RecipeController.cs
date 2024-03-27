@@ -1,0 +1,206 @@
+using Microsoft.AspNetCore.Mvc; // model-view(dtos we're sending)-controller
+using Microsoft.EntityFrameworkCore;
+using Recipe_Proj.Server.Database;
+using Recipe_Proj.Server.DTOs;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+
+namespace Recipe_Proj.Server.Controllers;
+
+[ApiController]
+[Route("api/[controller]")]
+public class RecipesController : ControllerBase
+{
+    private readonly RecipeDbContext _context;
+
+    public RecipesController(RecipeDbContext context)
+    {
+        _context = context;
+    }
+
+    // Will probably just use SearchRecipesByKeywords for searching
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<SimpleRecipeDTO>>> GetAllSimpleRecipes()
+    {
+        var recipes = await _context.Recipes
+            .Select(r => new SimpleRecipeDTO
+            {
+                RecipeID = r.RecipeID,
+                RecipeName = r.RecipeName,
+                ShortDescription = r.ShortDescription,
+                CookTime = r.CookTime,
+                Ingredients = r.RecipeIngredients.Select(ri => ri.Ingredient.IngredientName).ToList(),
+                Restrictions = r.RecipeRestrictions.Select(rr => rr.Restriction.RestrictionName).ToList(),
+                favorited = false // hardcode for now, eventually should check with current user to see if its favorited
+            })
+            .ToListAsync();
+
+        return Ok(recipes);
+    }
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult<DetailedRecipeDTO>> GetDetailedRecipeById(int id)
+    {
+        var recipeDetail = await _context.Recipes
+            .Where(r => r.RecipeID == id)
+            .Select(r => new DetailedRecipeDTO
+            {
+                RecipeID = r.RecipeID,
+                RecipeName = r.RecipeName,
+                RecipeInstructions = r.RecipeInstructions,
+                CookTime = r.CookTime,
+                Calories = r.Calories,
+                TotalFat = r.TotalFat,
+                SaturatedFat = r.SaturatedFat,
+                TransFat = r.TransFat,
+                CholesterolMG = r.CholesterolMG,
+                SodiumMG = r.SodiumMG,
+                TotalCarbs = r.TotalCarbs,
+                Fiber = r.Fiber,
+                Sugars = r.Sugars,
+                Protein = r.Protein,
+                Ingredients = r.RecipeIngredients.Select(ri => ri.Ingredient.IngredientName).ToList(),
+                Restrictions = r.RecipeRestrictions.Select(rr => rr.Restriction.RestrictionName).ToList(),
+                favorited = false // This will need logic to determine if a recipe is favorited
+            })
+            .SingleOrDefaultAsync();
+
+        if (recipeDetail == null)
+        {
+            return NotFound();
+        }
+        return recipeDetail;
+    }
+
+    [HttpPost("SearchByKeywords")]
+    public async Task<ActionResult<IEnumerable<SimpleRecipeDTO>>> SearchRecipesByKeywords(string searchKeywords)
+    {
+        // parse
+        var keywords = searchKeywords.Split(' ', StringSplitOptions.RemoveEmptyEntries).Select(k => k.Trim()).ToList();
+
+        var combinedMatches = _context.Recipes
+            // find recipes with keywords in the name, description, ingredients, and retsrictions
+            .Where(r => keywords.Any(kw => r.RecipeName.Contains(kw) || r.ShortDescription.Contains(kw)) ||
+                        r.RecipeIngredients.Any(ri => keywords.Any(kw => ri.Ingredient.IngredientName.Contains(kw))) ||
+                        r.RecipeRestrictions.Any(rr => keywords.Any(kw => rr.Restriction.RestrictionName.Contains(kw))))
+            .Select(r => new SimpleRecipeDTO
+            {
+                RecipeID = r.RecipeID,
+                RecipeName = r.RecipeName,
+                ShortDescription = r.ShortDescription,
+                CookTime = r.CookTime,
+                Ingredients = r.RecipeIngredients.Select(ri => ri.Ingredient.IngredientName).ToList(),
+                Restrictions = r.RecipeRestrictions.Select(rr => rr.Restriction.RestrictionName).ToList(),
+                favorited = false
+            })
+            .Distinct();
+
+        var matches = await combinedMatches.ToListAsync();
+
+        return matches;
+    }
+
+
+    [HttpPost("SearchBySelectedIngredients")]
+    public async Task<ActionResult<IEnumerable<SimpleRecipeDTO>>> SearchRecipesBySelectedIngredients(IngredientSelectionDTO ingredientSelection)
+    {
+        // Gets all recipes that include any of the selected ingredients
+        var matchedRecipes = await _context.Recipes
+            .Include(r => r.RecipeIngredients).ThenInclude(ri => ri.Ingredient) // Ensure you include related data
+            .Include(r => r.RecipeRestrictions).ThenInclude(rr => rr.Restriction)
+            .Where(r => r.RecipeIngredients.Any(ri => ingredientSelection.IngredientIds.Contains(ri.IngredientID)))
+            .ToListAsync();
+
+        // matches at least 3 ingredients
+        var refinedMatches = matchedRecipes
+            .Where(r => r.RecipeIngredients.Count(ri => ingredientSelection.IngredientIds.Contains(ri.IngredientID)) >= 3) // or any other number
+            .Select(r => new SimpleRecipeDTO
+            {
+                RecipeID = r.RecipeID,
+                RecipeName = r.RecipeName,
+                ShortDescription = r.ShortDescription,
+                CookTime = r.CookTime,
+                Ingredients = r.RecipeIngredients.Select(ri => ri.Ingredient.IngredientName).ToList(),
+                Restrictions = r.RecipeRestrictions.Select(rr => rr.Restriction.RestrictionName).ToList(),
+                favorited = false // For now, hardcode; you'd eventually check against the current user's favorites
+            })
+            .ToList();
+
+        return refinedMatches;
+    }
+
+
+
+    // probably wont be using any of this
+    // [HttpPost]
+    // public async Task<ActionResult<Recipe>> CreateRecipe(CreateRecipeDTO createRecipeDto)
+    // {
+    //     var recipe = new Recipe
+    //     {
+    //         RecipeName = createRecipeDto.RecipeName,
+    //         ShortDescription = createRecipeDto.ShortDescription,
+    //         CookTime = createRecipeDto.CookTime,
+    //         // any othe properties
+    //     };
+
+    //     _context.Recipes.Add(recipe);
+    //     await _context.SaveChangesAsync();
+
+    //     return CreatedAtAction(nameof(GetDetailedRecipeById), new { id = recipe.RecipeID }, recipe);
+    // }
+
+    // private bool RecipeExists(int id) => _context.Recipes.Any(e => e.RecipeID == id);
+
+    // [HttpPut("{id}")]
+    // public async Task<IActionResult> UpdateRecipe(int id, UpdateRecipeDTO updateRecipeDto)
+    // {
+    //     var recipe = await _context.Recipes.FindAsync(id);
+    //     if (recipe == null)
+    //     {
+    //         return NotFound();
+    //     }
+
+    //     recipe.RecipeName = updateRecipeDto.RecipeName;
+    //     recipe.ShortDescription = updateRecipeDto.ShortDescription;
+    //     recipe.CookTime = updateRecipeDto.CookTime;
+    //     // any othe properties
+
+    //     _context.Entry(recipe).State = EntityState.Modified;
+
+    //     try
+    //     {
+    //         await _context.SaveChangesAsync();
+    //     }
+    //     catch (DbUpdateConcurrencyException)
+    //     {
+    //         if (!RecipeExists(id))
+    //         {
+    //             return NotFound();
+    //         }
+    //         else
+    //         {
+    //             throw;
+    //         }
+    //     }
+
+    //     return NoContent();
+    // }
+
+
+    // [HttpDelete("{id}")]
+    // public async Task<IActionResult> DeleteRecipe(int id)
+    // {
+    //     var recipe = await _context.Recipes.FindAsync(id);
+    //     if (recipe == null)
+    //     {
+    //         return NotFound();
+    //     }
+
+    //     _context.Recipes.Remove(recipe);
+    //     await _context.SaveChangesAsync();
+
+    //     return NoContent();
+    // }
+
+}

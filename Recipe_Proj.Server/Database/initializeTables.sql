@@ -1,6 +1,7 @@
 CREATE TABLE recipe (
   recipeID INTEGER PRIMARY KEY,
   recipeName VARCHAR(255),
+  shortDescription VARCHAR(255),
   recipeInstructions VARCHAR(255),
   cookTime DECIMAL(10,2),
   calories DECIMAL(10,2),

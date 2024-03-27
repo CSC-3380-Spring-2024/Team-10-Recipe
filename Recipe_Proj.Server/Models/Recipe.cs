@@ -1,7 +1,7 @@
-namespace Recipe_Proj.Server.Models;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+namespace Recipe_Proj.Server.Models;
 
 public class Recipe
 {
@@ -10,11 +10,15 @@ public class Recipe
 
     [Required]
     [StringLength(255)]
-    public required string RecipeName { get; set; }
+    public string RecipeName { get; set; }
 
     [Required]
     [StringLength(255)]
-    public required string RecipeInstructions { get; set; }
+    public string ShortDescription { get; set; }
+
+    [Required]
+    [StringLength(255)]
+    public string RecipeInstructions { get; set; }
 
     [Column(TypeName = "decimal(10, 2)")]
     public decimal CookTime { get; set; } // in minutes

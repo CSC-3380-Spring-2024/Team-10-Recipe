@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Recipe_Proj.Server.Models; // Adjust namespace based on your actual models' namespace
+using Recipe_Proj.Server.Models;
 namespace Recipe_Proj.Server.Database;
 public class RecipeDbContext : DbContext
 {

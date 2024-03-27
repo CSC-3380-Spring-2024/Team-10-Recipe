@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Recipe_Proj.Server.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class InitialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -37,20 +37,21 @@ namespace Recipe_Proj.Server.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     RecipeName = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
+                    ShortDescription = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     RecipeInstructions = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    CookTime = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Calories = table.Column<int>(type: "int", nullable: false),
-                    TotalFat = table.Column<int>(type: "int", nullable: false),
-                    SaturatedFat = table.Column<int>(type: "int", nullable: false),
-                    TransFat = table.Column<int>(type: "int", nullable: false),
-                    CholesterolMG = table.Column<int>(type: "int", nullable: false),
-                    SodiumMG = table.Column<int>(type: "int", nullable: false),
-                    TotalCarbs = table.Column<int>(type: "int", nullable: false),
-                    Fiber = table.Column<int>(type: "int", nullable: false),
-                    Sugars = table.Column<int>(type: "int", nullable: false),
-                    Protein = table.Column<int>(type: "int", nullable: false)
+                    CookTime = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
+                    Calories = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
+                    TotalFat = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
+                    SaturatedFat = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
+                    TransFat = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
+                    CholesterolMG = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
+                    SodiumMG = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
+                    TotalCarbs = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
+                    Fiber = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
+                    Sugars = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
+                    Protein = table.Column<decimal>(type: "decimal(10,2)", nullable: false)
                 },
                 constraints: table =>
                 {

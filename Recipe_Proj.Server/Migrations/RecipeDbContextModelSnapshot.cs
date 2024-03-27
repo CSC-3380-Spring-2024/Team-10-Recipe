@@ -75,6 +75,11 @@ namespace Recipe_Proj.Server.Migrations
                     b.Property<decimal>("SaturatedFat")
                         .HasColumnType("decimal(10, 2)");
 
+                    b.Property<string>("ShortDescription")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
+
                     b.Property<decimal>("SodiumMG")
                         .HasColumnType("decimal(10, 2)");
 

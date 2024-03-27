@@ -1,5 +1,6 @@
-namespace Recipe_Proj.Server.Models;
 using System.ComponentModel.DataAnnotations;
+
+namespace Recipe_Proj.Server.Models;
 
 public class Restriction
 {
