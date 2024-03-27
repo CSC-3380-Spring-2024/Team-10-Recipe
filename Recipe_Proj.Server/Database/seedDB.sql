@@ -25,7 +25,6 @@ INSERT INTO restriction (restrictionID, restrictionName) VALUES
 (1019, 'Quick Meal'); -- 20 min or less
 
 INSERT INTO recipe_restriction (recipeID, restrictionID) VALUES 
-(1001, 1004), -- Vegetarian
 (1001, 1012), -- Nut-free
 (1002, 1006), -- Low-fat
 (1002, 1010), -- Gluten-free
