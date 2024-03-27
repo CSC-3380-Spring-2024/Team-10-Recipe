@@ -1,5 +1,7 @@
 namespace Recipe_Proj.Server.Models;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 
 public class Recipe
 {
@@ -8,24 +10,44 @@ public class Recipe
 
     [Required]
     [StringLength(255)]
-    public string RecipeName { get; set; }
+    public required string RecipeName { get; set; }
 
+    [Required]
     [StringLength(255)]
-    public string RecipeInstructions { get; set; }
+    public required string RecipeInstructions { get; set; }
 
-    [StringLength(255)]
-    public string CookTime { get; set; }
+    [Column(TypeName = "decimal(10, 2)")]
+    public decimal CookTime { get; set; } // in minutes
 
-    public int Calories { get; set; }
-    public int TotalFat { get; set; }
-    public int SaturatedFat { get; set; }
-    public int TransFat { get; set; }
-    public int CholesterolMG { get; set; }
-    public int SodiumMG { get; set; }
-    public int TotalCarbs { get; set; }
-    public int Fiber { get; set; }
-    public int Sugars { get; set; }
-    public int Protein { get; set; }
+    [Column(TypeName = "decimal(10, 2)")]
+    public decimal Calories { get; set; }
+
+    [Column(TypeName = "decimal(10, 2)")]
+    public decimal TotalFat { get; set; }
+
+    [Column(TypeName = "decimal(10, 2)")]
+    public decimal SaturatedFat { get; set; }
+
+    [Column(TypeName = "decimal(10, 2)")]
+    public decimal TransFat { get; set; }
+
+    [Column(TypeName = "decimal(10, 2)")]
+    public decimal CholesterolMG { get; set; }
+
+    [Column(TypeName = "decimal(10, 2)")]
+    public decimal SodiumMG { get; set; }
+
+    [Column(TypeName = "decimal(10, 2)")]
+    public decimal TotalCarbs { get; set; }
+
+    [Column(TypeName = "decimal(10, 2)")]
+    public decimal Fiber { get; set; }
+
+    [Column(TypeName = "decimal(10, 2)")]
+    public decimal Sugars { get; set; }
+
+    [Column(TypeName = "decimal(10, 2)")]
+    public decimal Protein { get; set; }
 
     // Navigation properties
     public ICollection<RecipeIngredient> RecipeIngredients { get; set; } = new List<RecipeIngredient>();

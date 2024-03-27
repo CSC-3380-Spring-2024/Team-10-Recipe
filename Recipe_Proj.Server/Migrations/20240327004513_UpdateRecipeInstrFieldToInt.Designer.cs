@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Recipe_Proj.Server.Database;
 
@@ -10,9 +11,11 @@ using Recipe_Proj.Server.Database;
 namespace Recipe_Proj.Server.Migrations
 {
     [DbContext(typeof(RecipeDbContext))]
-    partial class RecipeDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240327004513_UpdateRecipeInstrFieldToInt")]
+    partial class UpdateRecipeInstrFieldToInt
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,20 +50,20 @@ namespace Recipe_Proj.Server.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("RecipeID"));
 
-                    b.Property<decimal>("Calories")
-                        .HasColumnType("decimal(10, 2)");
+                    b.Property<int>("Calories")
+                        .HasColumnType("int");
 
-                    b.Property<decimal>("CholesterolMG")
-                        .HasColumnType("decimal(10, 2)");
+                    b.Property<int>("CholesterolMG")
+                        .HasColumnType("int");
 
-                    b.Property<decimal>("CookTime")
-                        .HasColumnType("decimal(10, 2)");
+                    b.Property<int>("CookTime")
+                        .HasColumnType("int");
 
-                    b.Property<decimal>("Fiber")
-                        .HasColumnType("decimal(10, 2)");
+                    b.Property<int>("Fiber")
+                        .HasColumnType("int");
 
-                    b.Property<decimal>("Protein")
-                        .HasColumnType("decimal(10, 2)");
+                    b.Property<int>("Protein")
+                        .HasColumnType("int");
 
                     b.Property<string>("RecipeInstructions")
                         .IsRequired()
@@ -72,23 +75,23 @@ namespace Recipe_Proj.Server.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("varchar(255)");
 
-                    b.Property<decimal>("SaturatedFat")
-                        .HasColumnType("decimal(10, 2)");
+                    b.Property<int>("SaturatedFat")
+                        .HasColumnType("int");
 
-                    b.Property<decimal>("SodiumMG")
-                        .HasColumnType("decimal(10, 2)");
+                    b.Property<int>("SodiumMG")
+                        .HasColumnType("int");
 
-                    b.Property<decimal>("Sugars")
-                        .HasColumnType("decimal(10, 2)");
+                    b.Property<int>("Sugars")
+                        .HasColumnType("int");
 
-                    b.Property<decimal>("TotalCarbs")
-                        .HasColumnType("decimal(10, 2)");
+                    b.Property<int>("TotalCarbs")
+                        .HasColumnType("int");
 
-                    b.Property<decimal>("TotalFat")
-                        .HasColumnType("decimal(10, 2)");
+                    b.Property<int>("TotalFat")
+                        .HasColumnType("int");
 
-                    b.Property<decimal>("TransFat")
-                        .HasColumnType("decimal(10, 2)");
+                    b.Property<int>("TransFat")
+                        .HasColumnType("int");
 
                     b.HasKey("RecipeID");
 
