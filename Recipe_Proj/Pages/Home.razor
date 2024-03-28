@@ -7,98 +7,106 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pushin' P(antry)</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            transition: background-color 0.5s ease;
-            color: white;
-            background-color: #f0f0f0;
-        }
-        .navbar {
-            background-color: #333;
-            overflow: hidden;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-        .navbar a {
-            float: left;
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 20px;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-        .navbar a:hover {
-            background-color: #ddd;
-            color: black;
-        }
-        .homepage {
-            background-image: url('images/jason-leung-jWU9FpLW7fI-unsplash.jpg');
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 32px;
-            text-align: center;
-            padding: 0 20px;
-        }
-        .homepage h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            color: #000000;
-        }
-        .homepage p {
-            font-size: 24px;
-            color: #000000;
-        }
-        .about-page {
-            background-image: url('images/alexandre-debieve-FO7JIlwjOtU-unsplash.jpg');
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            align-items: flex-end;
-            padding: 20px;
-        }
-        .about-page .container {
-            text-align: right;
-        }
-        .ingredients-page {
-            background-image: url('images/nathan-dumlao-bRdRUUtbxO0-unsplash.jpg');
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 24px;
-        }
-        .ingredients-link {
-            color: white;
-            text-decoration: underline;
-            cursor: pointer;
-        }
+    *{    
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        transition: background-color 0.5s ease;
+        color: white;
+        background-color: #f0f0f0;
+    }
+    .navbar {
+        background-color: #333;
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        padding-right: 1vw; 
+    }
+    .navbar a {
+        float: left;
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 20px;
+        text-decoration: wavy;
+        transition: background-color 0.3s;
+    }
+        
+    .navbar a:hover {
+        background-color: #ddd;
+        color: #000000;
+    }
+    .homepage {
+        background-image: url('images/jason-leung-jWU9FpLW7fI-unsplash.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 32px;
+        text-align: center;
+        padding: 0 20px;
+    }
+    .homepage h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+        color: #000000;
+    }
+    .homepage p {
+        font-size: 24px;
+        margin-bottom: 240px;
+        color: #000000;
+    }
+    .about-page {
+        background-image: url('images/alexandre-debieve-FO7JIlwjOtU-unsplash.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-end;
+        padding: 20px;
+    }
+    .about-page .container {
+        text-align: right;
+    }
+    .ingredients-page {
+        background-image: url('images/nathan-dumlao-bRdRUUtbxO0-unsplash.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+    }
+    .ingredients-link {
+        color: white;
+        text-decoration: underline;
+        cursor: pointer;
+    }
         /* Button Styles */
-        .btn {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .btn:hover {
-            background-color: #45a049;
-        }
+    .btn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .btn:hover {
+        background-color: #45a049;
+    }
     </style>
 </head>
 <body>
