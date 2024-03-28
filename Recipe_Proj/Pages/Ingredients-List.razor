@@ -1,6 +1,45 @@
 @page "/ingredients-list"
 @inject HttpClient Http
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pushin' P(antry)</title>
+    <style>
+    .ingredients-list {
+        list-style-type: none;
+        padding: 0;
+    }
+    .ingredients-list li {
+        margin-bottom: 0.5em;
+    }
+    .ingredients-list label {
+        margin-left: 0.5em;
+    }
+    .btn-generate {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        display: inline-block;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+    }
+    .btn:hover {
+        background-color: #45a049;
+    }
+    form {
+        max-width: 600px;
+        margin: auto;
+    }
+    </style>
+</head>
+
 <h1>Ingredients List</h1>
 <form>
     <ul>
@@ -35,34 +74,4 @@
     <button type="button" class="btn" onclick="generateRecipes()">Generate</button>
 </form>
 
-<style>
-    .ingredients-list {
-        list-style-type: none;
-        padding: 0;
-    }
-    .ingredients-list li {
-        margin-bottom: 0.5em;
-    }
-    .ingredients-list label {
-        margin-left: 0.5em;
-    }
-    .btn-generate {
-        background-color: #007bff;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        text-align: center;
-        display: inline-block;
-        margin: 4px 2px;
-        cursor: pointer;
-        border-radius: 4px;
-        transition: background-color 0.3s;
-    }
-    .btn:hover {
-        background-color: #45a049;
-    }
-    form {
-        max-width: 600px;
-        margin: auto;
-    }
-</style>
+</html>
