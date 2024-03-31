@@ -6,17 +6,20 @@ using Recipe_Proj.Server.Services;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Net;
 
 namespace Recipe_Proj.Server.Controllers;
 
 [ApiController]
 [Route("api/[controller]")] // api/recipe
-public class RecipesController : ControllerBase {
+public class RecipesController : ControllerBase
+{
     private readonly RecipeDbContext _context;
     private readonly IRecipeService _recipeService;
 
 
-    public RecipesController(RecipeDbContext context, IRecipeService recipeService) {
+    public RecipesController(RecipeDbContext context, IRecipeService recipeService)
+    {
         _context = context;
         _recipeService = recipeService;
     }
@@ -67,7 +70,7 @@ public class RecipesController : ControllerBase {
             })
             .SingleOrDefaultAsync();
 
-        recipeDetail.RecipeInstructions = await _recipeService.GetRecipeInstructions(id);
+        recipeDetail.Instructions = await _recipeService.GetRecipeInstructions(id);
 
 
         if (recipeDetail == null)
@@ -80,29 +83,42 @@ public class RecipesController : ControllerBase {
     [HttpPost("SearchByKeywords")]
     public async Task<ActionResult<IEnumerable<SimpleRecipeDTO>>> SearchRecipesByKeywords(string searchKeywords)
     {
-        // parse
-        var keywords = searchKeywords.Split(' ', StringSplitOptions.RemoveEmptyEntries).Select(k => k.Trim()).ToList();
+        // decode and parse
+        var decoded = WebUtility.UrlDecode(searchKeywords);
+        var keywords = decoded.Split(' ', StringSplitOptions.RemoveEmptyEntries).Select(k => k.Trim()).ToList();
+        
+        var combinedMatches = new List<SimpleRecipeDTO>();
 
-        var combinedMatches = _context.Recipes
-            // find recipes with keywords in the name, description, ingredients, and retsrictions
-            .Where(r => keywords.Any(kw => r.RecipeName.Contains(kw) || r.ShortDescription.Contains(kw)) ||
-                        r.RecipeIngredients.Any(ri => keywords.Any(kw => ri.Ingredient.IngredientName.Contains(kw))) ||
-                        r.RecipeRestrictions.Any(rr => keywords.Any(kw => rr.Restriction.RestrictionName.Contains(kw))))
-            .Select(r => new SimpleRecipeDTO
-            {
-                RecipeID = r.RecipeID,
-                RecipeName = r.RecipeName,
-                ShortDescription = r.ShortDescription,
-                CookTime = r.CookTime,
-                Ingredients = r.RecipeIngredients.Select(ri => ri.Ingredient.IngredientName).ToList(),
-                Restrictions = r.RecipeRestrictions.Select(rr => rr.Restriction.RestrictionName).ToList(),
-                favorited = false
-            })
-            .Distinct();
+        foreach (var kw in keywords) {
+            var newMatches = await _context.Recipes
+                    // find recipes with keywords in the name, description, ingredients, and restrictions
+                    .Where(r => EF.Functions.Like(r.RecipeName, $"%{kw}%") ||
+                                EF.Functions.Like(r.ShortDescription, $"%{kw}%") ||
+                                r.RecipeIngredients.Any(ri => EF.Functions.Like(ri.Ingredient.IngredientName, $"%{kw}%")) ||
+                                r.RecipeRestrictions.Any(rr => EF.Functions.Like(rr.Restriction.RestrictionName, $"%{kw}%"))
+                    )
+                    .Select(r => new SimpleRecipeDTO
+                    {
+                        RecipeID = r.RecipeID,
+                        RecipeName = r.RecipeName,
+                        ShortDescription = r.ShortDescription,
+                        CookTime = r.CookTime,
+                        Ingredients = r.RecipeIngredients.Select(ri => ri.Ingredient.IngredientName).ToList(),
+                        Restrictions = r.RecipeRestrictions.Select(rr => rr.Restriction.RestrictionName).ToList(),
+                        favorited = false // This will need logic to determine if a recipe is favorited
+                    })
+                    .ToListAsync();
 
-        var matches = await combinedMatches.ToListAsync();
+            // add new matches        
+            combinedMatches.AddRange(newMatches);
+        }
 
-        return matches;
+        var distinctMatches = combinedMatches
+        .GroupBy(r => r.RecipeID)
+        .Select(g => g.First())
+        .ToList();
+
+        return distinctMatches;
     }
 
 

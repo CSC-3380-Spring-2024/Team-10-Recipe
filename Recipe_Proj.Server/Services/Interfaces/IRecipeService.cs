@@ -5,5 +5,7 @@ namespace Recipe_Proj.Server.Services;
 
 public interface IRecipeService
 {
-    Task<string> GetRecipeInstructions(int recipeID);
+    Task<RecipeInstructionsDTO> GetRecipeInstructions(int recipeID);
+    RecipeInstructionsDTO GetErrorInstructions(string message);
+
 }

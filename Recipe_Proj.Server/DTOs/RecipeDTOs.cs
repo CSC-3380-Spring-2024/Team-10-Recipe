@@ -36,7 +36,7 @@ public class DetailedRecipeDTO
     public string RecipeName { get; set; }
 
     [Required]
-    public string RecipeInstructions { get; set; }
+    public RecipeInstructionsDTO Instructions { get; set; }
     public decimal CookTime { get; set; } // in minutes
     public decimal Calories { get; set; }
     public decimal TotalFat { get; set; }
@@ -53,6 +53,18 @@ public class DetailedRecipeDTO
     public List<string> Restrictions { get; set; } = new List<string>();
     public bool favorited = false;
 }
+
+public class RecipeInstructionsDTO
+{
+    public List<InstructionStep> Steps { get; set; }
+}
+
+public class InstructionStep
+{
+    public string Title { get; set; }
+    public List<string> Instructions { get; set; }
+}
+
 
 // I dont think we are gonna need to do any creating or updating
 public class CreateRecipeDTO
