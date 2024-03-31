@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc; // model-view(dtos we're sending)-controller
 using Microsoft.EntityFrameworkCore;
 using Recipe_Proj.Server.Database;
 using Recipe_Proj.Server.DTOs;
+using Recipe_Proj.Server.Services;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Collections.Generic;
@@ -10,13 +11,14 @@ namespace Recipe_Proj.Server.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class RecipesController : ControllerBase
-{
+public class RecipesController : ControllerBase {
     private readonly RecipeDbContext _context;
+    private readonly IRecipeService _recipeService;
 
-    public RecipesController(RecipeDbContext context)
-    {
+
+    public RecipesController(RecipeDbContext context, IRecipeService recipeService) {
         _context = context;
+        _recipeService = recipeService;
     }
 
     // Will probably just use SearchRecipesByKeywords for searching
@@ -48,7 +50,6 @@ public class RecipesController : ControllerBase
             {
                 RecipeID = r.RecipeID,
                 RecipeName = r.RecipeName,
-                RecipeInstructions = r.RecipeInstructions,
                 CookTime = r.CookTime,
                 Calories = r.Calories,
                 TotalFat = r.TotalFat,
@@ -65,6 +66,9 @@ public class RecipesController : ControllerBase
                 favorited = false // This will need logic to determine if a recipe is favorited
             })
             .SingleOrDefaultAsync();
+
+        recipeDetail.RecipeInstructions = await _recipeService.GetRecipeInstructions(id);
+
 
         if (recipeDetail == null)
         {
