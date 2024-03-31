@@ -10,7 +10,7 @@ using System.Collections.Generic;
 namespace Recipe_Proj.Server.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/[controller]")] // api/recipe
 public class RecipesController : ControllerBase {
     private readonly RecipeDbContext _context;
     private readonly IRecipeService _recipeService;
