@@ -1,0 +1,57 @@
+{
+    "steps": [
+      {
+        "title": "Prep the Rice",
+        "instructions": [
+          "Ensure the rice is cold and clump-free. If using freshly cooked rice, spread it on a plate and place it in the refrigerator for a few hours to cool down."
+        ]
+      },
+      {
+        "title": "Cook the Chicken",
+        "instructions": [
+          "Heat 1 tablespoon of vegetable oil in a large pan or wok over medium-high heat.",
+          "Add the diced chicken breast, season with a little salt and pepper, and cook until browned and cooked through.",
+          "Remove the chicken from the pan and set aside."
+        ]
+      },
+      {
+        "title": "Scramble the Eggs",
+        "instructions": [
+          "Reduce the heat to medium. In the same pan, add the beaten eggs and scramble until fully cooked.",
+          "Remove the eggs from the pan and chop them into small pieces."
+        ]
+      },
+      {
+        "title": "Sauté the Vegetables",
+        "instructions": [
+          "Add the remaining tablespoon of vegetable oil to the pan.",
+          "Sauté the diced carrot for about 2 minutes, then add the peas and cook for an additional minute."
+        ]
+      },
+      {
+        "title": "Combine Ingredients",
+        "instructions": [
+          "Increase the heat to medium-high.",
+          "Add the cooked rice to the pan with the vegetables.",
+          "Stir-fry for a few minutes until the rice is heated through.",
+          "Then, add the cooked chicken and scrambled eggs back into the pan."
+        ]
+      },
+      {
+        "title": "Season",
+        "instructions": [
+          "Pour the soy sauce and sesame oil over the rice mixture.",
+          "Stir everything together and cook for another 2-3 minutes.",
+          "Taste and adjust the seasoning with more soy sauce, salt, or pepper if needed."
+        ]
+      },
+      {
+        "title": "Garnish and Serve",
+        "instructions": [
+          "Transfer the fried rice to a serving dish.",
+          "Garnish with sliced green onions.",
+          "Serve hot with a wedge of lime on the side."
+        ]
+      }
+    ]
+  }  
