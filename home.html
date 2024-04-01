@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.5s ease;
+            color: white;
+            background-color: #f0f0f0;
+        }
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .homepage {
+            background-image: url('https://images.assetsdelivery.com/compings_v2/yupiramos/yupiramos1812/yupiramos181204706.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 32px;
+            text-align: center;
+            padding: 0 20px;
+        }
+        .homepage h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        .homepage p {
+            font-size: 24px;
+        }
+        .about-page {
+            background-image: url('https://miro.medium.com/v2/resize:fit:720/format:webp/1*QGWyxDaFhavZa495eJBO9Q.jpeg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: flex-end;
+            padding: 20px;
+        }
+        .about-page .container {
+            text-align: right;
+        }
+        .ingredients-page {
+            background-image: url('https://www.foodingredientfacts.org/wp-content/uploads/2017/11/AdobeStock_49033437-dont-fear-ingredients-in-your-food-1024x783.jpeg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+        }
+        .ingredients-link {
+            color: white;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        /* Ingredients List Styles */
+        .ingredients-list {
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+            overflow-y: auto;
+            max-height: 70vh;
+        }
+        .ingredient {
+            margin-bottom: 10px;
+        }
+        /* Button Styles */
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <a href="#home">Home</a>
+    <a href="#about">About Us</a>
+    <a href="#ingredients">Get Started</a>
+</div>
+
+<div id="home" class="homepage">
+    <div class="container">
+        <h1>Welcome to our Recipe Generator!</h1>
+        <p>Choose your ingredients and get personalized recipes.</p>
+    </div>
+</div>
+
+<div id="about" class="about-page">
+    <div class="container">
+        <h1>About Us</h1>
+        <p>Lillian Beck - Computer Science Student</p>
+        <p>Ethan Lancaster - Computer Science Student</p>
+        <p>Alex Bourque - Computer Science Student</p>
+        <p>Chris Booras - Computer Science Student</p>
+        <p>Alex Brodsky - Computer Science Student</p>
+    </div>
+</div>
+
+<div id="ingredients" class="ingredients-page">
+    <div class="container">
+        <h1>Select Ingredients</h1>
+        <p>Click <span class="ingredients-link">here</span> to select ingredients.</p>
+    </div>
+</div>
+
+<div id="ingredients-list" class="ingredients-list" style="display: none;">
+    <h2>Ingredients List</h2>
+    <form id="ingredients-form">
+        <ul>
+            <li><input type="checkbox" id="salt" name="ingredient" value="Salt"> <label for="salt">Salt</label></li>
+            <li><input type="checkbox" id="pepper" name="ingredient" value="Pepper"> <label for="pepper">Pepper</label></li>
+            <li><input type="checkbox" id="garlic" name="ingredient" value="Garlic"> <label for="garlic">Garlic</label></li>
+            <li><input type="checkbox" id="onion" name="ingredient" value="Onion"> <label for="onion">Onion</label></li>
+            <li><input type="checkbox" id="olive-oil" name="ingredient" value="Olive Oil"> <label for="olive-oil">Olive Oil</label></li>
+            <li><input type="checkbox" id="butter" name="ingredient" value="Butter"> <label for="butter">Butter</label></li>
+            <li><input type="checkbox" id="flour" name="ingredient" value="Flour"> <label for="flour">Flour</label></li>
+            <li><input type="checkbox" id="sugar" name="ingredient" value="Sugar"> <label for="sugar">Sugar</label></li>
+            <li><input type="checkbox" id="eggs" name="ingredient" value="Eggs"> <label for="eggs">Eggs</label></li>
+            <li><input type="checkbox" id="milk" name="ingredient" value="Milk"> <label for="milk">Milk</label></li>
+            <li><input type="checkbox" id="tomato" name="ingredient" value="Tomato"> <label for="tomato">Tomato</label></li>
+            <li><input type="checkbox" id="basil" name="ingredient" value="Basil"> <label for="basil">Basil</label></li>
+            <li><input type="checkbox" id="rosemary" name="ingredient" value="Rosemary"> <label for="rosemary">Rosemary</label></li>
+            <li><input type="checkbox" id="lemon" name="ingredient" value="Lemon"> <label for="lemon">Lemon</label></li>
+            <li><input type="checkbox" id="lime" name="ingredient" value="Lime"> <label for="lime">Lime</label></li>
+            <li><input type="checkbox" id="vinegar" name="ingredient" value="Vinegar"> <label for="vinegar">Vinegar</label></li>
+            <li><input type="checkbox" id="soy-sauce" name="ingredient" value="Soy Sauce"> <label for="soy-sauce">Soy Sauce</label></li>
+            <li><input type="checkbox" id="hot-sauce" name="ingredient" value="Hot Sauce"> <label for="hot-sauce">Hot Sauce</label></li>
+            <li><input type="checkbox" id="mustard" name="ingredient" value="Mustard"> <label for="mustard">Mustard</label></li>
+            <li><input type="checkbox" id="mayonnaise" name="ingredient" value="Mayonnaise"> <label for="mayonnaise">Mayonnaise</label></li>
+            <li><input type="checkbox" id="bbq-sauce" name="ingredient" value="BBQ Sauce"> <label for="bbq-sauce">BBQ Sauce</label></li>
+            <li><input type="checkbox" id="honey" name="ingredient" value="Honey"> <label for="honey">Honey</label></li>
+            <li><input type="checkbox" id="rolls" name="ingredient" value="Rolls"> <label for="rolls">Rolls</label></li>
+            <li><input type="checkbox" id="spaghetti" name="ingredient" value="Spaghetti"> <label for="spaghetti">Spaghetti</label></li>
+            <li><input type="checkbox" id="bread" name="ingredient" value="Bread"> <label for="bread">Bread</label></li>
+            <li><input type="checkbox" id="tortilla" name="ingredient" value="Tortilla"> <label for="tortilla">Tortilla</label></li>
+            <!-- Add more ingredients with checkboxes -->
+        </ul>
+        <button type="button" class="btn" onclick="generateRecipes()">Generate</button>
+    </form>
+</div>
+
+<script>
+    document.querySelectorAll('.navbar a').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            const targetSectionId = this.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetSectionId);
+
+            // Smooth scroll to target section
+            window.scrollTo({
+                top: targetSection.offsetTop,
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    document.querySelector('.ingredients-link').addEventListener('click', function() {
+        document.getElementById('ingredients-list').style.display = 'block';
+        window.scrollTo({
+            top: document.getElementById('ingredients-list').offsetTop,
+            behavior: 'smooth'
+        });
+    });
+
+    function goBack() {
+        document.getElementById('ingredients-list').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>
