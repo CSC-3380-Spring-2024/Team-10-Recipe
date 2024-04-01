@@ -113,10 +113,10 @@ public class RecipesController : ControllerBase
             combinedMatches.AddRange(newMatches);
         }
 
-        var distinctMatches = combinedMatches
-        .GroupBy(r => r.RecipeID)
-        .Select(g => g.First())
-        .ToList();
+        var distinctMatches = combinedMatches.Distinct().ToList();
+        // .GroupBy(r => r.RecipeID)
+        // .Select(g => g.First())
+        // .ToList();
 
         return distinctMatches;
     }
