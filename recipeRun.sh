@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "RUNNING SERVER..."
-cd /Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/Recipe_Proj.Server || exit
+# cd /Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe || exit  ## not necessary
 dotnet run &
 # & is to run in the back so cammands can still be run
 

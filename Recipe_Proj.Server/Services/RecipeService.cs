@@ -10,12 +10,16 @@ namespace Recipe_Proj.Server.Services;
 public class RecipeService : IRecipeService
 {
     private readonly RecipeDbContext _context;
-    private readonly string _instructionsBasePath = "/Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/Recipe_Proj.Server/Database/Instructions/";
+    // private readonly string _instructionsBasePath = "/Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe/Recipe_Proj.Server/Database/Instructions/";
+    private readonly string _instructionsBasePath;
 
 
     public RecipeService(RecipeDbContext context)
     {
         _context = context;
+                // Dynamically set the base path to the Instructions folder relative to the base directory of the application
+        _instructionsBasePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Database", "Instructions");
+
     }
 
     public async Task<RecipeInstructionsDTO> GetRecipeInstructions(int recipeID)

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "BUILDING THE SOLUTION..."
-cd /Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe || exit
+# cd /Users/alexbrodsky/Desktop/Recipe_Proj/Team-10-Recipe || exit  ## not necessary
 dotnet build
 
 echo "RUNNING SERVER..."
