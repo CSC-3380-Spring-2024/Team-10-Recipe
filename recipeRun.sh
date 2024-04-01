@@ -2,7 +2,7 @@
 
 echo "RUNNING SERVER..."
 cd Recipe_Proj.Server || exit  ## not necessary
-dotnet watch run &
+dotnet run &
 # & is to run in the back so cammands can still be run
 
 # Store the server process ID so we can easily terminate it later
