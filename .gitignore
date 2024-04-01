@@ -1,25 +1,10 @@
-#OS generated files:
-##.DS_Store
 
-#Package Managers:
-##node_modules/
-
-#Environment Variable Files:
-##.env
-
-#Logs
-##*.log
-
-#IDE Files:
-##.vscode/
-
-
-## from chatgpt:
 ## General
-bin/
-obj/
-.vscode/
+**/bin/
+**/obj/
+# .vscode/  ## needed I think
 .vs/
+.mono/
 *.user
 *.userosscache
 *.suo
