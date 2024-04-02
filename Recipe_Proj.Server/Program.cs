@@ -14,12 +14,16 @@ builder.Services.AddControllers();
 
 // Configure CORS to allow requests from your Blazor client
 builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowBlazorClient", policyBuilder =>
-        policyBuilder.WithOrigins("https://localhost:7106") // Add your Blazor client's URL here
-            .AllowAnyHeader()
-            .AllowAnyMethod());
-});
+    {
+        options.AddPolicy("AllowBlazorOrigin",
+            builder =>
+            {
+                builder.WithOrigins("https://localhost:7106", "http://localhost:5155") // Add all client app origins here
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            });
+    });
+
 
 // Swagger
 builder.Services.AddEndpointsApiExplorer();
@@ -34,12 +38,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 
 // Cross Resource Sharing for WebAssembly Client
-app.UseCors("AllowBlazorClient");
+app.UseCors("AllowBlazorOrigin");
 
 // Uncomment the following line if your application uses authentication/authorization.
 // app.UseAuthorization();
