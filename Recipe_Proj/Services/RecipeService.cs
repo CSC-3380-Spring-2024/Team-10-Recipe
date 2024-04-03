@@ -20,7 +20,7 @@ public class RecipeService : IRecipeService
         return recipes ?? new List<SimpleRecipeDTO>();
     }
 
-    public async Task<DetailedRecipeDTO> GetDetailedRecipeByID(string recipeID) {
+    public async Task<DetailedRecipeDTO> GetDetailedRecipeByID(int recipeID) {
         var recipe = await _httpClient.GetFromJsonAsync<DetailedRecipeDTO>($"api/Recipes/{recipeID}");
         return recipe ?? new DetailedRecipeDTO();
     }

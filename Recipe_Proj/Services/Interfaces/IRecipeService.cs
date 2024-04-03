@@ -6,7 +6,7 @@ namespace Recipe_Proj.Services;
 public interface IRecipeService
 {
     Task<List<SimpleRecipeDTO>> GetAllSimpleRecipes();
-    Task<DetailedRecipeDTO> GetDetailedRecipeByID(string recipeID);
+    Task<DetailedRecipeDTO> GetDetailedRecipeByID(int recipeID);
 
     Task<List<SimpleRecipeDTO>> SearchRecipesByKeywords(string searchKeywords);
 
