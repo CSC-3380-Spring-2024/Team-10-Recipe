@@ -6,7 +6,7 @@
                 "enableSsl": "Disabled"
             },
             "previewLimit": 50,
-            "server": "localhost",
+            "server": "172.20.10.2",
             "port": 3306,
             "driver": "MySQL",
             "name": "recipeDB",
