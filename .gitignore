@@ -98,3 +98,4 @@ Temporary Items
 
 ## Blazor specific
 wwwroot/dist/
+.editorconfig
