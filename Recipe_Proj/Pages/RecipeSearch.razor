@@ -2,42 +2,51 @@
 
 @using Recipe_Proj.Services
 @using Recipe_Proj.DTOs
-
 @inject IRecipeService RecipeService
+@inject HttpClient Http
+
+<input type="text" @bind="searchKeywords" placeholder="Enter keywords..." />
+<button @onclick="SearchRecipes">Generate</button>
 
 @if (recipes == null)
 {
-    <p>Loading recipes...</p>
+    <p>Type in keywords and click 'Generate' to search for recipes.</p>
 }
 else if (recipes.Count == 0)
 {
-<p>No recipes found.</p>
+    <p>No recipes found.</p>
 }
 else
 {
     <ul>
-    @foreach (var recipe in recipes)
-    {
-    <li>@recipe.RecipeName</li>
-    }
-    @* <li>@recipes</li> *@
-</ul>
+        @foreach (var recipe in recipes)
+        {
+            <li>@recipe.RecipeName</li>
+        }
+    </ul>
 }
 
 @code {
-    private List<SimpleRecipeDTO> recipes = new();
-    @* string recipes; *@
+    private string searchKeywords;
+    private List<SimpleRecipeDTO> recipes;
 
-    protected override async Task OnInitializedAsync()
+    private async Task SearchRecipes()
     {
-        try
+        if (!string.IsNullOrWhiteSpace(searchKeywords))
         {
-            recipes = await RecipeService.GetAllSimpleRecipes();
+            var response = await Http.PostAsJsonAsync("api/Recipes/SearchByKeywords", new { searchKeywords });
+            if (response.IsSuccessStatusCode)
+            {
+                recipes = await response.Content.ReadFromJsonAsync<List<SimpleRecipeDTO>>();
+            }
+            else
+            {
+                // Handle error response here, possibly setting an error message to display to the user.
+            }
         }
-        catch (Exception ex)
+        else
         {
-            Console.WriteLine($"Error fetching recipes: {ex.Message}");
-            // Consider setting an error message in the UI as well
+            recipes = new List<SimpleRecipeDTO>();
         }
     }
 }
