@@ -6,11 +6,7 @@
                 "enableSsl": "Disabled"
             },
             "previewLimit": 50,
-<<<<<<< HEAD
-            "server": "172.20.10.2",
-=======
             "server": "192.168.0.220",
->>>>>>> dev
             "port": 3306,
             "driver": "MySQL",
             "name": "recipeDB",
