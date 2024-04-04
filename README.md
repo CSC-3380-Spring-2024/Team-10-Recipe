@@ -10,7 +10,8 @@ localhost:5123/swagger/index.html
 
 
 
-### Need to update IP address in .vscode/settings.json, 
+### Need to update IP address in 
+                            .vscode/settings.json, 
                             Recipe_Proj.Server/appsettings.Development.json
                             and Recipe_Proj.Server/appsettings.Development.json
 
