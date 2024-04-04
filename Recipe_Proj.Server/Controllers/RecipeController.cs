@@ -80,11 +80,11 @@ public class RecipesController : ControllerBase
         return recipeDetail;
     }
 
-    [HttpPost("SearchByKeywords")]
+    [HttpGet("SearchByKeywords")]
     public async Task<ActionResult<IEnumerable<SimpleRecipeDTO>>> SearchRecipesByKeywords(string searchKeywords)
     {
         // decode and parse
-        var decoded = WebUtility.UrlDecode(searchKeywords);
+        var decoded = WebUtility.UrlDecode(searchKeywords).Replace("\"", "");
         var keywords = decoded.Split(' ', StringSplitOptions.RemoveEmptyEntries).Select(k => k.Trim()).ToList();
         
         var combinedMatches = new List<SimpleRecipeDTO>();
@@ -113,10 +113,10 @@ public class RecipesController : ControllerBase
             combinedMatches.AddRange(newMatches);
         }
 
-        var distinctMatches = combinedMatches.Distinct().ToList();
-        // .GroupBy(r => r.RecipeID)
-        // .Select(g => g.First())
-        // .ToList();
+        var distinctMatches = combinedMatches//.Distinct().ToList();
+        .GroupBy(r => r.RecipeID)
+        .Select(g => g.First())
+        .ToList();
 
         return distinctMatches;
     }

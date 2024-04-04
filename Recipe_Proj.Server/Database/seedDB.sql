@@ -56,14 +56,14 @@ INSERT INTO ingredient (ingredientID, ingredientName) VALUES
 (5003, 'Shredded cheese'),
 (7001, 'Soy sauce'),
 (7002, 'Oyster sauce'),
+(7003, 'Marinara sauce'),
 (8001, 'Salt'),
 (8002, 'Vegetable oil'),
 (8003, 'Black pepper'),
 (8004, 'Sesame oil'),
 (8005, 'Olive oil'),
 (8006, 'Garlic'),
-(8007, 'Black Pepper'),
-(9001, 'Marinara sauce');
+(8007, 'Black Pepper');
 
 
 INSERT INTO recipe_ingredient (recipeID, ingredientID) VALUES 
@@ -74,10 +74,10 @@ INSERT INTO recipe_ingredient (recipeID, ingredientID) VALUES
 (1001, 4002), -- Breadcrumb
 (1001, 5001), -- Parmesan cheese
 (1001, 5002), -- Mozzarella cheese
+(1001, 7003), -- Marinara sauce
 (1001, 8001), -- Salt
 (1001, 8002), -- Black pepper
 (1001, 8003), -- Olive oil
-(1001, 9001), -- Marinara sauce
 (1002, 1001), -- Chicken
 (1002, 1002), -- Egg
 (1002, 2003), -- Green onions

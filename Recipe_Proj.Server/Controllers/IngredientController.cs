@@ -53,6 +53,40 @@ public class IngredientsController : ControllerBase
         return ingredient;
     }
 
+    public enum IngredientType
+    {
+        Protein,
+        Vegetable,
+        Fruit,
+        Carb,
+        Dairy,
+        BeanOrNut,
+        Condiment,
+        OilnSeasoning,
+        Random
+    }
+
+    [HttpGet("GetIngredientByType/{type}")]
+    public async Task<ActionResult<IngredientDTO>> GetAllIngredientsByType(IngredientType type)
+    {
+
+        int currType = (int) type + 1;
+
+        int start = currType*1000;
+        int end = start + 1000;
+
+        var ingredients = await _context.Ingredients
+        .Where(i => i.IngredientID >= start && i.IngredientID < end)
+        .Select(i => new IngredientDTO 
+        { 
+            IngredientID = i.IngredientID, 
+            IngredientName = i.IngredientName 
+        })
+        .ToListAsync();
+
+        return Ok(ingredients);
+    }
+
 
     // prolly not gonna use any of this below
 

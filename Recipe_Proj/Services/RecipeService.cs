@@ -26,7 +26,7 @@ public class RecipeService : IRecipeService
     }
     
     public async Task<List<SimpleRecipeDTO>> SearchRecipesByKeywords(string searchKeywords) {
-        var response = await _httpClient.PostAsJsonAsync("api/Recipes/SearchByKeywords", searchKeywords);
+        var response = await _httpClient.GetAsync($"api/Recipes/SearchByKeywords?searchKeywords={searchKeywords}");
 
         response.EnsureSuccessStatusCode();
 
