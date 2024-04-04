@@ -1,4 +1,4 @@
-@page "/recipesTest"
+@page "/searchByKeywords"
 
 @using Recipe_Proj.Services
 @using Recipe_Proj.DTOs
@@ -18,7 +18,7 @@ else
     <ul>
     @foreach (var recipe in recipes)
     {
-    <li>@recipe.ShortDescription</li>
+    <li>@recipe.RecipeName</li>
     }
     @* <li>@recipes</li> *@
 </ul>
@@ -26,13 +26,13 @@ else
 
 @code {
     private List<SimpleRecipeDTO> recipes = new();
-    @* string recipes; *@
+    private string keywords = "Asian free";
 
     protected override async Task OnInitializedAsync()
     {
         try
         {
-            recipes = await RecipeService.GetAllSimpleRecipes();
+            recipes = await RecipeService.SearchRecipesByKeywords(keywords);
         }
         catch (Exception ex)
         {
