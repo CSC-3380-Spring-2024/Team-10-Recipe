@@ -66,35 +66,26 @@ public class IngredientsController : ControllerBase
         Random
     }
 
-    // [HttpGet("{type}")]
-    // public async Task<ActionResult<IngredientDTO>> GetAllIngredientsByType(IngredientType type)
-    // {
-    //     // var ingredientTypes = new Dictionary<IngredientType, int> {
-    //     //                             { IngredientType.Protein, 1 },
-    //     //                             { IngredientType.Vegetable, 2 },
-    //     //                             { IngredientType.Fruit, 3 },
-    //     //                             { IngredientType.Carb, 4 },
-    //     //                             { IngredientType.Dairy, 5 },
-    //     //                             { IngredientType.BeanOrNut, 6 },
-    //     //                             { IngredientType.Condiment, 7 },
-    //     //                             { IngredientType.OilnSeasoning, 8 },
-    //     //                             { IngredientType.Random, 9 }};
-    //     var currType = (int) IngredientType[type];
+    [HttpGet("GetIngredientByType/{type}")]
+    public async Task<ActionResult<IngredientDTO>> GetAllIngredientsByType(IngredientType type)
+    {
 
-    //     int start = ingredientTypes[type]*1000;
-    //     int end = start + 1000;
+        int currType = (int) type + 1;
 
-    //     var ingredients = await _context.Ingredients
-    //     .Where(i => i.IngredientID >= start && i.IngredientID < end)
-    //     .Select(i => new IngredientDTO 
-    //     { 
-    //         IngredientID = i.IngredientID, 
-    //         IngredientName = i.IngredientName 
-    //     })
-    //     .ToListAsync();
+        int start = currType*1000;
+        int end = start + 1000;
 
-    //     return Ok(ingredients);
-    // }
+        var ingredients = await _context.Ingredients
+        .Where(i => i.IngredientID >= start && i.IngredientID < end)
+        .Select(i => new IngredientDTO 
+        { 
+            IngredientID = i.IngredientID, 
+            IngredientName = i.IngredientName 
+        })
+        .ToListAsync();
+
+        return Ok(ingredients);
+    }
 
 
     // prolly not gonna use any of this below
