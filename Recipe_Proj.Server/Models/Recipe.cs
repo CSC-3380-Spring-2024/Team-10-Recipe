@@ -10,15 +10,15 @@ public class Recipe
 
     [Required]
     [StringLength(255)]
-    public string RecipeName { get; set; }
+    public string RecipeName { get; set; } = string.Empty;
 
     [Required]
     [StringLength(255)]
-    public string ShortDescription { get; set; }
+    public string ShortDescription { get; set; } = string.Empty;
 
     [Required]
     [StringLength(255)]
-    public string RecipeInstructions { get; set; }
+    public string RecipeInstructions { get; set; } = string.Empty;
 
     [Column(TypeName = "decimal(10, 2)")]
     public decimal CookTime { get; set; } // in minutes

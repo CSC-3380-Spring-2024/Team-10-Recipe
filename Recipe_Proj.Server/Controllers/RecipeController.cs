@@ -70,13 +70,13 @@ public class RecipesController : ControllerBase
             })
             .SingleOrDefaultAsync();
 
-        recipeDetail.Instructions = await _recipeService.GetRecipeInstructions(id);
-
-
         if (recipeDetail == null)
         {
             return NotFound();
         }
+
+        recipeDetail.Instructions = await _recipeService.GetRecipeInstructions(id);
+
         return recipeDetail;
     }
 
@@ -86,10 +86,11 @@ public class RecipesController : ControllerBase
         // decode and parse
         var decoded = WebUtility.UrlDecode(searchKeywords).Replace("\"", "");
         var keywords = decoded.Split(' ', StringSplitOptions.RemoveEmptyEntries).Select(k => k.Trim()).ToList();
-        
+
         var combinedMatches = new List<SimpleRecipeDTO>();
 
-        foreach (var kw in keywords) {
+        foreach (var kw in keywords)
+        {
             var newMatches = await _context.Recipes
                     // find recipes with keywords in the name, description, ingredients, and restrictions
                     .Where(r => EF.Functions.Like(r.RecipeName, $"%{kw}%") ||

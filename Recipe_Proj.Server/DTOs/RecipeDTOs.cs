@@ -18,10 +18,10 @@ public class SimpleRecipeDTO
     public int RecipeID { get; set; }
 
     [Required]
-    public string RecipeName { get; set; }
+    public string RecipeName { get; set; } = string.Empty;
 
     [Required]
-    public string ShortDescription { get; set; }
+    public string ShortDescription { get; set; } = string.Empty;
     public decimal CookTime { get; set; } // in minutes
     public List<string> Ingredients { get; set; } = new List<string>();
     public List<string> Restrictions { get; set; } = new List<string>();
@@ -33,10 +33,10 @@ public class DetailedRecipeDTO
     public int RecipeID { get; set; }
 
     [Required]
-    public string RecipeName { get; set; }
+    public string RecipeName { get; set; } = string.Empty;
 
     [Required]
-    public RecipeInstructionsDTO Instructions { get; set; }
+    public RecipeInstructionsDTO Instructions { get; set; } = new RecipeInstructionsDTO();
     public decimal CookTime { get; set; } // in minutes
     public decimal Calories { get; set; }
     public decimal TotalFat { get; set; }
@@ -56,13 +56,13 @@ public class DetailedRecipeDTO
 
 public class RecipeInstructionsDTO
 {
-    public List<InstructionStep> Steps { get; set; }
+    public List<InstructionStep> Steps { get; set; } = new();
 }
 
 public class InstructionStep
 {
-    public string Title { get; set; }
-    public List<string> Instructions { get; set; }
+    public string Title { get; set; } = string.Empty;
+    public List<string> Instructions { get; set; } = new();
 }
 
 
@@ -70,8 +70,8 @@ public class InstructionStep
 public class CreateRecipeDTO
 {
     [Required]
-    public string RecipeName { get; set; }
-    public string ShortDescription { get; set; }
+    public string RecipeName { get; set; } = string.Empty;
+    public string? ShortDescription { get; set; }
     public decimal CookTime { get; set; }
 
     // Will probably need some other properties
@@ -81,8 +81,8 @@ public class CreateRecipeDTO
 public class UpdateRecipeDTO
 {
     [Required]
-    public string RecipeName { get; set; }
-    public string ShortDescription { get; set; }
+    public string RecipeName { get; set; } = string.Empty;
+    public string? ShortDescription { get; set; }
     public decimal CookTime { get; set; }
 
     // Will probably need some other properties

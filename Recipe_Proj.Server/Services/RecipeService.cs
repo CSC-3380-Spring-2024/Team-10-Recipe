@@ -49,7 +49,7 @@ public class RecipeService : IRecipeService
                     PropertyNameCaseInsensitive = true
                 };
                 var instructionsObj = JsonSerializer.Deserialize<RecipeInstructionsDTO>(instructionsJson, options);
-                return instructionsObj; // successful
+                return instructionsObj ?? new RecipeInstructionsDTO(); // successful
             }
             catch (Exception)
             {
