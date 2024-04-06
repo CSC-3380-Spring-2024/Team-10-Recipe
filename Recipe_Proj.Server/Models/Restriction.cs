@@ -9,7 +9,7 @@ public class Restriction
 
     [Required]
     [StringLength(255)]
-    public string RestrictionName { get; set; }
+    public string RestrictionName { get; set; } = string.Empty;
 
     // Navigation property
     public ICollection<RecipeRestriction> RecipeRestrictions { get; set; } = new List<RecipeRestriction>();

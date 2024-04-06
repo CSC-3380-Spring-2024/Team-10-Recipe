@@ -16,6 +16,6 @@ public class IngredientDTO
     public int IngredientID { get; set; }
 
     [Required]
-    public string IngredientName { get; set; }
+    public string IngredientName { get; set; } = string.Empty;
 
 }
