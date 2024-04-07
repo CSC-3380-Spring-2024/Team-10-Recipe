@@ -31,7 +31,8 @@ public class RecipeService : IRecipeService
         response.EnsureSuccessStatusCode();
 
         var recipes = await response.Content.ReadFromJsonAsync<List<SimpleRecipeDTO>>();
-
+        Console.WriteLine($"{searchKeywords}");
+        Console.WriteLine($"{recipes}");
         return recipes ?? new List<SimpleRecipeDTO>();
     }
 

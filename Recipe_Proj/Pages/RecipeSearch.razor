@@ -1,0 +1,57 @@
+@page "/recipeSearch"
+
+<h1 class="text-center text-primary">Find Your Recipe!</h1>
+<div class="container mt-4">
+    <form>
+        <input type="text" class="form-control mb-2" @bind='searchKeywords' placeholder="Search for recipes...">
+        <button type="button" class="btn btn-primary btn-block" @onclick="SearchRecipes">Find Recipes</button>
+    </form>
+    @if (recipes == null)
+    {
+        <p>Loading recipes...</p>
+    }
+    else if (recipes.Count == 0)
+    {
+        <p>No recipes found.</p>
+    }
+    else
+    {
+        <div class="row">
+            @foreach (var recipe in recipes)
+            {
+                <div class="col-sm-4">
+                    <div class="card mb-4 shadow-sm">
+                        @* Image Placeholder Removed for Brevity *@
+                        <div class="card-body">
+                            <h5 class="card-title">@recipe.RecipeName</h5>
+                            <!-- Use card-title with an h5 for semantic markup -->
+                            <p class="card-text">@recipe.ShortDescription</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                @* Button Group Removed for Brevity *@
+                                <small class="text-muted">@Math.Round(recipe.CookTime) Minutes</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+@code {
+    private List<SimpleRecipeDTO> recipes = new();
+    public string searchKeywords = string.Empty;
+
+    protected async Task SearchRecipes()
+    {
+        try
+        {
+            recipes = await RecipeService.SearchRecipesByKeywords(searchKeywords);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error fetching recipes: {ex.Message}");
+            // Consider setting an error message in the UI as well
+        }
+    }
+}
