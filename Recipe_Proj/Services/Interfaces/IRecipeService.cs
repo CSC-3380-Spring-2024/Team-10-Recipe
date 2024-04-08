@@ -10,6 +10,8 @@ public interface IRecipeService
 
     Task<List<SimpleRecipeDTO>> SearchRecipesByKeywords(string searchKeywords);
 
+    Task<List<SimpleRecipeDTO>> SearchRecipesWithRestrictions(string searchKeywords, List<int> selectedRestrictionIds);
+
     Task<List<SimpleRecipeDTO>> SearchRecipesBySelectedIngredients(IngredientSelectionDTO ingredientSelection);
 
 

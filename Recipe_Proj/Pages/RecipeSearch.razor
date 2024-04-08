@@ -9,9 +9,10 @@
             <div class="row justify-content-center">
                 <div class="input-group mb-2">
                     <div class="col-md-1"></div>
-                    <div class="col-md-2">
-                        <select id="restriction-multi-select" class="form-select" multiple data-placeholder="Select Restrictions">
-                            @foreach (var restriction in Restrictions)
+                    <div class="col-lg-2">
+                        <select id="restriction-multi-select" class="form-select" multiple
+                            data-placeholder="Select Restrictions" @onchange="HandleRestrictionsChange">
+                            @foreach (var restriction in AllRestrictions)
                             {
                                 <option value="@restriction.RestrictionID">@restriction.RestrictionName</option>
                             }
@@ -34,6 +35,17 @@
             {
                 <div class="col text-center">
                     <p>No recipes found.</p>
+                    @foreach (var restriction in SelectedRestrictions.RestrictionIds)
+                    {
+                        <div class="col-sm-4">
+                            <div class="card mb-4 shadow-sm">
+                                <div class="card-body">
+                                    <p>@restriction</p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    @* <p>@SelectedRestrictions.RestrictionIds</p> *@
                 </div>
             }
             else
@@ -68,9 +80,28 @@
     protected async Task SearchRecipes()
     {
         clicked = true;
+        @* SelectedRestrictions.RestrictionIds = new List<int> { 1016 }; *@
         try
         {
-            recipes = await RecipeService.SearchRecipesByKeywords(searchKeywords);
+            @* recipes = await RecipeService.SearchRecipesByKeywords(searchKeywords); *@
+            // Assuming 'RecipeRestrictions' is a collection or property in the recipe that lists its restrictions.
+            // Filtering out recipes that do not meet the selected restrictions criteria.
+            if (SelectedRestrictions.RestrictionIds != null)
+            {
+                if (SelectedRestrictions.RestrictionIds.Count > 0)
+                {
+                    Console.WriteLine($"Restrictions");
+                    recipes = await RecipeService.SearchRecipesWithRestrictions(searchKeywords, SelectedRestrictions.RestrictionIds);
+                    @* recipes = await RecipeService.SearchRecipesWithRestrictions(searchKeywords, testRestrictionIds); *@
+
+                }
+                else
+                {
+                    Console.WriteLine($"Keywords");
+                    recipes = await RecipeService.SearchRecipesByKeywords(searchKeywords);
+                }
+            }
+
         }
         catch (Exception ex)
         {
@@ -79,22 +110,38 @@
         }
     }
 
-    private List<RestrictionDTO> Restrictions = new List<RestrictionDTO>();
+    private List<RestrictionDTO> AllRestrictions = new List<RestrictionDTO>();
     private RestrictionSelectionDTO SelectedRestrictions = new RestrictionSelectionDTO();
 
-    // Existing methods...
 
-    @* private async Task HandleRestrictionsChange(ChangeEventArgs e)
-{
-var selectedOptions = e.Value as IEnumerable<string>;
-if (selectedOptions != null)
-{
-SelectedRestrictions.RestrictionIds = selectedOptions.Select(int.Parse).ToList();
-}
-// If you need to perform an action after updating the selections, do it here
-// For example, if you want to trigger a search when the selection changes:
-await SearchRecipes();
-} *@
+    private async Task HandleRestrictionsChange(ChangeEventArgs e)
+    {
+        var selectedOptions = e.Value as IEnumerable<string>;
+        if (selectedOptions != null)
+        {
+            // Clear the existing list
+            SelectedRestrictions.RestrictionIds.Clear();
+
+            // Safely parse each selected option to int
+            foreach (var option in selectedOptions)
+            {
+                if (int.TryParse(option, out var id))
+                {
+                    SelectedRestrictions.RestrictionIds.Add(id);
+                }
+                else
+                {
+                    Console.WriteLine($"Failed to parse restriction ID: {option}");
+                }
+            }
+
+            Console.WriteLine($"Selected Restrictions: {string.Join(", ", SelectedRestrictions.RestrictionIds)}");
+        }
+
+        await SearchRecipes();
+    }
+
+
 
     protected override async Task OnInitializedAsync()
     {
@@ -105,7 +152,7 @@ await SearchRecipes();
     {
         try
         {
-            Restrictions = await RestrictionService.GetAllRestrictions();
+            AllRestrictions = await RestrictionService.GetAllRestrictions();
         }
         catch (Exception ex)
         {
@@ -124,8 +171,14 @@ await SearchRecipes();
                 placeholder = "Select Restrictions",
                 closeOnSelect = false,
             };
-            await JS.InvokeVoidAsync("eval", $"$('#restriction-multi-select').select2({System.Text.Json.JsonSerializer.Serialize(options)});");
+            await JS.InvokeVoidAsync("eval", @"
+                    $('#restriction-multi-select').select2(" + System.Text.Json.JsonSerializer.Serialize(options) + @");
+                    $('#restriction-multi-select').on('select2:select select2:unselect', function (e) {
+                    // Manually trigger change event for Blazor to capture
+                    this.dispatchEvent(new Event('change'));
+                        });"
+                );
+            }
         }
-    }
 
 }
