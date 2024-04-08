@@ -1,7 +1,5 @@
 @page "/recipeSearch"
 
-@inject IJSRuntime JS
-
 <h1 class="text-center text-primary">Find Your Recipe!</h1>
 <div class="container mt-4">
     <div class="row justify-content-center">
@@ -35,17 +33,6 @@
             {
                 <div class="col text-center">
                     <p>No recipes found.</p>
-                    @foreach (var restriction in SelectedRestrictions.RestrictionIds)
-                    {
-                        <div class="col-sm-4">
-                            <div class="card mb-4 shadow-sm">
-                                <div class="card-body">
-                                    <p>@restriction</p>
-                                </div>
-                            </div>
-                        </div>
-                    }
-                    @* <p>@SelectedRestrictions.RestrictionIds</p> *@
                 </div>
             }
             else
@@ -54,10 +41,12 @@
                     @foreach (var recipe in recipes)
                     {
                         <div class="col-sm-4">
-                            <div class="card mb-4 shadow-sm">
+                            <div class="card mb-4 shadow-sm clickable-card">
                                 @* Image Placeholder *@
                                 <div class="card-body">
-                                    <h5 class="card-title">@recipe.RecipeName</h5>
+                                    <NavLink @onclick="() => RedirectToRecipe(recipe.RecipeID)">
+                                        <h5 class="card-title">@recipe.RecipeName</h5>
+                                    </NavLink>
                                     <p class="card-text">@recipe.ShortDescription</p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <small class="text-muted">@Math.Round(recipe.CookTime) Minutes</small>
@@ -73,40 +62,47 @@
 </div>
 
 @code {
+
     private List<SimpleRecipeDTO> recipes = new();
     public string searchKeywords = string.Empty;
     public bool clicked = false;
 
+    protected void RedirectToRecipe(int recipeID) {
+        string recipeLink = $"/detailedRecipe/{recipeID}";
+        NavigationManager.NavigateTo(recipeLink);
+    }
+
     protected async Task SearchRecipes()
     {
         clicked = true;
-        @* SelectedRestrictions.RestrictionIds = new List<int> { 1016 }; *@
-        try
-        {
-            @* recipes = await RecipeService.SearchRecipesByKeywords(searchKeywords); *@
-            // Assuming 'RecipeRestrictions' is a collection or property in the recipe that lists its restrictions.
-            // Filtering out recipes that do not meet the selected restrictions criteria.
-            if (SelectedRestrictions.RestrictionIds != null)
-            {
-                if (SelectedRestrictions.RestrictionIds.Count > 0)
-                {
-                    Console.WriteLine($"Restrictions");
-                    recipes = await RecipeService.SearchRecipesWithRestrictions(searchKeywords, SelectedRestrictions.RestrictionIds);
-                    @* recipes = await RecipeService.SearchRecipesWithRestrictions(searchKeywords, testRestrictionIds); *@
-
-                }
-                else
-                {
-                    Console.WriteLine($"Keywords");
-                    recipes = await RecipeService.SearchRecipesByKeywords(searchKeywords);
-                }
-            }
-
+        if (searchKeywords == string.Empty) {
+            recipes = new();
         }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error fetching recipes: {ex.Message}");
-            // Probably need to make a UI alert for errors
+        else {
+            try
+            {
+
+                // Filtering out recipes
+                if (SelectedRestrictions.RestrictionIds != null)
+                {
+                    if (SelectedRestrictions.RestrictionIds.Count > 0)
+                    {
+                        Console.WriteLine($"Restrictions");
+                        recipes = await RecipeService.SearchRecipesWithRestrictions(searchKeywords, SelectedRestrictions.RestrictionIds);
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Keywords");
+                        recipes = await RecipeService.SearchRecipesByKeywords(searchKeywords);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error fetching recipes: {ex.Message}");
+                // Probably need to make a UI alert for errors
+            }
         }
     }
 
@@ -114,7 +110,7 @@
     private RestrictionSelectionDTO SelectedRestrictions = new RestrictionSelectionDTO();
 
 
-    private async Task HandleRestrictionsChange(ChangeEventArgs e)
+    private void HandleRestrictionsChange(ChangeEventArgs e)
     {
         var selectedOptions = e.Value as IEnumerable<string>;
         if (selectedOptions != null)
@@ -122,7 +118,6 @@
             // Clear the existing list
             SelectedRestrictions.RestrictionIds.Clear();
 
-            // Safely parse each selected option to int
             foreach (var option in selectedOptions)
             {
                 if (int.TryParse(option, out var id))
@@ -138,7 +133,7 @@
             Console.WriteLine($"Selected Restrictions: {string.Join(", ", SelectedRestrictions.RestrictionIds)}");
         }
 
-        await SearchRecipes();
+        @* await SearchRecipes(); *@
     }
 
 
@@ -157,7 +152,6 @@
         catch (Exception ex)
         {
             Console.WriteLine($"Error fetching restrictions: {ex.Message}");
-            // Consider setting an error message in the UI as well
         }
     }
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -176,9 +170,8 @@
                     $('#restriction-multi-select').on('select2:select select2:unselect', function (e) {
                     // Manually trigger change event for Blazor to capture
                     this.dispatchEvent(new Event('change'));
-                        });"
-                );
-            }
+                    });"
+            );
         }
-
+    }
 }

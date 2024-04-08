@@ -1,0 +1,32 @@
+@page "/detailedRecipe/{RecipeID:int}"
+
+@if (recipeDetails != null)
+{
+    <div class="detailed-recipe">
+        <h2>@recipeDetails.RecipeName</h2>
+        @foreach (var step in recipeDetails.Instructions.Steps) {
+            <h4>@step.Title</h4>
+            @foreach (var instruction in step.Instructions) {
+                <p>@instruction</p>
+            }
+        }
+    </div>
+}
+else
+{
+    <p>Loading...</p>
+}
+
+
+
+@code {
+    [Parameter]
+    public int RecipeID { get; set; }
+
+    private DetailedRecipeDTO recipeDetails = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        recipeDetails = await RecipeService.GetDetailedRecipeByID(RecipeID);
+    }
+}
