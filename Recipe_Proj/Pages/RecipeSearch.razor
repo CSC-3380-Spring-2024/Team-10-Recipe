@@ -23,6 +23,10 @@
         backdrop-filter: blur(5px); /* Apply a blur effect to the background */
         border-radius: 10px; /* Add rounded corners for style */
     }
+    .no-recipes-message {
+    color: white; /* Change text color to white */
+    text-align: center;
+    }
 </style>
 <h1>Discover Delicious Recipes!</h1>
 <div class="container mt-4">
@@ -55,9 +59,7 @@
             }
             else if (clicked && recipes.Count == 0)
             {
-                <div class="col text-center">
-                    <p>No recipes found.</p>
-                </div>
+                <p class="no-recipes-message">No recipes found :(</p>
             }
             else
             {
