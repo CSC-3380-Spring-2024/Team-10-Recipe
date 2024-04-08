@@ -1,0 +1,177 @@
+@page "/recipeSearch"
+
+<h1 class="text-center text-primary">Find Your Recipe!</h1>
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="row justify-content-center">
+                <div class="input-group mb-2">
+                    <div class="col-md-1"></div>
+                    <div class="col-lg-2">
+                        <select id="restriction-multi-select" class="form-select" multiple
+                            data-placeholder="Select Restrictions" @onchange="HandleRestrictionsChange">
+                            @foreach (var restriction in AllRestrictions)
+                            {
+                                <option value="@restriction.RestrictionID">@restriction.RestrictionName</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" @bind='searchKeywords'
+                            placeholder="Search for recipes...">
+                    </div>
+                    <div class="col-md-3">
+                        <button type="button" class="btn btn-primary" @onclick="SearchRecipes">Search</button>
+                    </div>
+                </div>
+            </div>
+            @if (recipes == null)
+            {
+                <p>Loading recipes...</p>
+            }
+            else if (clicked && recipes.Count == 0)
+            {
+                <div class="col text-center">
+                    <p>No recipes found.</p>
+                </div>
+            }
+            else
+            {
+                <div class="row">
+                    @foreach (var recipe in recipes)
+                    {
+                        <div class="col-sm-4">
+                            <div class="card mb-4 shadow-sm clickable-card">
+                                @* Image Placeholder *@
+                                <div class="card-body">
+                                    <NavLink @onclick="() => RedirectToRecipe(recipe.RecipeID)">
+                                        <h5 class="card-title">@recipe.RecipeName</h5>
+                                    </NavLink>
+                                    <p class="card-text">@recipe.ShortDescription</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-muted">@Math.Round(recipe.CookTime) Minutes</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+
+    private List<SimpleRecipeDTO> recipes = new();
+    public string searchKeywords = string.Empty;
+    public bool clicked = false;
+
+    protected void RedirectToRecipe(int recipeID) {
+        string recipeLink = $"/detailedRecipe/{recipeID}";
+        NavigationManager.NavigateTo(recipeLink);
+    }
+
+    protected async Task SearchRecipes()
+    {
+        clicked = true;
+        if (searchKeywords == string.Empty) {
+            recipes = new();
+        }
+        else {
+            try
+            {
+
+                // Filtering out recipes
+                if (SelectedRestrictions.RestrictionIds != null)
+                {
+                    if (SelectedRestrictions.RestrictionIds.Count > 0)
+                    {
+                        Console.WriteLine($"Restrictions");
+                        recipes = await RecipeService.SearchRecipesWithRestrictions(searchKeywords, SelectedRestrictions.RestrictionIds);
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Keywords");
+                        recipes = await RecipeService.SearchRecipesByKeywords(searchKeywords);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error fetching recipes: {ex.Message}");
+                // Probably need to make a UI alert for errors
+            }
+        }
+    }
+
+    private List<RestrictionDTO> AllRestrictions = new List<RestrictionDTO>();
+    private RestrictionSelectionDTO SelectedRestrictions = new RestrictionSelectionDTO();
+
+
+    private void HandleRestrictionsChange(ChangeEventArgs e)
+    {
+        var selectedOptions = e.Value as IEnumerable<string>;
+        if (selectedOptions != null)
+        {
+            // Clear the existing list
+            SelectedRestrictions.RestrictionIds.Clear();
+
+            foreach (var option in selectedOptions)
+            {
+                if (int.TryParse(option, out var id))
+                {
+                    SelectedRestrictions.RestrictionIds.Add(id);
+                }
+                else
+                {
+                    Console.WriteLine($"Failed to parse restriction ID: {option}");
+                }
+            }
+
+            Console.WriteLine($"Selected Restrictions: {string.Join(", ", SelectedRestrictions.RestrictionIds)}");
+        }
+
+        @* await SearchRecipes(); *@
+    }
+
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        await GetRestrictions();
+    }
+
+    protected async Task GetRestrictions()
+    {
+        try
+        {
+            AllRestrictions = await RestrictionService.GetAllRestrictions();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error fetching restrictions: {ex.Message}");
+        }
+    }
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var options = new
+            {
+                theme = "bootstrap-5",
+                width = "style",
+                placeholder = "Select Restrictions",
+                closeOnSelect = false,
+            };
+            await JS.InvokeVoidAsync("eval", @"
+                    $('#restriction-multi-select').select2(" + System.Text.Json.JsonSerializer.Serialize(options) + @");
+                    $('#restriction-multi-select').on('select2:select select2:unselect', function (e) {
+                    // Manually trigger change event for Blazor to capture
+                    this.dispatchEvent(new Event('change'));
+                    });"
+            );
+        }
+    }
+}

@@ -5,34 +5,43 @@
 
 @inject IRecipeService RecipeService
 
+<h1>Find Your Recipe!</h1>
+<form>
+    <input type="text" @bind='searchKeywords' placeholder="Search for recipes...">
+    <ul class="ingredients-list">
+        <!-- Your existing list of checkboxes goes here -->
+    </ul>
+    <button type="button" class="btn" @onclick="SearchRecipes">Find Recipes</button>
+</form>
+
 @if (recipes == null)
 {
     <p>Loading recipes...</p>
 }
 else if (recipes.Count == 0)
 {
-<p>No recipes found.</p>
+    <p>No recipes found.</p>
 }
 else
 {
     <ul>
     @foreach (var recipe in recipes)
-    {
-    <li>@recipe.RecipeName</li>
-    }
-    @* <li>@recipes</li> *@
-</ul>
+        {
+            <li>@recipe.RecipeName</li>
+        }
+        @* <li>@recipes</li> *@
+    </ul>
 }
 
 @code {
     private List<SimpleRecipeDTO> recipes = new();
-    private string keywords = "Asian free";
+    public string searchKeywords = string.Empty;
 
-    protected override async Task OnInitializedAsync()
+    protected async Task SearchRecipes()
     {
         try
         {
-            recipes = await RecipeService.SearchRecipesByKeywords(keywords);
+            recipes = await RecipeService.SearchRecipesByKeywords(searchKeywords);
         }
         catch (Exception ex)
         {

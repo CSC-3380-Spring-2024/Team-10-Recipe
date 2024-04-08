@@ -17,6 +17,6 @@ public class RestrictionDTO
     public int RestrictionID { get; set; }
     
     [Required]
-    public string RestrictionName { get; set; }
+    public string RestrictionName { get; set; } = string.Empty;
     // Additional fields as needed, e.g., a description or icons representing the restriction
 }

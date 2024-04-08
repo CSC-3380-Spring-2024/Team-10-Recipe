@@ -1,0 +1,17 @@
+/* .tall-form-element {
+    height: 45px;
+} */
+
+.enhanced-input-group {
+    padding: 10px 0;
+}
+
+.clickable-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.clickable-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
