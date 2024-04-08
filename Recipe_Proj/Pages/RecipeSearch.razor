@@ -4,27 +4,30 @@
 <div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col-md-10">
-            <div class="row justify-content-center">
-                <div class="input-group mb-2">
-                    <div class="col-md-1"></div>
-                    <div class="col-lg-2">
-                        <select id="restriction-multi-select" class="form-select" multiple
-                            data-placeholder="Select Restrictions" @onchange="HandleRestrictionsChange">
-                            @foreach (var restriction in AllRestrictions)
-                            {
-                                <option value="@restriction.RestrictionID">@restriction.RestrictionName</option>
-                            }
-                        </select>
-                    </div>
-                    <div class="col-md-6">
-                        <input type="text" class="form-control" @bind='searchKeywords'
-                            placeholder="Search for recipes...">
-                    </div>
-                    <div class="col-md-3">
-                        <button type="button" class="btn btn-primary" @onclick="SearchRecipes">Search</button>
+            <form @onsubmit="HandleFormSubmit"> <!-- Allows Enter Key Submit -->
+                <div class="row justify-content-center">
+                    <div class="input-group mb-2">
+                        <div class="col-md-1"></div>
+                        <div class="col-lg-2">
+                            <select id="restriction-multi-select" class="form-select" multiple
+                                data-placeholder="Select Restrictions" @onchange="HandleRestrictionsChange">
+                                @foreach (var restriction in AllRestrictions)
+                                {
+                                    <option value="@restriction.RestrictionID">@restriction.RestrictionName</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" @bind='searchKeywords'
+                                placeholder="Search for recipes...">
+                        </div>
+
+                        <div class="col-md-3">
+                            <button type="submit" class="btn btn-primary">Search</button> <!-- Instead of @onclick we use the HandleFormSubmit with submit type -->
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
             @if (recipes == null)
             {
                 <p>Loading recipes...</p>
@@ -104,6 +107,12 @@
                 // Probably need to make a UI alert for errors
             }
         }
+    }
+
+    private Task HandleFormSubmit()
+    {
+        SearchRecipes();
+        return Task.CompletedTask;
     }
 
     private List<RestrictionDTO> AllRestrictions = new List<RestrictionDTO>();
