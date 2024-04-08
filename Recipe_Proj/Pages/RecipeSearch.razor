@@ -1,49 +1,73 @@
 @page "/recipeSearch"
 
+@inject IJSRuntime JS
+
 <h1 class="text-center text-primary">Find Your Recipe!</h1>
 <div class="container mt-4">
-    <form>
-        <input type="text" class="form-control mb-2" @bind='searchKeywords' placeholder="Search for recipes...">
-        <button type="button" class="btn btn-primary btn-block" @onclick="SearchRecipes">Find Recipes</button>
-    </form>
-    @if (recipes == null)
-    {
-        <p>Loading recipes...</p>
-    }
-    else if (recipes.Count == 0)
-    {
-        <p>No recipes found.</p>
-    }
-    else
-    {
-        <div class="row">
-            @foreach (var recipe in recipes)
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="row justify-content-center">
+                <div class="input-group mb-2">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-2">
+                        <select id="restriction-multi-select" class="form-select" multiple data-placeholder="Select Restrictions">
+                            @foreach (var restriction in Restrictions)
+                            {
+                                <option value="@restriction.RestrictionID">@restriction.RestrictionName</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" @bind='searchKeywords'
+                            placeholder="Search for recipes...">
+                    </div>
+                    <div class="col-md-3">
+                        <button type="button" class="btn btn-primary" @onclick="SearchRecipes">Search</button>
+                    </div>
+                </div>
+            </div>
+            @if (recipes == null)
             {
-                <div class="col-sm-4">
-                    <div class="card mb-4 shadow-sm">
-                        @* Image Placeholder Removed for Brevity *@
-                        <div class="card-body">
-                            <h5 class="card-title">@recipe.RecipeName</h5>
-                            <!-- Use card-title with an h5 for semantic markup -->
-                            <p class="card-text">@recipe.ShortDescription</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                @* Button Group Removed for Brevity *@
-                                <small class="text-muted">@Math.Round(recipe.CookTime) Minutes</small>
+                <p>Loading recipes...</p>
+            }
+            else if (clicked && recipes.Count == 0)
+            {
+                <div class="col text-center">
+                    <p>No recipes found.</p>
+                </div>
+            }
+            else
+            {
+                <div class="row">
+                    @foreach (var recipe in recipes)
+                    {
+                        <div class="col-sm-4">
+                            <div class="card mb-4 shadow-sm">
+                                @* Image Placeholder *@
+                                <div class="card-body">
+                                    <h5 class="card-title">@recipe.RecipeName</h5>
+                                    <p class="card-text">@recipe.ShortDescription</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-muted">@Math.Round(recipe.CookTime) Minutes</small>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    }
                 </div>
             }
         </div>
-    }
+    </div>
 </div>
 
 @code {
     private List<SimpleRecipeDTO> recipes = new();
     public string searchKeywords = string.Empty;
+    public bool clicked = false;
 
     protected async Task SearchRecipes()
     {
+        clicked = true;
         try
         {
             recipes = await RecipeService.SearchRecipesByKeywords(searchKeywords);
@@ -51,7 +75,57 @@
         catch (Exception ex)
         {
             Console.WriteLine($"Error fetching recipes: {ex.Message}");
+            // Probably need to make a UI alert for errors
+        }
+    }
+
+    private List<RestrictionDTO> Restrictions = new List<RestrictionDTO>();
+    private RestrictionSelectionDTO SelectedRestrictions = new RestrictionSelectionDTO();
+
+    // Existing methods...
+
+    @* private async Task HandleRestrictionsChange(ChangeEventArgs e)
+{
+var selectedOptions = e.Value as IEnumerable<string>;
+if (selectedOptions != null)
+{
+SelectedRestrictions.RestrictionIds = selectedOptions.Select(int.Parse).ToList();
+}
+// If you need to perform an action after updating the selections, do it here
+// For example, if you want to trigger a search when the selection changes:
+await SearchRecipes();
+} *@
+
+    protected override async Task OnInitializedAsync()
+    {
+        await GetRestrictions();
+    }
+
+    protected async Task GetRestrictions()
+    {
+        try
+        {
+            Restrictions = await RestrictionService.GetAllRestrictions();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error fetching restrictions: {ex.Message}");
             // Consider setting an error message in the UI as well
         }
     }
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var options = new
+            {
+                theme = "bootstrap-5",
+                width = "style",
+                placeholder = "Select Restrictions",
+                closeOnSelect = false,
+            };
+            await JS.InvokeVoidAsync("eval", $"$('#restriction-multi-select').select2({System.Text.Json.JsonSerializer.Serialize(options)});");
+        }
+    }
+
 }
