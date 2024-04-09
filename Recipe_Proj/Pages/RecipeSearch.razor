@@ -84,7 +84,6 @@
         else {
             try
             {
-
                 // Filtering out recipes
                 if (SelectedRestrictions.RestrictionIds != null)
                 {
@@ -109,10 +108,9 @@
         }
     }
 
-    private Task HandleFormSubmit()
+    protected async Task HandleFormSubmit()
     {
-        SearchRecipes();
-        return Task.CompletedTask;
+        await SearchRecipes();
     }
 
     private List<RestrictionDTO> AllRestrictions = new List<RestrictionDTO>();
