@@ -22,7 +22,7 @@ public class SimpleRecipeDTO
 
     [Required]
     public string ShortDescription { get; set; } = string.Empty;
-    public decimal CookTime { get; set; } // in minutes
+    public double CookTime { get; set; } // in minutes
     public List<string> Ingredients { get; set; } = new List<string>();
     public List<string> Restrictions { get; set; } = new List<string>();
     public bool favorited = false;
@@ -37,17 +37,17 @@ public class DetailedRecipeDTO
 
     [Required]
     public RecipeInstructionsDTO Instructions { get; set; } = new RecipeInstructionsDTO();
-    public decimal CookTime { get; set; } // in minutes
-    public decimal Calories { get; set; }
-    public decimal TotalFat { get; set; }
-    public decimal SaturatedFat { get; set; }
-    public decimal TransFat { get; set; }
-    public decimal CholesterolMG { get; set; }
-    public decimal SodiumMG { get; set; }
-    public decimal TotalCarbs { get; set; }
-    public decimal Fiber { get; set; }
-    public decimal Sugars { get; set; }
-    public decimal Protein { get; set; }
+    public double CookTime { get; set; } // in minutes
+    public double Calories { get; set; }
+    public double TotalFat { get; set; }
+    public double SaturatedFat { get; set; }
+    public double TransFat { get; set; }
+    public double CholesterolMG { get; set; }
+    public double SodiumMG { get; set; }
+    public double TotalCarbs { get; set; }
+    public double Fiber { get; set; }
+    public double Sugars { get; set; }
+    public double Protein { get; set; }
 
     public List<string> Ingredients { get; set; } = new List<string>();
     public List<string> Restrictions { get; set; } = new List<string>();
@@ -72,7 +72,7 @@ public class CreateRecipeDTO
     [Required]
     public string RecipeName { get; set; } = string.Empty;
     public string? ShortDescription { get; set; }
-    public decimal CookTime { get; set; }
+    public double CookTime { get; set; }
 
     // Will probably need some other properties
     // Might need Ingredients and Restriction IDs
@@ -83,7 +83,7 @@ public class UpdateRecipeDTO
     [Required]
     public string RecipeName { get; set; } = string.Empty;
     public string? ShortDescription { get; set; }
-    public decimal CookTime { get; set; }
+    public double CookTime { get; set; }
 
     // Will probably need some other properties
     // Might need lists of Ingredient and Restriction IDs to update associations

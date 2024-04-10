@@ -20,38 +20,38 @@ public class Recipe
     [StringLength(255)]
     public string RecipeInstructions { get; set; } = string.Empty;
 
-    [Column(TypeName = "decimal(10, 2)")]
-    public decimal CookTime { get; set; } // in minutes
+    [Column(TypeName = "REAL")]
+    public double CookTime { get; set; } // in minutes
 
-    [Column(TypeName = "decimal(10, 2)")]
-    public decimal Calories { get; set; }
+    [Column(TypeName = "REAL")]
+    public double Calories { get; set; }
 
-    [Column(TypeName = "decimal(10, 2)")]
-    public decimal TotalFat { get; set; }
+    [Column(TypeName = "REAL")]
+    public double TotalFat { get; set; }
 
-    [Column(TypeName = "decimal(10, 2)")]
-    public decimal SaturatedFat { get; set; }
+    [Column(TypeName = "REAL")]
+    public double SaturatedFat { get; set; }
 
-    [Column(TypeName = "decimal(10, 2)")]
-    public decimal TransFat { get; set; }
+    [Column(TypeName = "REAL")]
+    public double TransFat { get; set; }
 
-    [Column(TypeName = "decimal(10, 2)")]
-    public decimal CholesterolMG { get; set; }
+    [Column(TypeName = "REAL")]
+    public double CholesterolMG { get; set; }
 
-    [Column(TypeName = "decimal(10, 2)")]
-    public decimal SodiumMG { get; set; }
+    [Column(TypeName = "REAL")]
+    public double SodiumMG { get; set; }
 
-    [Column(TypeName = "decimal(10, 2)")]
-    public decimal TotalCarbs { get; set; }
+    [Column(TypeName = "REAL")]
+    public double TotalCarbs { get; set; }
 
-    [Column(TypeName = "decimal(10, 2)")]
-    public decimal Fiber { get; set; }
+    [Column(TypeName = "REAL")]
+    public double Fiber { get; set; }
 
-    [Column(TypeName = "decimal(10, 2)")]
-    public decimal Sugars { get; set; }
+    [Column(TypeName = "REAL")]
+    public double Sugars { get; set; }
 
-    [Column(TypeName = "decimal(10, 2)")]
-    public decimal Protein { get; set; }
+    [Column(TypeName = "REAL")]
+    public double Protein { get; set; }
 
     // Navigation properties
     public ICollection<RecipeIngredient> RecipeIngredients { get; set; } = new List<RecipeIngredient>();

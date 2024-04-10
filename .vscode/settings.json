@@ -1,18 +1,10 @@
 {
     "sqltools.connections": [
         {
-            "mysqlOptions": {
-                "authProtocol": "default",
-                "enableSsl": "Disabled"
-            },
             "previewLimit": 50,
-            "server": "192.168.0.220",
-            "port": 3306,
-            "driver": "MySQL",
-            "name": "recipeDB",
-            "database": "recipeDB",
-            "username": "recipeAdmin",
-            "password": "admin123"
+            "driver": "SQLite",
+            "name": "recipeDatabase",
+            "database": "${workspaceFolder:Team-10-Recipe}/Recipe_Proj.Server/Database/recipeDatabase.db"
         }
     ],
     "cmake.configureOnOpen": true

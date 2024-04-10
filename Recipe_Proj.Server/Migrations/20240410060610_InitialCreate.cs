@@ -1,106 +1,89 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace Recipe_Proj.Server.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterDatabase()
-                .Annotation("MySql:CharSet", "utf8mb4");
-
             migrationBuilder.CreateTable(
                 name: "ingredient",
                 columns: table => new
                 {
-                    IngredientID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    IngredientName = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                    IngredientID = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    IngredientName = table.Column<string>(type: "TEXT", maxLength: 255, nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ingredient", x => x.IngredientID);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
+                });
 
             migrationBuilder.CreateTable(
                 name: "recipe",
                 columns: table => new
                 {
-                    RecipeID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    RecipeName = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    ShortDescription = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    RecipeInstructions = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    CookTime = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    Calories = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    TotalFat = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    SaturatedFat = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    TransFat = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    CholesterolMG = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    SodiumMG = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    TotalCarbs = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    Fiber = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    Sugars = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    Protein = table.Column<decimal>(type: "decimal(10,2)", nullable: false)
+                    RecipeID = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    RecipeName = table.Column<string>(type: "TEXT", maxLength: 255, nullable: false),
+                    ShortDescription = table.Column<string>(type: "TEXT", maxLength: 255, nullable: false),
+                    RecipeInstructions = table.Column<string>(type: "TEXT", maxLength: 255, nullable: false),
+                    CookTime = table.Column<double>(type: "REAL", nullable: false),
+                    Calories = table.Column<double>(type: "REAL", nullable: false),
+                    TotalFat = table.Column<double>(type: "REAL", nullable: false),
+                    SaturatedFat = table.Column<double>(type: "REAL", nullable: false),
+                    TransFat = table.Column<double>(type: "REAL", nullable: false),
+                    CholesterolMG = table.Column<double>(type: "REAL", nullable: false),
+                    SodiumMG = table.Column<double>(type: "REAL", nullable: false),
+                    TotalCarbs = table.Column<double>(type: "REAL", nullable: false),
+                    Fiber = table.Column<double>(type: "REAL", nullable: false),
+                    Sugars = table.Column<double>(type: "REAL", nullable: false),
+                    Protein = table.Column<double>(type: "REAL", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_recipe", x => x.RecipeID);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
+                });
 
             migrationBuilder.CreateTable(
                 name: "recipeUser",
                 columns: table => new
                 {
-                    UserID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    FirstName = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    LastName = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Email = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Pass = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                    UserID = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    FirstName = table.Column<string>(type: "TEXT", maxLength: 255, nullable: false),
+                    LastName = table.Column<string>(type: "TEXT", maxLength: 255, nullable: false),
+                    Email = table.Column<string>(type: "TEXT", maxLength: 255, nullable: false),
+                    Pass = table.Column<string>(type: "TEXT", maxLength: 255, nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_recipeUser", x => x.UserID);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
+                });
 
             migrationBuilder.CreateTable(
                 name: "restriction",
                 columns: table => new
                 {
-                    RestrictionID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    RestrictionName = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                    RestrictionID = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    RestrictionName = table.Column<string>(type: "TEXT", maxLength: 255, nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_restriction", x => x.RestrictionID);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
+                });
 
             migrationBuilder.CreateTable(
                 name: "recipe_ingredient",
                 columns: table => new
                 {
-                    RecipeID = table.Column<int>(type: "int", nullable: false),
-                    IngredientID = table.Column<int>(type: "int", nullable: false)
+                    RecipeID = table.Column<int>(type: "INTEGER", nullable: false),
+                    IngredientID = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -117,15 +100,14 @@ namespace Recipe_Proj.Server.Migrations
                         principalTable: "recipe",
                         principalColumn: "RecipeID",
                         onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
+                });
 
             migrationBuilder.CreateTable(
                 name: "recipe_Favorite",
                 columns: table => new
                 {
-                    UserID = table.Column<int>(type: "int", nullable: false),
-                    RecipeID = table.Column<int>(type: "int", nullable: false)
+                    UserID = table.Column<int>(type: "INTEGER", nullable: false),
+                    RecipeID = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -142,15 +124,14 @@ namespace Recipe_Proj.Server.Migrations
                         principalTable: "recipe",
                         principalColumn: "RecipeID",
                         onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
+                });
 
             migrationBuilder.CreateTable(
                 name: "recipe_restriction",
                 columns: table => new
                 {
-                    RecipeID = table.Column<int>(type: "int", nullable: false),
-                    RestrictionID = table.Column<int>(type: "int", nullable: false)
+                    RecipeID = table.Column<int>(type: "INTEGER", nullable: false),
+                    RestrictionID = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -167,8 +148,7 @@ namespace Recipe_Proj.Server.Migrations
                         principalTable: "restriction",
                         principalColumn: "RestrictionID",
                         onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_recipe_Favorite_RecipeID",
