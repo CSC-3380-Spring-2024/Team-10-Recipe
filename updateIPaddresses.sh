@@ -1,5 +1,10 @@
 # #!/bin/bash
 
+
+## for mySQL which we don't use anymore
+
+
+
 # # Check if jq is installed
 # if ! command -v jq &> /dev/null; then
 #     echo "jq could not be found. Please install jq using 'brew install jq'."

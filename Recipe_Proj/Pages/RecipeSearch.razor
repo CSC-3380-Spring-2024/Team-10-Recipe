@@ -1,6 +1,8 @@
 @page "/recipeSearch"
 
-<h1 class="text-center text-primary">Find Your Recipe!</h1>
+<link href="css/recipeSearch.css" rel="stylesheet" />
+
+<h1>Discover Delicious Recipes!</h1>
 <div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col-md-10">
@@ -34,9 +36,7 @@
             }
             else if (clicked && recipes.Count == 0)
             {
-                <div class="col text-center">
-                    <p>No recipes found.</p>
-                </div>
+                <h4 class="no-recipes-message">No recipes found :(</h4>
             }
             else
             {
