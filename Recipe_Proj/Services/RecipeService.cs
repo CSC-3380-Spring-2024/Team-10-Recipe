@@ -59,6 +59,21 @@ public class RecipeService : IRecipeService
         return recipes ?? new List<SimpleRecipeDTO>();
     }
 
+    public async Task<List<SimpleRecipeDTO>> SearchBySelectedIngredientsWithRestrictions(List<int> ingredientIds, List<int> selectedRestrictionIds)
+    {
+        var queryList = new List<string>();
+
+        queryList.AddRange(ingredientIds.Select(id => $"ingredientIds={id}"));
+        queryList.AddRange(selectedRestrictionIds.Select(id => $"selectedRestrictionIds={id}"));
+
+        string fullQuery = $"api/Recipes/SearchBySelectedIngredientsWithRestrictions?{string.Join("&", queryList)}";
+
+        var response = await _httpClient.GetAsync(fullQuery);
+        response.EnsureSuccessStatusCode();
+
+        var recipes = await response.Content.ReadFromJsonAsync<List<SimpleRecipeDTO>>();
+        return recipes ?? new List<SimpleRecipeDTO>();
+    }
 
     public async Task<List<SimpleRecipeDTO>> SearchRecipesBySelectedIngredients(IngredientSelectionDTO ingredientSelection)
     {

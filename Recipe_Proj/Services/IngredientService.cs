@@ -27,6 +27,18 @@ public class IngredientService : IIngredientService
         return ingredient ?? new IngredientDTO();
     }
 
+    public async Task<List<IngredientDTO>> SearchIngredientsForKeyword(string searchKeywords) {
+
+        var response = await _httpClient.GetAsync($"api/Ingredients/SearchIngredientsForKeywords?searchKeywords={searchKeywords}");
+
+        response.EnsureSuccessStatusCode();
+
+        var ingredients = await response.Content.ReadFromJsonAsync<List<IngredientDTO>>();
+        Console.WriteLine($"{searchKeywords}");
+        Console.WriteLine($"{ingredients}");
+        return ingredients ?? new List<IngredientDTO>();
+    }
+
     public async Task<List<ProteinIngredient>> GetAllProteins()
     {
         var ingredients = await _httpClient.GetFromJsonAsync<List<IngredientDTO>>($"api/Ingredients/GetIngredientByType/{IngredientType.Protein}");
@@ -88,7 +100,7 @@ public class IngredientService : IIngredientService
         return carbs;
     }
 
-    public async Task<List<DairyIngredient>> GetAllDairys()
+    public async Task<List<DairyIngredient>> GetAllDairy()
     {
         var ingredients = await _httpClient.GetFromJsonAsync<List<IngredientDTO>>($"api/Ingredients/GetIngredientByType/{IngredientType.Dairy}");
         if (ingredients == null) return new List<DairyIngredient>();
@@ -103,7 +115,7 @@ public class IngredientService : IIngredientService
         return dairys;
     }
 
-    public async Task<List<BeanOrNutIngredient>> GetAllBeanOrNuts()
+    public async Task<List<BeanOrNutIngredient>> GetAllBeansOrNuts()
     {
         var ingredients = await _httpClient.GetFromJsonAsync<List<IngredientDTO>>($"api/Ingredients/GetIngredientByType/{IngredientType.BeanOrNut}");
         if (ingredients == null) return new List<BeanOrNutIngredient>();
