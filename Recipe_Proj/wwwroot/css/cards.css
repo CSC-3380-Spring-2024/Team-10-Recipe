@@ -1,7 +1,3 @@
-/* .tall-form-element {
-    height: 45px;
-} */
-
 .enhanced-input-group {
     padding: 10px 0;
 }
@@ -20,9 +16,4 @@
 .clickable-card-title:hover {
     /* font-weight: bold; */
     text-decoration: underline;
-}
-
-.no-recipes-message {
-    color: black; /* Change text color to white */
-    text-align: center;
 }

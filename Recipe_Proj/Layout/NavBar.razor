@@ -1,0 +1,38 @@
+@inherits LayoutComponentBase
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container-fluid">
+        <!-- Logo and Brand Name -->
+        <a class="navbar-brand" href="/homePage">
+            <img src="/favicon.png" alt="" width="30" height="24">
+            <span>Pushin' P<span class="fs-6">antry</span></span>
+        </a>
+
+        <!-- Navbar links -->
+        <div class="d-flex justify-content-end" style="width: 100%;">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <NavLink class="nav-link" href="/homePage">Home</NavLink>
+                </li>
+                <li class="nav-item">
+                    <NavLink class="nav-link" href="/recipeSearch">Recipe Search</NavLink>
+                </li>
+                <li class="nav-item">
+                    <NavLink class="nav-link" href="/ingredientSearch">Ingredients Search</NavLink>
+                </li>
+                <li class="nav-item">
+                    <!-- Placeholder for About Us page -->
+                    <NavLink class="nav-link" href="/">Old Home</NavLink>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="page">
+    <div class="container">
+        @Body
+    </div>
+</div>
