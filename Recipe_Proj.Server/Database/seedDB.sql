@@ -71,7 +71,7 @@ INSERT INTO recipe_ingredient (recipeID, ingredientID) VALUES
 (1001, 1002), -- Egg
 (1001, 2001), -- Basil leaves
 (1001, 4001), -- Pasta
-(1001, 4002), -- Breadcrumb
+(1001, 4004), -- Breadcrumbs
 (1001, 5001), -- Parmesan cheese
 (1001, 5002), -- Mozzarella cheese
 (1001, 7003), -- Marinara sauce

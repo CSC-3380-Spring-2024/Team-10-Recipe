@@ -59,8 +59,10 @@ public class RecipeService : IRecipeService
         return recipes ?? new List<SimpleRecipeDTO>();
     }
 
-    public async Task<List<SimpleRecipeDTO>> SearchBySelectedIngredientsWithRestrictions(List<int> ingredientIds, List<int> selectedRestrictionIds)
+    public async Task<List<SimpleRecipeDTO>> SearchBySelectedIngredientsWithRestrictions(IngredientSelectionDTO ingredientSelection, List<int> selectedRestrictionIds)
     {
+        var ingredientIds = ingredientSelection.IngredientIds;
+        
         var queryList = new List<string>();
 
         queryList.AddRange(ingredientIds.Select(id => $"ingredientIds={id}"));

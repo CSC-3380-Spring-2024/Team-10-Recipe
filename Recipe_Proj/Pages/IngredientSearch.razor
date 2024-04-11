@@ -1,4 +1,4 @@
-@page "/addIngredients"
+@page "/ingredientSearch"
 
 @* <link href="css/recipeSearch.css" rel="stylesheet" /> *@
 
@@ -105,36 +105,33 @@
             
             if (IngredientsSearched.IngredientIds.Count > 0 || SelectedIngredients.IngredientIds.Count > 0)
             {
-                foreach (var i in SelectedIngredients.IngredientIds) {
-                    IngredientsSearched.IngredientIds.Add(i);
+                if (SelectedRestrictions.RestrictionIds.Count > 0)
+                {
+                    foreach (var i in SelectedIngredients.IngredientIds) {
+                        IngredientsSearched.IngredientIds.Add(i);
+                    }
+                    Console.WriteLine($"Restrictions Searching...");
+                    foreach (var id in IngredientsSearched.IngredientIds) {
+                        Console.WriteLine($"{id}");
+                    }
+                    recipes = await RecipeService.SearchBySelectedIngredientsWithRestrictions(IngredientsSearched, SelectedRestrictions.RestrictionIds);
+
                 }
-                Console.WriteLine($"Searching");
-                foreach (var id in IngredientsSearched.IngredientIds) {
-                    Console.WriteLine($"{id}");
+                else {
+                    foreach (var i in SelectedIngredients.IngredientIds) {
+                        IngredientsSearched.IngredientIds.Add(i);
+                    }
+                    Console.WriteLine($"Ingredients Searching...");
+                    foreach (var id in IngredientsSearched.IngredientIds) {
+                        Console.WriteLine($"{id}");
+                    }
+                    recipes = await RecipeService.SearchRecipesBySelectedIngredients(IngredientsSearched);
                 }
-                recipes = await RecipeService.SearchRecipesBySelectedIngredients(IngredientsSearched);
-                        
             }
             else {
                 recipes = new(); // clear the list
                 searchKeywords = string.Empty;
             }
-            
-            
-
-            @* if (SelectedRestrictions.RestrictionIds != null)
-            {
-                if (SelectedRestrictions.RestrictionIds.Count > 0)
-                {
-                    Console.WriteLine($"Restrictions");
-                    recipes = await RecipeService.SearchRecipesWithRestrictions(searchKeywords, SelectedRestrictions.RestrictionIds);
-                }
-                else
-                {
-                    Console.WriteLine($"Keywords");
-                    recipes = await RecipeService.SearchRecipesByKeywords(searchKeywords);
-                }
-            } *@
 
         }
         catch (Exception ex)
