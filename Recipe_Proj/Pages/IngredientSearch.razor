@@ -12,7 +12,7 @@
                         @* <div class="col-md-1"></div> *@
                         <div class="col-lg-2">
                             <select id="protein-multi-select" class="form-select" multiple
-                                data-placeholder="Select Proteins" @onchange="HandleProteinsChange">
+                                data-placeholder="Select Proteins" @onchange="(e) => HandleIngredientsChange(e, IngredientType.Protein)">
                                 @foreach (var protein in AllProteins)
                                 {
                                     <option value="@protein.ProteinID">@protein.ProteinName</option>
@@ -85,6 +85,19 @@
     private IngredientSelectionDTO SelectedIngredients = new IngredientSelectionDTO();
     private IngredientSelectionDTO IngredientsSearched = new IngredientSelectionDTO();
     private List<ProteinIngredient> AllProteins = new List<ProteinIngredient>();
+    private IngredientSelectionDTO SelectedProteins = new IngredientSelectionDTO();
+    private List<VegetableIngredient> AllVegetables = new List<VegetableIngredient>();
+    private IngredientSelectionDTO SelectedVegetables = new IngredientSelectionDTO();
+    private List<FruitIngredient> AllFruits = new List<FruitIngredient>();
+    private IngredientSelectionDTO SelectedFruits = new IngredientSelectionDTO();
+    private List<CarbIngredient> AllCarbs = new List<CarbIngredient>();
+    private IngredientSelectionDTO SelectedCarbs = new IngredientSelectionDTO();
+    private List<DairyIngredient> AllDairy = new List<DairyIngredient>();
+    private IngredientSelectionDTO SelectedDairy = new IngredientSelectionDTO();
+    private List<BeanOrNutIngredient> AllBeansOrNuts = new List<BeanOrNutIngredient>();
+    private IngredientSelectionDTO SelectedBeansOrNuts = new IngredientSelectionDTO();
+
+    private Dictionary<IngredientType, IngredientSelectionDTO> ingredientMap = new();
 
     protected void RedirectToRecipe(int recipeID) {
         string recipeLink = $"/detailedRecipe/{recipeID}";
@@ -98,9 +111,13 @@
         try
         {
             IngredientsSearched.IngredientIds.Clear();
+            SelectedIngredients.IngredientIds.Clear();
 
             int keySearch = await SearchIngredients(searchKeywords); // 1 success, 0 fail
             // Filtering out recipes
+            
+            // adds each type to SelectedIngredients
+            AddIngredientsToSelection();
 
             
             if (IngredientsSearched.IngredientIds.Count > 0 || SelectedIngredients.IngredientIds.Count > 0)
@@ -157,6 +174,29 @@
         }
     }
 
+    protected void AddIngredientsToSelection()
+    {
+        int t = 0;
+        foreach (var obj in Enum.GetValues(typeof(IngredientType))) {
+            var type = (IngredientType) obj;
+            if (t < 6) { // we arent making a drop down for the other types
+                var ids = ingredientMap[type].IngredientIds;
+                if (ids.Count > 0)
+                {
+                    foreach (var id in ids)
+                    {
+                        SelectedIngredients.IngredientIds.Add(id);
+                    }
+                }
+                t++;
+            }
+            else {
+                break;
+            }
+        }        
+        
+
+    }
     protected async Task HandleFormSubmit()
     {
         if (searchKeywords == string.Empty) {
@@ -191,6 +231,29 @@
         @* await SearchRecipes(); *@
     }
 
+    private void HandleIngredientsChange(ChangeEventArgs e, IngredientType type)
+    {
+        var selectedOptions = e.Value as IEnumerable<string>;
+        if (selectedOptions != null)
+        {
+            // Clear the existing list
+            ingredientMap[type].IngredientIds.Clear();
+
+            foreach (var option in selectedOptions)
+            {
+                if (int.TryParse(option, out var id))
+                {
+                    ingredientMap[type].IngredientIds.Add(id);
+                }
+                else
+                {
+                    Console.WriteLine($"Failed to parse restriction ID: {option}");
+                }
+            }
+
+            Console.WriteLine($"Selected Type: {string.Join(", ", ingredientMap[type].IngredientIds)}");
+        }
+    }
     private void HandleProteinsChange(ChangeEventArgs e)
     {
         var selectedOptions = e.Value as IEnumerable<string>;
@@ -220,6 +283,16 @@
     {
         await GetRestrictions();
         await GetIngredients();
+
+        ingredientMap = new Dictionary<IngredientType, IngredientSelectionDTO>
+                    {
+                    { IngredientType.Protein, SelectedProteins },
+                    { IngredientType.Vegetable, SelectedVegetables },
+                    { IngredientType.Fruit, SelectedFruits },
+                    { IngredientType.Carb, SelectedCarbs },
+                    { IngredientType.Dairy, SelectedDairy },
+                    { IngredientType.BeanOrNut, SelectedBeansOrNuts },
+                    };
     }
 
     protected async Task GetRestrictions()
