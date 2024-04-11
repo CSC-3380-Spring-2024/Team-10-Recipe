@@ -1,0 +1,465 @@
+@page "/ingredientSearch"
+
+@* <link href="css/recipeSearch.css" rel="stylesheet" /> *@
+
+<h1 class="text-center text-primary mt-4">Discover Delicious Recipes!</h1>
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <form @onsubmit="HandleFormSubmit">
+                <!-- Ingredients Row -->
+                <div class="row mb-3">
+                    <!-- Proteins -->
+                    <div class="col-md-3">
+                        <select id="protein-multi-select" class="form-select" multiple
+                            data-placeholder="Select Proteins"
+                            @onchange="(e) => HandleIngredientsChange(e, IngredientType.Protein)">
+                            @foreach (var protein in AllProteins)
+                            {
+                                <option value="@protein.ProteinID">@protein.ProteinName</option>
+                            }
+                        </select>
+                    </div>
+
+                    <!-- Vegetables -->
+                    <div class="col-md-3">
+                        <select id="vegetable-multi-select" class="form-select" multiple
+                            data-placeholder="Select Vegetables"
+                            @onchange="(e) => HandleIngredientsChange(e, IngredientType.Vegetable)">
+                            @foreach (var vegetable in AllVegetables)
+                            {
+                                <option value="@vegetable.VegetableID">@vegetable.VegetableName</option>
+                            }
+                        </select>
+                    </div>
+                    <!-- Fruits -->
+                    <div class="col-md-3">
+                        <select id="fruit-multi-select" class="form-select" multiple data-placeholder="Select Fruits"
+                            @onchange="(e) => HandleIngredientsChange(e, IngredientType.Fruit)">
+                            @foreach (var fruit in AllFruits)
+                            {
+                                <option value="@fruit.FruitID">@fruit.FruitName</option>
+                            }
+                        </select>
+                    </div>
+
+                    <!-- Carbs -->
+                    <div class="col-md-3">
+                        <select id="carb-multi-select" class="form-select" multiple data-placeholder="Select Carbs"
+                            @onchange="(e) => HandleIngredientsChange(e, IngredientType.Carb)">
+                            @foreach (var carb in AllCarbs)
+                            {
+                                <option value="@carb.CarbID">@carb.CarbName</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center mb-5">                    <!-- Dairy -->
+                    <div class="col-md-3">
+                        <select id="dairy-multi-select" class="form-select" multiple data-placeholder="Select Dairy"
+                            @onchange="(e) => HandleIngredientsChange(e, IngredientType.Dairy)">
+                            @foreach (var dairy in AllDairy)
+                            {
+                                <option value="@dairy.DairyID">@dairy.DairyName</option>
+                            }
+                        </select>
+                    </div>
+
+                    <!-- Beans or Nuts -->
+                    <div class="col-md-3">
+                        <select id="beanornut-multi-select" class="form-select" multiple
+                            data-placeholder="Select Beans/Nuts"
+                            @onchange="(e) => HandleIngredientsChange(e, IngredientType.BeanOrNut)">
+                            @foreach (var beanOrNut in AllBeansOrNuts)
+                            {
+                                <option value="@beanOrNut.BeanOrNutID">@beanOrNut.BeanOrNutName</option>
+                            }
+                        </select>
+                    </div>
+
+                    <!-- Condiments -->
+                    <div class="col-md-3">
+                        <select id="condiment-multi-select" class="form-select" multiple
+                            data-placeholder="Select Condiments"
+                            @onchange="(e) => HandleIngredientsChange(e, IngredientType.Condiment)">
+                            @foreach (var condiment in AllCondiments)
+                            {
+                                <option value="@condiment.CondimentID">@condiment.CondimentName</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <h3>Use the search bar to search for more ingredients!</h3>
+                </div>
+
+                <!-- Restrictions, Search, and Submit Button Row -->
+                <div class="row justify-content-center mt-5">
+                    <!-- Restrictions Dropdown -->
+                    <div class="input-group">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2">
+                            <select id="restriction-multi-select" class="form-select" multiple
+                                data-placeholder="Select Restrictions" @onchange="HandleRestrictionsChange">
+                                @foreach (var restriction in AllRestrictions)
+                                {
+                                    <option value="@restriction.RestrictionID">@restriction.RestrictionName</option>
+                                }
+                            </select>
+                        </div>
+
+                        <!-- Search Bar -->
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" @bind='searchKeywords'
+                                placeholder="Search for ingredients to add...">
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="col-md-3">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            @if (recipes == null)
+            {
+                <p>Loading recipes...</p>
+            }
+            else if (clicked && recipes.Count == 0)
+            {
+                <h4 class="no-recipes-message mt-2">No recipes found :(</h4>
+            }
+            else
+            {
+                <div class="row mt-4">
+                    @foreach (var recipe in recipes)
+                    {
+                        <div class="col-sm-4">
+                            <div class="card mb-4 shadow-sm clickable-card">
+                                @* Image Placeholder *@
+                                <div class="card-body">
+                                    <NavLink @onclick="() => RedirectToRecipe(recipe.RecipeID)">
+                                        <h5 class="card-title clickable-card-title">@recipe.RecipeName</h5>
+                                    </NavLink>
+                                    <p class="card-text">@recipe.ShortDescription</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-muted mt-2">@Math.Round(recipe.CookTime) Minutes</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+
+    private List<SimpleRecipeDTO> recipes = new();
+    public string searchKeywords = string.Empty;
+    public bool clicked = false;
+
+    private List<RestrictionDTO> AllRestrictions = new List<RestrictionDTO>();
+    private RestrictionSelectionDTO SelectedRestrictions = new RestrictionSelectionDTO();
+
+    private IngredientSelectionDTO SelectedIngredients = new IngredientSelectionDTO();
+    private IngredientSelectionDTO IngredientsSearched = new IngredientSelectionDTO();
+    private List<ProteinIngredient> AllProteins = new List<ProteinIngredient>();
+    private IngredientSelectionDTO SelectedProteins = new IngredientSelectionDTO();
+    private List<VegetableIngredient> AllVegetables = new List<VegetableIngredient>();
+    private IngredientSelectionDTO SelectedVegetables = new IngredientSelectionDTO();
+    private List<FruitIngredient> AllFruits = new List<FruitIngredient>();
+    private IngredientSelectionDTO SelectedFruits = new IngredientSelectionDTO();
+    private List<CarbIngredient> AllCarbs = new List<CarbIngredient>();
+    private IngredientSelectionDTO SelectedCarbs = new IngredientSelectionDTO();
+    private List<DairyIngredient> AllDairy = new List<DairyIngredient>();
+    private IngredientSelectionDTO SelectedDairy = new IngredientSelectionDTO();
+    private List<BeanOrNutIngredient> AllBeansOrNuts = new List<BeanOrNutIngredient>();
+    private IngredientSelectionDTO SelectedBeansOrNuts = new IngredientSelectionDTO();
+    private List<CondimentIngredient> AllCondiments = new List<CondimentIngredient>();
+    private IngredientSelectionDTO SelectedCondiments = new IngredientSelectionDTO();
+
+    private Dictionary<IngredientType, IngredientSelectionDTO> ingredientMap = new();
+
+    protected void RedirectToRecipe(int recipeID)
+    {
+        string recipeLink = $"/detailedRecipe/{recipeID}";
+        NavigationManager.NavigateTo(recipeLink);
+    }
+
+    protected async Task SearchRecipes()
+    {
+        clicked = true;
+
+        try
+        {
+            IngredientsSearched.IngredientIds.Clear();
+            SelectedIngredients.IngredientIds.Clear();
+
+            int keySearch = await SearchIngredients(searchKeywords); // 1 success, 0 fail
+                                                                     // Filtering out recipes
+
+            // adds each type to SelectedIngredients
+            AddIngredientsToSelection();
+
+
+            if (IngredientsSearched.IngredientIds.Count > 0 || SelectedIngredients.IngredientIds.Count > 0)
+            {
+                if (SelectedRestrictions.RestrictionIds.Count > 0)
+                {
+                    foreach (var i in SelectedIngredients.IngredientIds)
+                    {
+                        IngredientsSearched.IngredientIds.Add(i);
+                    }
+                    Console.WriteLine($"Restrictions Searching...");
+                    foreach (var id in IngredientsSearched.IngredientIds)
+                    {
+                        Console.WriteLine($"{id}");
+                    }
+                    recipes = await RecipeService.SearchBySelectedIngredientsWithRestrictions(IngredientsSearched,
+                    SelectedRestrictions.RestrictionIds);
+
+                }
+                else
+                {
+                    foreach (var i in SelectedIngredients.IngredientIds)
+                    {
+                        IngredientsSearched.IngredientIds.Add(i);
+                    }
+                    Console.WriteLine($"Ingredients Searching...");
+                    foreach (var id in IngredientsSearched.IngredientIds)
+                    {
+                        Console.WriteLine($"{id}");
+                    }
+                    recipes = await RecipeService.SearchRecipesBySelectedIngredients(IngredientsSearched);
+                }
+            }
+            else
+            {
+                recipes = new(); // clear the list
+                searchKeywords = string.Empty;
+            }
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error fetching recipes: {ex.Message}");
+            // Probably need to make a UI alert for errors
+        }
+    }
+
+    protected async Task<int> SearchIngredients(string searchKeywords)
+    {
+        if (searchKeywords != string.Empty)
+        {
+            var ingredients = await IngredientService.SearchIngredientsForKeyword(searchKeywords);
+
+            foreach (var i in ingredients)
+            {
+                IngredientsSearched.IngredientIds.Add(i.IngredientID);
+            }
+            return 1; //good
+        }
+        else
+        {
+            return 0; // bad
+        }
+    }
+
+    protected void AddIngredientsToSelection()
+    {
+        int t = 0;
+        foreach (var obj in Enum.GetValues(typeof(IngredientType)))
+        {
+            var type = (IngredientType)obj;
+            if (t < 7)
+            { // we arent making a drop down for the other types
+                var ids = ingredientMap[type].IngredientIds;
+                if (ids.Count > 0)
+                {
+                    foreach (var id in ids)
+                    {
+                        SelectedIngredients.IngredientIds.Add(id);
+                    }
+                }
+                t++;
+            }
+            else
+            {
+                break;
+            }
+        }
+
+
+    }
+    protected async Task HandleFormSubmit()
+    {
+        if (searchKeywords == string.Empty)
+        {
+            IngredientsSearched.IngredientIds.Clear();
+        }
+        await SearchRecipes();
+    }
+
+    private void HandleRestrictionsChange(ChangeEventArgs e)
+    {
+        var selectedOptions = e.Value as IEnumerable<string>;
+        if (selectedOptions != null)
+        {
+            // Clear the existing list
+            SelectedRestrictions.RestrictionIds.Clear();
+
+            foreach (var option in selectedOptions)
+            {
+                if (int.TryParse(option, out var id))
+                {
+                    SelectedRestrictions.RestrictionIds.Add(id);
+                }
+                else
+                {
+                    Console.WriteLine($"Failed to parse restriction ID: {option}");
+                }
+            }
+
+            Console.WriteLine($"Selected Restrictions: {string.Join(", ", SelectedRestrictions.RestrictionIds)}");
+        }
+
+        @* await SearchRecipes(); *@
+    }
+
+    private void HandleIngredientsChange(ChangeEventArgs e, IngredientType type)
+    {
+        var selectedOptions = e.Value as IEnumerable<string>;
+        if (selectedOptions != null)
+        {
+            // Clear the existing list
+            ingredientMap[type].IngredientIds.Clear();
+
+            foreach (var option in selectedOptions)
+            {
+                if (int.TryParse(option, out var id))
+                {
+                    ingredientMap[type].IngredientIds.Add(id);
+                }
+                else
+                {
+                    Console.WriteLine($"Failed to parse restriction ID: {option}");
+                }
+            }
+
+            Console.WriteLine($"Selected Type: {string.Join(", ", ingredientMap[type].IngredientIds)}");
+        }
+    }
+    private void HandleProteinsChange(ChangeEventArgs e)
+    {
+        var selectedOptions = e.Value as IEnumerable<string>;
+        if (selectedOptions != null)
+        {
+            // Clear the existing list
+            SelectedIngredients.IngredientIds.Clear();
+
+            foreach (var option in selectedOptions)
+            {
+                if (int.TryParse(option, out var id))
+                {
+                    SelectedIngredients.IngredientIds.Add(id);
+                }
+                else
+                {
+                    Console.WriteLine($"Failed to parse restriction ID: {option}");
+                }
+            }
+
+            Console.WriteLine($"Selected Type: {string.Join(", ", SelectedIngredients.IngredientIds)}");
+        }
+    }
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        await GetRestrictions();
+        await GetIngredients();
+
+        ingredientMap = new Dictionary<IngredientType, IngredientSelectionDTO>
+{
+{ IngredientType.Protein, SelectedProteins },
+{ IngredientType.Vegetable, SelectedVegetables },
+{ IngredientType.Fruit, SelectedFruits },
+{ IngredientType.Carb, SelectedCarbs },
+{ IngredientType.Dairy, SelectedDairy },
+{ IngredientType.BeanOrNut, SelectedBeansOrNuts },
+{ IngredientType.Condiment, SelectedCondiments },
+};
+    }
+
+    protected async Task GetRestrictions()
+    {
+        try
+        {
+            AllRestrictions = await RestrictionService.GetAllRestrictions();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error fetching restrictions: {ex.Message}");
+        }
+    }
+    protected async Task GetIngredients()
+    {
+        try
+        {
+            AllProteins = await IngredientService.GetAllProteins();
+            AllVegetables = await IngredientService.GetAllVegetables();
+            AllFruits = await IngredientService.GetAllFruits();
+            AllCarbs = await IngredientService.GetAllCarbs();
+            AllDairy = await IngredientService.GetAllDairy();
+            AllBeansOrNuts = await IngredientService.GetAllBeansOrNuts();
+            AllCondiments = await IngredientService.GetAllCondiments();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error fetching restrictions: {ex.Message}");
+        }
+    }
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var options = new
+            {
+                theme = "bootstrap-5",
+                width = "style",
+                placeholder = "Select Options",
+                closeOnSelect = false,
+            };
+
+            var select2Options = System.Text.Json.JsonSerializer.Serialize(options);
+
+
+            // Initialize dropdowns
+            await InitializeSelect2("restriction-multi-select", select2Options);
+            await InitializeSelect2("protein-multi-select", select2Options);
+            await InitializeSelect2("vegetable-multi-select", select2Options);
+            await InitializeSelect2("fruit-multi-select", select2Options);
+            await InitializeSelect2("carb-multi-select", select2Options);
+            await InitializeSelect2("dairy-multi-select", select2Options);
+            await InitializeSelect2("beanornut-multi-select", select2Options);
+            await InitializeSelect2("condiment-multi-select", select2Options);
+        }
+    }
+
+    private async Task InitializeSelect2(string elementId, string options)
+    {
+        string jsCode = $@"
+$('#{elementId}').select2({options});
+$('#{elementId}').on('select2:select select2:unselect', function (e) {{
+// Manually trigger change event for Blazor to capture
+this.dispatchEvent(new Event('change'));
+}});";
+
+        await JS.InvokeVoidAsync("eval", jsCode);
+    }
+}

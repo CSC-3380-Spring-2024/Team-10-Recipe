@@ -183,8 +183,51 @@ public class RecipesController : ControllerBase
         return distinctMatches;
     }
 
+    [HttpGet("SearchBySelectedIngredientsWithRestrictions")]
+    public async Task<ActionResult<IEnumerable<SimpleRecipeDTO>>> SearchBySelectedIngredientsWithRestrictions([FromQuery] List<int> ingredientIds, [FromQuery] List<int> selectedRestrictionIds)
+    {
+        // Gets all recipes that include any of the selected ingredients
+        var matchedRecipes = await _context.Recipes
+            .Include(r => r.RecipeIngredients).ThenInclude(ri => ri.Ingredient) // Ensure you include related data
+            .Include(r => r.RecipeRestrictions).ThenInclude(rr => rr.Restriction)
+            .Where(r => r.RecipeIngredients.Any(ri => ingredientIds.Contains(ri.IngredientID)))
+            .ToListAsync();
 
+        // matches at least 3 ingredients
+        // 0 FOR NOW
+        var refinedMatches = matchedRecipes
+            .Where(r => r.RecipeIngredients.Count(ri => ingredientIds.Contains(ri.IngredientID)) >= 0) // or any other number
+            .Select(r => new SimpleRecipeDTO
+            {
+                RecipeID = r.RecipeID,
+                RecipeName = r.RecipeName,
+                ShortDescription = r.ShortDescription,
+                CookTime = r.CookTime,
+                Ingredients = r.RecipeIngredients.Select(ri => ri.Ingredient.IngredientName).ToList(),
+                Restrictions = r.RecipeRestrictions.Select(rr => rr.Restriction.RestrictionName).ToList(),
+                favorited = false // For now, hardcode; you'd eventually check against the current user's favorites
+            })
+            .ToList();
 
+        // Filter out recipes that do not contain any of the selected restrictions
+        if (selectedRestrictionIds.Count > 0)
+        {
+            refinedMatches = refinedMatches
+                .Where(r => r.Restrictions
+                    .Any(restrictionName => selectedRestrictionIds
+                        .Contains(_context.Restrictions
+                            .Where(restriction => restriction.RestrictionName == restrictionName)
+                            .Select(restriction => restriction.RestrictionID)
+                            .FirstOrDefault())))
+                .ToList();
+        }
+        refinedMatches = refinedMatches
+                .GroupBy(r => r.RecipeID)
+                .Select(g => g.First())
+                .ToList();
+
+        return refinedMatches;
+    }
 
     [HttpPost("SearchBySelectedIngredients")]
     public async Task<ActionResult<IEnumerable<SimpleRecipeDTO>>> SearchRecipesBySelectedIngredients(IngredientSelectionDTO ingredientSelection)
@@ -197,8 +240,9 @@ public class RecipesController : ControllerBase
             .ToListAsync();
 
         // matches at least 3 ingredients
+        // 0 FOR NOW
         var refinedMatches = matchedRecipes
-            .Where(r => r.RecipeIngredients.Count(ri => ingredientSelection.IngredientIds.Contains(ri.IngredientID)) >= 3) // or any other number
+            .Where(r => r.RecipeIngredients.Count(ri => ingredientSelection.IngredientIds.Contains(ri.IngredientID)) >= 0) // or any other number
             .Select(r => new SimpleRecipeDTO
             {
                 RecipeID = r.RecipeID,

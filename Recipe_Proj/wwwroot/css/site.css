@@ -15,3 +15,14 @@
     transform: scale(1.03);
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
+
+
+.clickable-card-title:hover {
+    /* font-weight: bold; */
+    text-decoration: underline;
+}
+
+.no-recipes-message {
+    color: black; /* Change text color to white */
+    text-align: center;
+}
