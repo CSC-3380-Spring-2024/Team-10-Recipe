@@ -8,18 +8,18 @@ public class RecipeUser
     
     [Required]
     [StringLength(255)]
-    public string FirstName { get; set; }
+    public string FirstName { get; set; } = string.Empty;
     
     [StringLength(255)]
-    public string LastName { get; set; }
-    
-    [Required]
-    [StringLength(255)]
-    public string Email { get; set; }
+    public string LastName { get; set; } = string.Empty;
     
     [Required]
     [StringLength(255)]
-    public string Pass { get; set; }
+    public string Email { get; set; } = string.Empty;
+    
+    [Required]
+    [StringLength(255)]
+    public string Pass { get; set; } = string.Empty;
 
     // Navigation property for favorites
     public ICollection<RecipeFavorite> FavoriteRecipes { get; set; } = new List<RecipeFavorite>();

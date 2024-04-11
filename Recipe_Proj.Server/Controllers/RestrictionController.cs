@@ -5,6 +5,7 @@ using Recipe_Proj.Server.DTOs;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 
 namespace Recipe_Proj.Server.Controllers;
 
@@ -25,6 +26,24 @@ public class RestrictionsController : ControllerBase
     public async Task<ActionResult<IEnumerable<RestrictionDTO>>> GetAllRestrictions()
     {
         var restrictions = await _context.Restrictions
+            .Select(r => new RestrictionDTO
+            {
+                RestrictionID = r.RestrictionID,
+                RestrictionName = r.RestrictionName
+            })
+            .ToListAsync();
+
+        return Ok(restrictions);
+    }
+
+    [HttpGet("GetAll/{recipeID}")]
+    public async Task<ActionResult<IEnumerable<RestrictionDTO>>> GetAllRestrictionsByRecipe(int recipeID)
+    {
+
+        // var decoded = WebUtility.UrlDecode(recipeID).Replace("\"", "");
+
+        var restrictions = await _context.Restrictions
+            .Where(r => r.RecipeRestrictions.Any(rr => rr.RecipeID == recipeID))
             .Select(r => new RestrictionDTO
             {
                 RestrictionID = r.RestrictionID,

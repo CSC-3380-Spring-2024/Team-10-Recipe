@@ -70,57 +70,164 @@ public class RecipesController : ControllerBase
             })
             .SingleOrDefaultAsync();
 
-        recipeDetail.Instructions = await _recipeService.GetRecipeInstructions(id);
-
-
         if (recipeDetail == null)
         {
             return NotFound();
         }
+
+        recipeDetail.Instructions = await _recipeService.GetRecipeInstructions(id);
+
         return recipeDetail;
     }
 
     [HttpGet("SearchByKeywords")]
     public async Task<ActionResult<IEnumerable<SimpleRecipeDTO>>> SearchRecipesByKeywords(string searchKeywords)
     {
-        // decode and parse
-        var decoded = WebUtility.UrlDecode(searchKeywords).Replace("\"", "");
-        var keywords = decoded.Split(' ', StringSplitOptions.RemoveEmptyEntries).Select(k => k.Trim()).ToList();
-        
         var combinedMatches = new List<SimpleRecipeDTO>();
+        var distinctMatches = new List<SimpleRecipeDTO>();
 
-        foreach (var kw in keywords) {
-            var newMatches = await _context.Recipes
-                    // find recipes with keywords in the name, description, ingredients, and restrictions
-                    .Where(r => EF.Functions.Like(r.RecipeName, $"%{kw}%") ||
-                                EF.Functions.Like(r.ShortDescription, $"%{kw}%") ||
-                                r.RecipeIngredients.Any(ri => EF.Functions.Like(ri.Ingredient.IngredientName, $"%{kw}%")) ||
-                                r.RecipeRestrictions.Any(rr => EF.Functions.Like(rr.Restriction.RestrictionName, $"%{kw}%"))
-                    )
-                    .Select(r => new SimpleRecipeDTO
-                    {
-                        RecipeID = r.RecipeID,
-                        RecipeName = r.RecipeName,
-                        ShortDescription = r.ShortDescription,
-                        CookTime = r.CookTime,
-                        Ingredients = r.RecipeIngredients.Select(ri => ri.Ingredient.IngredientName).ToList(),
-                        Restrictions = r.RecipeRestrictions.Select(rr => rr.Restriction.RestrictionName).ToList(),
-                        favorited = false // This will need logic to determine if a recipe is favorited
-                    })
-                    .ToListAsync();
+        if (!string.IsNullOrEmpty(searchKeywords))
+        {
+            // decode and parse
+            var decoded = WebUtility.UrlDecode(searchKeywords).Replace("\"", "");
+            var keywords = decoded.Split(' ', StringSplitOptions.RemoveEmptyEntries).Select(k => k.Trim()).ToList();
 
-            // add new matches        
-            combinedMatches.AddRange(newMatches);
+            foreach (var kw in keywords)
+            {
+                var newMatches = await _context.Recipes
+                        // find recipes with keywords in the name, description, ingredients, and restrictions
+                        .Where(r => EF.Functions.Like(r.RecipeName, $"%{kw}%") ||
+                                    EF.Functions.Like(r.ShortDescription, $"%{kw}%") ||
+                                    r.RecipeIngredients.Any(ri => EF.Functions.Like(ri.Ingredient.IngredientName, $"%{kw}%")) ||
+                                    r.RecipeRestrictions.Any(rr => EF.Functions.Like(rr.Restriction.RestrictionName, $"%{kw}%"))
+                        )
+                        .Select(r => new SimpleRecipeDTO
+                        {
+                            RecipeID = r.RecipeID,
+                            RecipeName = r.RecipeName,
+                            ShortDescription = r.ShortDescription,
+                            CookTime = r.CookTime,
+                            Ingredients = r.RecipeIngredients.Select(ri => ri.Ingredient.IngredientName).ToList(),
+                            Restrictions = r.RecipeRestrictions.Select(rr => rr.Restriction.RestrictionName).ToList(),
+                            favorited = false // This will need logic to determine if a recipe is favorited
+                        })
+                        .ToListAsync();
+
+                // add new matches        
+                combinedMatches.AddRange(newMatches);
+            }
+
+            distinctMatches = combinedMatches//.Distinct().ToList();
+            .GroupBy(r => r.RecipeID)
+            .Select(g => g.First())
+            .ToList();
         }
-
-        var distinctMatches = combinedMatches//.Distinct().ToList();
-        .GroupBy(r => r.RecipeID)
-        .Select(g => g.First())
-        .ToList();
 
         return distinctMatches;
     }
 
+    [HttpGet("SearchRecipesWithRestrictions")]
+    public async Task<ActionResult<IEnumerable<SimpleRecipeDTO>>> SearchRecipesWithRestrictions(string searchKeywords, [FromQuery] List<int> selectedRestrictionIds)
+    {
+        var combinedMatches = new List<SimpleRecipeDTO>();
+        var distinctMatches = new List<SimpleRecipeDTO>();
+
+        if (!string.IsNullOrEmpty(searchKeywords))
+        {
+            var decoded = WebUtility.UrlDecode(searchKeywords).Replace("\"", "");
+            var keywords = decoded.Split(' ', StringSplitOptions.RemoveEmptyEntries).Select(k => k.Trim()).ToList();
+
+            // Collect all recipes that match the keywords
+            foreach (var kw in keywords)
+            {
+                var newMatches = await _context.Recipes
+                        .Where(r => EF.Functions.Like(r.RecipeName, $"%{kw}%") ||
+                                    EF.Functions.Like(r.ShortDescription, $"%{kw}%") ||
+                                    r.RecipeIngredients.Any(ri => EF.Functions.Like(ri.Ingredient.IngredientName, $"%{kw}%")) ||
+                                    r.RecipeRestrictions.Any(rr => EF.Functions.Like(rr.Restriction.RestrictionName, $"%{kw}%"))
+                        )
+                        .Select(r => new SimpleRecipeDTO
+                        {
+                            RecipeID = r.RecipeID,
+                            RecipeName = r.RecipeName,
+                            ShortDescription = r.ShortDescription,
+                            CookTime = r.CookTime,
+                            Ingredients = r.RecipeIngredients.Select(ri => ri.Ingredient.IngredientName).ToList(),
+                            Restrictions = r.RecipeRestrictions.Select(rr => rr.Restriction.RestrictionName).ToList(),
+                            favorited = false // Placeholder for actual favorite logic
+                        })
+                        .ToListAsync();
+
+                combinedMatches.AddRange(newMatches);
+            }
+
+            // Filter out recipes that do not contain any of the selected restrictions
+            if (selectedRestrictionIds.Count > 0)
+            {
+                combinedMatches = combinedMatches
+                    .Where(r => r.Restrictions
+                        .Any(restrictionName => selectedRestrictionIds
+                            .Contains(_context.Restrictions
+                                .Where(restriction => restriction.RestrictionName == restrictionName)
+                                .Select(restriction => restriction.RestrictionID)
+                                .FirstOrDefault())))
+                    .ToList();
+            }
+
+            distinctMatches = combinedMatches
+                .GroupBy(r => r.RecipeID)
+                .Select(g => g.First())
+                .ToList();
+        }
+
+        return distinctMatches;
+    }
+
+    [HttpGet("SearchBySelectedIngredientsWithRestrictions")]
+    public async Task<ActionResult<IEnumerable<SimpleRecipeDTO>>> SearchBySelectedIngredientsWithRestrictions([FromQuery] List<int> ingredientIds, [FromQuery] List<int> selectedRestrictionIds)
+    {
+        // Gets all recipes that include any of the selected ingredients
+        var matchedRecipes = await _context.Recipes
+            .Include(r => r.RecipeIngredients).ThenInclude(ri => ri.Ingredient) // Ensure you include related data
+            .Include(r => r.RecipeRestrictions).ThenInclude(rr => rr.Restriction)
+            .Where(r => r.RecipeIngredients.Any(ri => ingredientIds.Contains(ri.IngredientID)))
+            .ToListAsync();
+
+        // matches at least 3 ingredients
+        // 0 FOR NOW
+        var refinedMatches = matchedRecipes
+            .Where(r => r.RecipeIngredients.Count(ri => ingredientIds.Contains(ri.IngredientID)) >= 0) // or any other number
+            .Select(r => new SimpleRecipeDTO
+            {
+                RecipeID = r.RecipeID,
+                RecipeName = r.RecipeName,
+                ShortDescription = r.ShortDescription,
+                CookTime = r.CookTime,
+                Ingredients = r.RecipeIngredients.Select(ri => ri.Ingredient.IngredientName).ToList(),
+                Restrictions = r.RecipeRestrictions.Select(rr => rr.Restriction.RestrictionName).ToList(),
+                favorited = false // For now, hardcode; you'd eventually check against the current user's favorites
+            })
+            .ToList();
+
+        // Filter out recipes that do not contain any of the selected restrictions
+        if (selectedRestrictionIds.Count > 0)
+        {
+            refinedMatches = refinedMatches
+                .Where(r => r.Restrictions
+                    .Any(restrictionName => selectedRestrictionIds
+                        .Contains(_context.Restrictions
+                            .Where(restriction => restriction.RestrictionName == restrictionName)
+                            .Select(restriction => restriction.RestrictionID)
+                            .FirstOrDefault())))
+                .ToList();
+        }
+        refinedMatches = refinedMatches
+                .GroupBy(r => r.RecipeID)
+                .Select(g => g.First())
+                .ToList();
+
+        return refinedMatches;
+    }
 
     [HttpPost("SearchBySelectedIngredients")]
     public async Task<ActionResult<IEnumerable<SimpleRecipeDTO>>> SearchRecipesBySelectedIngredients(IngredientSelectionDTO ingredientSelection)
@@ -133,8 +240,9 @@ public class RecipesController : ControllerBase
             .ToListAsync();
 
         // matches at least 3 ingredients
+        // 0 FOR NOW
         var refinedMatches = matchedRecipes
-            .Where(r => r.RecipeIngredients.Count(ri => ingredientSelection.IngredientIds.Contains(ri.IngredientID)) >= 3) // or any other number
+            .Where(r => r.RecipeIngredients.Count(ri => ingredientSelection.IngredientIds.Contains(ri.IngredientID)) >= 0) // or any other number
             .Select(r => new SimpleRecipeDTO
             {
                 RecipeID = r.RecipeID,

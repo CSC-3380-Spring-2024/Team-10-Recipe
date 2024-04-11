@@ -1,0 +1,215 @@
+@page "/detailedRecipe/{RecipeID:int}"
+
+@* <img src="https://s.cdpn.io/3/NutritionFacts.gif" class="image"> *@
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-10 mb-5">
+            @if (recipeDetails != null)
+            {
+                <div class="row">
+                    <!-- Column for Title, Ingredients, Instructions -->
+                    <div class="col-md-8">
+                        <!-- Recipe Title -->
+                        <div class="mb-4">
+                            <h1 class="display-4">@recipeDetails.RecipeName</h1>
+                        </div>
+
+                        <!-- Ingredients and Restrictions in two columns -->
+                        <div class="row mb-4">
+                            <!-- Ingredients Column -->
+                            <div class="col-md-6">
+                                <h3>Ingredients</h3>
+                                <ul>
+                                    @foreach (var ingredient in recipeDetails.Ingredients)
+                                    {
+                                        <li>@ingredient</li>
+                                    }
+                                </ul>
+                            </div>
+
+                            <!-- Restrictions Column -->
+                            <div class="col-md-6">
+                                <h3>Restrictions</h3>
+                                <ul>
+                                    @foreach (var r in restrictions)
+                                    {
+                                        <li>@r.RestrictionName</li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Instructions -->
+                        <div>
+                            <h2>Instructions</h2>
+                            @foreach (var step in recipeDetails.Instructions.Steps)
+                            {
+                                <div class="mt-2">
+                                    <h5>@step.Title</h5>
+                                    @foreach (var instruction in step.Instructions)
+                                    {
+                                        <p class="ms-2">@instruction</p>
+                                    }
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                <!-- Right Column for Cook Time and Nutrition Facts -->
+                <div class="col-md-4 mt-4">
+                <!-- Cook Time -->
+                <div class="mb-4">
+                    <h5 class="text-muted ps-5 text-center">Cook Time: @Math.Round(recipeDetails.CookTime) minutes
+                    </h5>
+                </div>
+
+                <!-- Nutrition Facts -->
+                <section class="performance-facts">
+                    <header class="performance-facts__header">
+                        <h1 class="performance-facts__title">Nutrition Facts</h1>
+                        @* <p>Serving Size 1/2 cup (about 82g)</p>
+                        <p>Serving Per Container 8</p> *@
+                    </header>
+                    <table class="performance-facts__table">
+                        <thead>
+                            <tr>
+                                <th colspan="3" class="small-info">
+                                    Amount Per Serving
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th colspan="2">
+                                    <b>Calories</b>
+                                    @Math.Round(recipeDetails.Calories)
+                                </th>
+                                @* <td>
+                                Calories from Fat
+                                130
+                                </td> *@
+                            </tr>
+                            <tr class="thick-row">
+                                @* <td colspan="3" class="small-info">
+                                <b>% Daily Value*</b>
+                                </td> *@
+                            </tr>
+                            <tr>
+                                <th colspan="2">
+                                    <b>Total Fat</b>
+                                    @Math.Round(recipeDetails.TotalFat)g
+                                </th>
+                                <td>
+                                    @* <b>22%</b> *@
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="blank-cell">
+                                </td>
+                                <th>
+                                    Saturated Fat
+                                    @Math.Round(recipeDetails.SaturatedFat)g
+                                </th>
+                                <td>
+                                    @* <b>22%</b> *@
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="blank-cell">
+                                </td>
+                                <th>
+                                    Trans Fat
+                                    @Math.Round(recipeDetails.TransFat)g
+                                </th>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th colspan="2">
+                                    <b>Cholesterol</b>
+                                    @Math.Round(recipeDetails.CholesterolMG)mg
+                                </th>
+                                <td>
+                                    @* <b>18%</b> *@
+                                </td>
+                            </tr>
+                            <tr>
+                                <th colspan="2">
+                                    <b>Sodium</b>
+                                    @Math.Round(recipeDetails.SodiumMG)mg
+                                </th>
+                                <td>
+                                    @* <b>2%</b> *@
+                                </td>
+                            </tr>
+                            <tr>
+                                <th colspan="2">
+                                    <b>Total Carbohydrate</b>
+                                    @Math.Round(recipeDetails.TotalCarbs)g
+                                </th>
+                                <td>
+                                    @* <b>6%</b> *@
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="blank-cell">
+                                </td>
+                                <th>
+                                    Dietary Fiber
+                                    @Math.Round(recipeDetails.Fiber)g
+                                </th>
+                                <td>
+                                    @* <b>4%</b> *@
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="blank-cell">
+                                </td>
+                                <th>
+                                    Sugars
+                                    @Math.Round(recipeDetails.Sugars)g
+                                </th>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr class="thick-end">
+                                <th colspan="2">
+                                    <b>Protein</b>
+                                    @Math.Round(recipeDetails.Protein)g
+                                </th>
+                                <td>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+            </div>
+            }
+            else
+            {
+            <p>Loading...</p>
+            }
+    </div>
+</div>
+</div>
+
+
+
+
+@code {
+    [Parameter]
+    public int RecipeID { get; set; }
+
+    private DetailedRecipeDTO recipeDetails = new();
+
+    protected List<RestrictionDTO> restrictions = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        recipeDetails = await RecipeService.GetDetailedRecipeByID(RecipeID);
+        restrictions = await RestrictionService.GetAllRestrictionsByRecipe(RecipeID);
+
+    }
+}

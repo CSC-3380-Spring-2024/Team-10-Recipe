@@ -5,6 +5,7 @@ using Recipe_Proj.Server.DTOs;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 
 namespace Recipe_Proj.Server.Controllers;
 
@@ -23,10 +24,10 @@ public class IngredientsController : ControllerBase
     public async Task<ActionResult<IEnumerable<IngredientDTO>>> GetAllIngredients()
     {
         var ingredients = await _context.Ingredients
-            .Select(i => new IngredientDTO 
-            { 
-                IngredientID = i.IngredientID, 
-                IngredientName = i.IngredientName 
+            .Select(i => new IngredientDTO
+            {
+                IngredientID = i.IngredientID,
+                IngredientName = i.IngredientName
             })
             .ToListAsync();
 
@@ -38,10 +39,10 @@ public class IngredientsController : ControllerBase
     {
         var ingredient = await _context.Ingredients
             .Where(i => i.IngredientID == id)
-            .Select(i => new IngredientDTO 
-            { 
-                IngredientID = i.IngredientID, 
-                IngredientName = i.IngredientName 
+            .Select(i => new IngredientDTO
+            {
+                IngredientID = i.IngredientID,
+                IngredientName = i.IngredientName
             })
             .FirstOrDefaultAsync();
 
@@ -52,6 +53,37 @@ public class IngredientsController : ControllerBase
 
         return ingredient;
     }
+
+    [HttpGet("SearchIngredientsForKeywords")]
+    public async Task<List<IngredientDTO>> SearchIngredientsForKeyword(string searchKeywords)
+    {
+        var decoded = WebUtility.UrlDecode(searchKeywords).Replace("\"", "");
+        var keywords = decoded.Split(new[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries)
+                          .Select(k => k.Trim())
+                          .Distinct()
+                          .ToList();
+
+        var results = new List<IngredientDTO>();
+
+        foreach (var kw in keywords)
+        {
+            var matchingIngredients = await _context.Ingredients
+                .Where(i => EF.Functions.Like(i.IngredientName, $"%{kw}%"))
+                .Select(i => new IngredientDTO
+                {
+                    IngredientID = i.IngredientID,
+                    IngredientName = i.IngredientName
+                })
+                .ToListAsync();
+
+            // Add only new matches to avoid duplicates
+            results.AddRange(matchingIngredients.Where(mi => !results.Any(r => r.IngredientID == mi.IngredientID)));
+        }
+
+        return results;
+    }
+
+
 
     public enum IngredientType
     {
@@ -70,17 +102,17 @@ public class IngredientsController : ControllerBase
     public async Task<ActionResult<IngredientDTO>> GetAllIngredientsByType(IngredientType type)
     {
 
-        int currType = (int) type + 1;
+        int currType = (int)type + 1;
 
-        int start = currType*1000;
+        int start = currType * 1000;
         int end = start + 1000;
 
         var ingredients = await _context.Ingredients
         .Where(i => i.IngredientID >= start && i.IngredientID < end)
-        .Select(i => new IngredientDTO 
-        { 
-            IngredientID = i.IngredientID, 
-            IngredientName = i.IngredientName 
+        .Select(i => new IngredientDTO
+        {
+            IngredientID = i.IngredientID,
+            IngredientName = i.IngredientName
         })
         .ToListAsync();
 
