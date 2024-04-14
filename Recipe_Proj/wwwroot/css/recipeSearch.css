@@ -10,7 +10,7 @@ body {
     margin: 0;
     padding: 20px;
 }
- h1 {
+h1 {
     color: black; /* Change text color to black */
     text-align: center;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add shadow to the text */
