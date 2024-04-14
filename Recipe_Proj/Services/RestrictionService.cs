@@ -15,7 +15,7 @@ public class RestrictionService : IRestrictionService
     }
 
     public async Task<List<RestrictionDTO>> GetAllRestrictions() {
-        var restrictions = await _httpClient.GetFromJsonAsync<List<RestrictionDTO>>("api/Restrictions");
+        var restrictions = await _httpClient.GetFromJsonAsync<List<RestrictionDTO>>("api/Restrictions/Active");
         return restrictions ?? new List<RestrictionDTO>();
     }
 
