@@ -11,7 +11,7 @@ using System.Net;
 namespace Recipe_Proj.Server.Controllers;
 
 [ApiController]
-[Route("api/[controller]")] // api/recipe
+[Route("api/[controller]")] // api/Recipes
 public class RecipesController : ControllerBase
 {
     private readonly RecipeDbContext _context;
