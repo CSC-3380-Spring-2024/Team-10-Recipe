@@ -2,6 +2,7 @@
 
 @layout MainLayout
 
+<link href="/css/cards.css" rel="stylesheet" />
 <link href="/css/ingredientSearch.css" rel="stylesheet" />
 
 <div style="height: 0.5in;"></div>
@@ -141,7 +142,8 @@
                     {
                         <div class="col-sm-4">
                             <div class="card mb-4 shadow-sm clickable-card">
-                                @* Image Placeholder *@
+                                <img src="@($"RecipeImages/{recipe.RecipeImage}_thumb.jpg")"
+                                        alt="Image of @recipe.RecipeName" class="recipeImage">
                                 <div class="card-body">
                                     <NavLink @onclick="() => RedirectToRecipe(recipe.RecipeID)">
                                         <h5 class="card-title clickable-card-title">@recipe.RecipeName</h5>

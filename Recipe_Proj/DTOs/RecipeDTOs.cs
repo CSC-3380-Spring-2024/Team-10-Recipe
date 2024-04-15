@@ -20,6 +20,9 @@ public class SimpleRecipeDTO
 
     [Required]
     public string ShortDescription { get; set; } = string.Empty;
+
+    [Required]
+    public string RecipeImage { get; set; } = string.Empty;
     public double CookTime { get; set; } // in minutes
     public List<string> Ingredients { get; set; } = new List<string>();
     public List<string> Restrictions { get; set; } = new List<string>();
@@ -35,6 +38,9 @@ public class DetailedRecipeDTO
 
     [Required]
     public RecipeInstructionsDTO Instructions { get; set; } = new RecipeInstructionsDTO();
+    
+    [Required]
+    public string RecipeImage { get; set; } = string.Empty;
     public double CookTime { get; set; } // in minutes
     public double Calories { get; set; }
     public double TotalFat { get; set; }

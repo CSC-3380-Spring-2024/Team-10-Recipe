@@ -1,7 +1,7 @@
-INSERT INTO recipe (recipeID, recipeName, shortDescription, recipeInstructions, cookTime, calories, totalFat, saturatedFat, transFat, cholesterolMG, sodiumMG, totalCarbs, fiber, sugars, protein) VALUES 
-(1001, 'Chicken Parmesan', 'a classic Italian-American dish consisting of breaded and fried chicken cutlets topped with marinara sauce and melted mozzarella cheese', 'chicken_parmesan.json', 45, 845, 37.3, 10.8, 0, 305, 1173, 66.6, 4.8, 8.2, 56),
-(1002, 'Chicken Fried Rice', 'a savory Asian dish made by stir-frying cooked rice with diced chicken, vegetables, eggs, and soy sauce, creating a flavorful and satisfying meal', 'chicken_fried_rice.json',60, 700, 20, 4, 0, 170, 1600, 90, 4, 6, 40),
-(1003, 'Meat Veggie and Rice Stir-fry', 'a quick and versatile dish where diced meat, assorted vegetables, and cooked rice are stir-fried together with flavorful sauces, offering a balanced and delicious meal', 'meat_veggie_rice_stirfry.json', 30, 760.00, 23.00, 5.00, 0, 85.00, 1050.00, 65.00, 7.00, 5.00, 40.00);
+INSERT INTO recipe (recipeID, recipeName, shortDescription, recipeInstructions, recipeImage, cookTime, calories, totalFat, saturatedFat, transFat, cholesterolMG, sodiumMG, totalCarbs, fiber, sugars, protein) VALUES 
+(1001, 'Chicken Parmesan', 'a classic Italian-American dish consisting of breaded and fried chicken cutlets topped with marinara sauce and melted mozzarella cheese', 'chicken_parmesan.json', 'chicken_parmesan', 45, 845, 37.3, 10.8, 0, 305, 1173, 66.6, 4.8, 8.2, 56),
+(1002, 'Chicken Fried Rice', 'a savory Asian dish made by stir-frying cooked rice with diced chicken, vegetables, eggs, and soy sauce, creating a flavorful and satisfying meal', 'chicken_fried_rice.json', 'chicken_fried_rice', 60, 700, 20, 4, 0, 170, 1600, 90, 4, 6, 40),
+(1003, 'Chicken Veggie and Rice Stir-fry', 'a quick and versatile dish where diced meat, assorted vegetables, and cooked rice are stir-fried together with flavorful sauces, offering a balanced and delicious meal', 'chicken_veggie_rice_stirfry.json', 'chicken_veggie_rice_stirfry', 30, 760.00, 23.00, 5.00, 0, 85.00, 1050.00, 65.00, 7.00, 5.00, 40.00);
 
 INSERT INTO restriction (restrictionID, restrictionName) VALUES 
 (1001, 'Low-carb'),

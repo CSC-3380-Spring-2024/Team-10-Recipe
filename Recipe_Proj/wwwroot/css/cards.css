@@ -17,3 +17,12 @@
     /* font-weight: bold; */
     text-decoration: underline;
 }
+
+.recipeImage {
+    max-width: 100%;
+    max-height: 200px;
+    height: auto;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem; /* Standard Bootstrap border-radius for cards */
+    object-fit: cover;
+}
