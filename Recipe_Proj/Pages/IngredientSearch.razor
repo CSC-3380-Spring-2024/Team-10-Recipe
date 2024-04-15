@@ -1,7 +1,11 @@
 @page "/ingredientSearch"
 
-@* <link href="css/recipeSearch.css" rel="stylesheet" /> *@
+@layout MainLayout
 
+<link href="/css/cards.css" rel="stylesheet" />
+<link href="/css/ingredientSearch.css" rel="stylesheet" />
+
+<div style="height: 0.5in;"></div>
 <h1 class="text-center text-primary mt-4">Discover Delicious Recipes!</h1>
 <div class="container mt-4">
     <div class="row justify-content-center">
@@ -129,7 +133,7 @@
             }
             else if (clicked && recipes.Count == 0)
             {
-                <h4 class="no-recipes-message mt-2">No recipes found :(</h4>
+                <h4 class="no-recipes-message mt-5">No recipes found :(</h4>
             }
             else
             {
@@ -138,14 +142,15 @@
                     {
                         <div class="col-sm-4">
                             <div class="card mb-4 shadow-sm clickable-card">
-                                @* Image Placeholder *@
+                                <img src="@($"RecipeImages/{recipe.RecipeImage}_thumb.jpg")"
+                                        alt="Image of @recipe.RecipeName" class="recipeImage">
                                 <div class="card-body">
                                     <NavLink @onclick="() => RedirectToRecipe(recipe.RecipeID)">
                                         <h5 class="card-title clickable-card-title">@recipe.RecipeName</h5>
                                     </NavLink>
                                     <p class="card-text">@recipe.ShortDescription</p>
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <small class="text-muted mt-2">@Math.Round(recipe.CookTime) Minutes</small>
+                                        <small class="text-muted mt-1">@Math.Round(recipe.CookTime) Minutes</small>
                                     </div>
                                 </div>
                             </div>

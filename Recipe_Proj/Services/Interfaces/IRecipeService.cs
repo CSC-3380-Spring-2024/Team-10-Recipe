@@ -16,6 +16,9 @@ public interface IRecipeService
 
     Task<List<SimpleRecipeDTO>> SearchRecipesBySelectedIngredients(IngredientSelectionDTO ingredientSelection);
 
+    Task<List<SimpleRecipeDTO>> GetRecipesByRestrictions(List<int> RestrictionIDs);
+
+
 
 
     // Task<RecipeInstructionsDTO> GetRecipeInstructions(int recipeID);

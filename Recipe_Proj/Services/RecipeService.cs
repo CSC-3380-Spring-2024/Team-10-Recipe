@@ -89,6 +89,21 @@ public class RecipeService : IRecipeService
 
     }
 
+    public async Task<List<SimpleRecipeDTO>> GetRecipesByRestrictions(List<int> RestrictionIDs) {
+        
+        var queryList = new List<string>();
+
+        queryList.AddRange(RestrictionIDs.Select(id => $"RestrictionIDs={id}"));
+
+        string fullQuery = $"api/Recipes/GetRecipesByRestrictions?{string.Join("&", queryList)}";
+
+        var response = await _httpClient.GetAsync(fullQuery);
+        response.EnsureSuccessStatusCode();
+
+        var recipes = await response.Content.ReadFromJsonAsync<List<SimpleRecipeDTO>>();
+        return recipes ?? new List<SimpleRecipeDTO>();
+    }
+
 
 
     // public async Task<RecipeInstructionsDTO> GetRecipeInstructions(int recipeID)

@@ -20,6 +20,10 @@ public class Recipe
     [StringLength(255)]
     public string RecipeInstructions { get; set; } = string.Empty;
 
+    [Required]
+    [StringLength(255)]
+    public string RecipeImage { get; set; } = string.Empty;
+
     [Column(TypeName = "REAL")]
     public double CookTime { get; set; } // in minutes
 

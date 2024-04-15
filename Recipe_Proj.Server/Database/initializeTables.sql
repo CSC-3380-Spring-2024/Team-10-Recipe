@@ -3,6 +3,7 @@ CREATE TABLE recipe (
   recipeName TEXT,
   shortDescription TEXT,
   recipeInstructions TEXT,
+  recipeImage TEXT,
   cookTime REAL,
   calories REAL,
   totalFat REAL,

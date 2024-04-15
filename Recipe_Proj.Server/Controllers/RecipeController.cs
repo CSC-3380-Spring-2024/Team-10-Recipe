@@ -34,6 +34,7 @@ public class RecipesController : ControllerBase
                 RecipeID = r.RecipeID,
                 RecipeName = r.RecipeName,
                 ShortDescription = r.ShortDescription,
+                RecipeImage = r.RecipeImage,
                 CookTime = r.CookTime,
                 Ingredients = r.RecipeIngredients.Select(ri => ri.Ingredient.IngredientName).ToList(),
                 Restrictions = r.RecipeRestrictions.Select(rr => rr.Restriction.RestrictionName).ToList(),
@@ -53,6 +54,7 @@ public class RecipesController : ControllerBase
             {
                 RecipeID = r.RecipeID,
                 RecipeName = r.RecipeName,
+                RecipeImage = r.RecipeImage,
                 CookTime = r.CookTime,
                 Calories = r.Calories,
                 TotalFat = r.TotalFat,
@@ -106,6 +108,7 @@ public class RecipesController : ControllerBase
                             RecipeID = r.RecipeID,
                             RecipeName = r.RecipeName,
                             ShortDescription = r.ShortDescription,
+                            RecipeImage = r.RecipeImage,
                             CookTime = r.CookTime,
                             Ingredients = r.RecipeIngredients.Select(ri => ri.Ingredient.IngredientName).ToList(),
                             Restrictions = r.RecipeRestrictions.Select(rr => rr.Restriction.RestrictionName).ToList(),
@@ -151,6 +154,7 @@ public class RecipesController : ControllerBase
                             RecipeID = r.RecipeID,
                             RecipeName = r.RecipeName,
                             ShortDescription = r.ShortDescription,
+                            RecipeImage = r.RecipeImage,
                             CookTime = r.CookTime,
                             Ingredients = r.RecipeIngredients.Select(ri => ri.Ingredient.IngredientName).ToList(),
                             Restrictions = r.RecipeRestrictions.Select(rr => rr.Restriction.RestrictionName).ToList(),
@@ -202,6 +206,7 @@ public class RecipesController : ControllerBase
                 RecipeID = r.RecipeID,
                 RecipeName = r.RecipeName,
                 ShortDescription = r.ShortDescription,
+                RecipeImage = r.RecipeImage,
                 CookTime = r.CookTime,
                 Ingredients = r.RecipeIngredients.Select(ri => ri.Ingredient.IngredientName).ToList(),
                 Restrictions = r.RecipeRestrictions.Select(rr => rr.Restriction.RestrictionName).ToList(),
@@ -248,6 +253,7 @@ public class RecipesController : ControllerBase
                 RecipeID = r.RecipeID,
                 RecipeName = r.RecipeName,
                 ShortDescription = r.ShortDescription,
+                RecipeImage = r.RecipeImage,
                 CookTime = r.CookTime,
                 Ingredients = r.RecipeIngredients.Select(ri => ri.Ingredient.IngredientName).ToList(),
                 Restrictions = r.RecipeRestrictions.Select(rr => rr.Restriction.RestrictionName).ToList(),
@@ -258,6 +264,37 @@ public class RecipesController : ControllerBase
         return refinedMatches;
     }
 
+    [HttpGet("GetRecipesByRestrictions")]
+    public async Task<ActionResult<IEnumerable<SimpleRecipeDTO>>> GetRecipesByRestrictions([FromQuery] List<int> RestrictionIDs)
+    {
+        var recipes = await _context.Recipes
+            .Select(r => new SimpleRecipeDTO
+            {
+                RecipeID = r.RecipeID,
+                RecipeName = r.RecipeName,
+                ShortDescription = r.ShortDescription,
+                RecipeImage = r.RecipeImage,
+                CookTime = r.CookTime,
+                Ingredients = r.RecipeIngredients.Select(ri => ri.Ingredient.IngredientName).ToList(),
+                Restrictions = r.RecipeRestrictions.Select(rr => rr.Restriction.RestrictionName).ToList(),
+                favorited = false // hardcode for now, eventually should check with current user to see if its favorited
+            })
+            .ToListAsync();
+
+        if (RestrictionIDs.Count > 0)
+        {
+            recipes = recipes
+                .Where(r => r.Restrictions
+                    .Any(restrictionName => RestrictionIDs
+                        .Contains(_context.Restrictions
+                            .Where(restriction => restriction.RestrictionName == restrictionName)
+                            .Select(restriction => restriction.RestrictionID)
+                            .FirstOrDefault())))
+                .ToList();
+        }
+
+        return Ok(recipes);
+    }
 
 
     // probably wont be using any of this
