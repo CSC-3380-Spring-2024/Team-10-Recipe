@@ -34,9 +34,9 @@
                     </div>
                 </div>
             </form>
-            @if (recipes == null)
+            @if (waiting == true || recipes == null)
             {
-                <p>Loading recipes...</p>
+                <h4 class="no-recipes-message mt-5">Loading recipes...</h4>
             }
             else if (clicked && recipes.Count == 0)
             {
@@ -75,6 +75,8 @@
     public string searchKeywords = string.Empty;
     public bool clicked = false;
 
+    public bool waiting = false;
+
     protected void RedirectToRecipe(int recipeID) {
         string recipeLink = $"/detailedRecipe/{recipeID}";
         NavigationManager.NavigateTo(recipeLink);
@@ -83,6 +85,8 @@
     protected async Task SearchRecipes()
     {
         clicked = true;
+        waiting = true;
+
         if (searchKeywords == string.Empty) {
             recipes = new();
         }
@@ -116,6 +120,7 @@
     protected async Task HandleFormSubmit()
     {
         await SearchRecipes();
+        waiting = false;
     }
 
     private List<RestrictionDTO> AllRestrictions = new List<RestrictionDTO>();

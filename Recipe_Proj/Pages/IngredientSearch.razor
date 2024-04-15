@@ -59,7 +59,8 @@
                     </div>
                 </div>
 
-                <div class="row justify-content-center mb-5">                    <!-- Dairy -->
+                <div class="row justify-content-center mb-5">
+                    <!-- Dairy -->
                     <div class="col-md-3">
                         <select id="dairy-multi-select" class="form-select" multiple data-placeholder="Select Dairy"
                             @onchange="(e) => HandleIngredientsChange(e, IngredientType.Dairy)">
@@ -127,9 +128,9 @@
                     </div>
                 </div>
             </form>
-            @if (recipes == null)
+            @if (waiting == true || recipes == null)
             {
-                <p>Loading recipes...</p>
+                <h4 class="no-recipes-message mt-5">Loading recipes...</h4>
             }
             else if (clicked && recipes.Count == 0)
             {
@@ -167,6 +168,7 @@
     private List<SimpleRecipeDTO> recipes = new();
     public string searchKeywords = string.Empty;
     public bool clicked = false;
+    public bool waiting = false;
 
     private List<RestrictionDTO> AllRestrictions = new List<RestrictionDTO>();
     private RestrictionSelectionDTO SelectedRestrictions = new RestrictionSelectionDTO();
@@ -199,14 +201,15 @@
     protected async Task SearchRecipes()
     {
         clicked = true;
+        waiting = true;
 
         try
         {
             IngredientsSearched.IngredientIds.Clear();
             SelectedIngredients.IngredientIds.Clear();
 
-            int keySearch = await SearchIngredients(searchKeywords); // 1 success, 0 fail
-                                                                     // Filtering out recipes
+            await SearchIngredients(searchKeywords);
+
 
             // adds each type to SelectedIngredients
             AddIngredientsToSelection();
@@ -257,7 +260,7 @@
         }
     }
 
-    protected async Task<int> SearchIngredients(string searchKeywords)
+    protected async Task SearchIngredients(string searchKeywords)
     {
         if (searchKeywords != string.Empty)
         {
@@ -267,11 +270,6 @@
             {
                 IngredientsSearched.IngredientIds.Add(i.IngredientID);
             }
-            return 1; //good
-        }
-        else
-        {
-            return 0; // bad
         }
     }
 
@@ -308,6 +306,7 @@
             IngredientsSearched.IngredientIds.Clear();
         }
         await SearchRecipes();
+        waiting = false;
     }
 
     private void HandleRestrictionsChange(ChangeEventArgs e)
