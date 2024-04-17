@@ -36,6 +36,21 @@ public class RestrictionsController : ControllerBase
         return Ok(restrictions);
     }
 
+    [HttpGet("Active")]
+    public async Task<ActionResult<IEnumerable<RestrictionDTO>>> GetAllActiveRestrictions()
+    {
+        var restrictions = await _context.Restrictions
+            .Where(r => r.RecipeRestrictions.Any(rr => rr.RestrictionID == r.RestrictionID))
+            .Select(r => new RestrictionDTO
+            {
+                RestrictionID = r.RestrictionID,
+                RestrictionName = r.RestrictionName
+            })
+            .ToListAsync();
+
+        return Ok(restrictions);
+    }
+
     [HttpGet("GetAll/{recipeID}")]
     public async Task<ActionResult<IEnumerable<RestrictionDTO>>> GetAllRestrictionsByRecipe(int recipeID)
     {
