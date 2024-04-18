@@ -36,7 +36,6 @@ INSERT INTO recipe_restriction (recipeID, restrictionID) VALUES
 (1003, 1012), -- Nut-free
 (1003, 1016), -- Sugar-free
 (1004, 1005), -- Pescatarian
-(1004, 1009), -- High-protein
 (1004, 1010), -- Gluten-free
 (1004, 1011), -- Dairy-free
 (1004, 1012), -- Nut-free
