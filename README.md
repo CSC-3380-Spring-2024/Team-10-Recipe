@@ -21,7 +21,7 @@
 ### Note to Alex:
 
 Stupid Sqltools extension path:
-/Users/myusername/Library/Application Support/vscode-sqltools
+/Users/alexbrodsky/Library/Application\ Support/vscode-sqltools
 
 change package-lock.json line 4 requires to false
 
