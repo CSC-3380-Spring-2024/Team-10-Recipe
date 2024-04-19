@@ -16,3 +16,13 @@
 6. In the other terminal, run `cd Recipe_Proj.Server`
 7. Execute `dotnet run` in both terminals
 8. Open [http://localhost:5155](http://localhost:5155) in your browser
+
+
+### Note to Alex:
+
+Stupid Sqltools extension path:
+/Users/myusername/Library/Application Support/vscode-sqltools
+
+change package-lock.json line 4 requires to false
+
+might need to do the same to Team-10-Recipe/package-lock.json as well
