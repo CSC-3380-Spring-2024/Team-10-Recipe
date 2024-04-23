@@ -11,5 +11,3 @@
 -- DROP TABLE IF EXISTS restriction;
 
 -- PRAGMA foreign_keys = ON;
-
--- select * from Recipes;
