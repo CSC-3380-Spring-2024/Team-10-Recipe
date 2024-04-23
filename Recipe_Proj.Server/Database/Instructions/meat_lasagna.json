@@ -1,0 +1,44 @@
+{
+    "steps": [
+      {
+        "title": "Prep the Ingredients",
+        "instructions": [
+          "Preheat your oven to 375°F (190°C).",
+          "In a large skillet, brown the ground beef and Italian sausage over medium heat. Once browned, drain excess fat.",
+          "Add chopped onions and minced garlic to the skillet and cook until onions are translucent.",
+          "Stir in crushed tomatoes, tomato sauce, and tomato paste. Season with salt, black pepper, sugar, Italian seasoning, dried basil, and fennel seeds. Let simmer for about 15 minutes.",
+          "In a separate bowl, combine ricotta cheese with a beaten egg, chopped fresh parsley, and half of the grated Parmesan cheese."
+        ]
+      },
+      {
+        "title": "Prepare the Lasagna Noodles",
+        "instructions": [
+          "Bring a large pot of salted water to a boil.",
+          "Cook the lasagna noodles according to the package instructions until they are just al dente. Drain and set aside."
+        ]
+      },
+      {
+        "title": "Assemble the Lasagna",
+        "instructions": [
+          "Spread a thin layer of the meat sauce in the bottom of a 9x13 inch baking dish.",
+          "Layer lasagna noodles over the sauce.",
+          "Spread a portion of the ricotta cheese mixture over the noodles, followed by a layer of mozzarella cheese.",
+          "Repeat the layering process until all ingredients are used, finishing with a layer of meat sauce and a generous topping of mozzarella and the remaining Parmesan cheese."
+        ]
+      },
+      {
+        "title": "Bake the Lasagna",
+        "instructions": [
+          "Cover the baking dish with aluminum foil and bake in the preheated oven for 25 minutes.",
+          "Remove the foil and continue to bake for another 25 minutes, or until the cheese is bubbly and golden brown."
+        ]
+      },
+      {
+        "title": "Rest and Serve",
+        "instructions": [
+          "Allow the lasagna to rest for 10-15 minutes before slicing.",
+          "Serve warm with a side of garlic bread or a green salad."
+        ]
+      }
+    ]
+  }

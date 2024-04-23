@@ -3,7 +3,8 @@ INSERT INTO recipe (recipeID, recipeName, shortDescription, recipeInstructions, 
 (1002, 'Chicken Fried Rice', 'a savory Asian dish made by stir-frying cooked rice with diced chicken, vegetables, eggs, and soy sauce, creating a flavorful and satisfying meal', 'chicken_fried_rice.json', 'chicken_fried_rice', 60, 700, 20, 4, 0, 170, 1600, 90, 4, 6, 40),
 (1003, 'Chicken Veggie and Rice Stir-fry', 'a quick and versatile dish where diced meat, assorted vegetables, and cooked rice are stir-fried together with flavorful sauces, offering a balanced and delicious meal', 'chicken_veggie_rice_stirfry.json', 'chicken_veggie_rice_stirfry', 30, 760.00, 23.00, 5.00, 0, 85.00, 1050.00, 65.00, 7.00, 5.00, 40.00),
 (1004, 'Salmon Sushi Bake', 'a salmon sushi bake combines seasoned sushi rice, flaked smoked salmon with spicy mayo, cucumber, avocado, and nori, all baked together and served with soy sauce, pickled ginger, and wasabi.', 'salmon_sushi_bake.json', 'salmon_sushi_bake', 30, 540, 28, 4, 0, 30, 1100, 58, 5, 6, 22),
-(1005, 'Steak, Green Beans, and Potatoes', 'savor a classic dinner of juicy steak paired with crispy roasted potatoes and tender-crisp green beans, all seasoned to perfection', 'steak_greenbeans_potatoes.json', 'steak_greenbeans_potatoes', 40, 700, 35, 12, 0.5, 115, 600, 45, 6, 3, 45);
+(1005, 'Steak, Green Beans, and Potatoes', 'savor a classic dinner of juicy steak paired with crispy roasted potatoes and tender-crisp green beans, all seasoned to perfection', 'steak_greenbeans_potatoes.json', 'steak_greenbeans_potatoes', 40, 700, 35, 12, 0.5, 115, 600, 45, 6, 3, 45),
+(1006, 'Meat Lasagna', 'savor this classic Meat Lasagna, featuring layers of Italian sausage, ground beef, rich cheeses, and a flavorful tomato sauce, all baked to perfection for a comforting dinner delight.', 'meat_lasagna.json', 'meat_lasagna', 70, 810, 40, 18, 1, 153, 1440, 63, 5.5, 11, 57.5);
 
 
 INSERT INTO restriction (restrictionID, restrictionName) VALUES 
@@ -47,7 +48,9 @@ INSERT INTO recipe_restriction (recipeID, restrictionID) VALUES
 (1005, 1012), -- Nut-free
 (1005, 1013), -- Egg-free
 (1005, 1014), -- Soy-free
-(1005, 1015); -- Grain-free
+(1005, 1015), -- Grain-free
+(1006, 1012), -- Nut-free
+(1006, 1014); -- Soy-free
 
 
 INSERT INTO ingredient (ingredientID, ingredientName) VALUES 
@@ -55,6 +58,8 @@ INSERT INTO ingredient (ingredientID, ingredientName) VALUES
 (1002, 'Egg'),
 (1003, 'Salmon'),
 (1004, 'Steak'),
+(1005, 'Ground beef'),
+(1006, 'Italian sausage'),
 (2001, 'Basil leaves'),
 (2002, 'Red bell pepper'),
 (2003, 'Green onions'),
@@ -68,20 +73,26 @@ INSERT INTO ingredient (ingredientID, ingredientName) VALUES
 (2011, 'Avocado'),
 (2012, 'Nori'),
 (2013, 'Green Beans'),
+(2014, 'Onion'),
+(2015, 'Crushed tomatoes'),
 (4001, 'Spaghetti Pasta'),
 (4002, 'Rice'),
 (4003, 'Brown rice'),
 (4004, 'Breadcrumbs'),
 (4005, 'Potatoes'),
+(4006, 'Lasagna noodles'),
 (5001, 'Parmesan cheese'),
 (5002, 'Mozzarella cheese'),
 (5003, 'Shredded cheese'),
 (5004, 'Butter'),
+(5005, 'Ricotta cheese'),
 (7001, 'Soy sauce'),
 (7002, 'Oyster sauce'),
 (7003, 'Marinara sauce'),
 (7004, 'Mayonnaise'),
 (7005, 'Sriracha'),
+(7006, 'Tomato sauce'),
+(7007, 'Tomato paste'),
 (8001, 'Salt'),
 (8002, 'Vegetable oil'),
 (8003, 'Black pepper'),
@@ -92,6 +103,10 @@ INSERT INTO ingredient (ingredientID, ingredientName) VALUES
 (8008, 'Rice vinegar'),
 (8009, 'Wasabi'),
 (8010, 'Sugar'),
+(8011, 'Fresh parsley'),
+(8012, 'Dried basil leaves'),
+(8013, 'Italian seasoning'),
+(8014, 'Fennel seeds'),
 (9001, 'Furikake');
 
 
@@ -129,22 +144,22 @@ INSERT INTO recipe_ingredient (recipeID, ingredientID) VALUES
 (1003, 7001), -- Soy sauce
 (1003, 7002), -- Oyster sauce
 (1003, 8001), -- Salt
+(1003, 8003), -- Black Pepper
 (1003, 8004), -- Sesame oil
 (1003, 8005), -- Olive oil
 (1003, 8006), -- Garlic
-(1003, 8003), -- Black Pepper
 (1004, 1003), -- Salmon
+(1004, 2007), -- Pickled ginger
 (1004, 2010), -- Cucumber
 (1004, 2011), -- Avocado
 (1004, 2012), -- Nori
-(1004, 2007), -- Pickled ginger
+(1004, 4002), -- Rice
+(1004, 7001), -- Soy sauce
 (1004, 7004), -- Mayonnaise
 (1004, 7005), -- Sriracha
-(1004, 7001), -- Soy sauce
-(1004, 4002), -- Rice
 (1004, 8008), -- Rice vinegar
-(1004, 8010), -- Sugar
 (1004, 8009), -- Wasabi
+(1004, 8010), -- Sugar
 (1004, 9001), -- Furikake
 (1005, 1004), -- Steak
 (1005, 2013), -- Green Beans
@@ -154,4 +169,23 @@ INSERT INTO recipe_ingredient (recipeID, ingredientID) VALUES
 (1005, 8003), -- Black pepper
 (1005, 8005), -- Olive oil
 (1005, 8006), -- Garlic
-(1005, 8007); -- Fresh rosemary
+(1005, 8007), -- Fresh rosemary
+(1006, 1002), -- Egg
+(1006, 1005), -- Ground beef
+(1006, 1006), -- Italian sausage
+(1006, 2014), -- Onion
+(1006, 2015), -- Crushed tomatoes
+(1006, 4006), -- Lasagna noodles
+(1006, 5001), -- Parmesan cheese
+(1006, 5002), -- Mozzarella cheese
+(1006, 5005), -- Ricotta cheese
+(1006, 7006), -- Tomato sauce
+(1006, 7007), -- Tomato paste
+(1006, 8001), -- Salt
+(1006, 8003), -- Black pepper
+(1006, 8006), -- Garlic
+(1006, 8010), -- Sugar
+(1006, 8011), -- Fresh parsley
+(1006, 8012), -- Dried basil leaves
+(1006, 8013), -- Italian seasoning
+(1006, 8014); -- Fennel seeds
