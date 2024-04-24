@@ -256,6 +256,10 @@
             {
                 recipes = new(); // clear the list
                 searchKeywords = string.Empty;
+                await GetRestrictions();
+                if (SelectedRestrictions.RestrictionIds.Count > 0) {
+                    await GetRecipesByRestrictions(SelectedRestrictions.RestrictionIds);
+                }
             }
 
         }
@@ -367,30 +371,6 @@
             Console.WriteLine($"Selected Type: {string.Join(", ", ingredientMap[type].IngredientIds)}");
         }
     }
-    private void HandleProteinsChange(ChangeEventArgs e)
-    {
-        var selectedOptions = e.Value as IEnumerable<string>;
-        if (selectedOptions != null)
-        {
-            // Clear the existing list
-            SelectedIngredients.IngredientIds.Clear();
-
-            foreach (var option in selectedOptions)
-            {
-                if (int.TryParse(option, out var id))
-                {
-                    SelectedIngredients.IngredientIds.Add(id);
-                }
-                else
-                {
-                    Console.WriteLine($"Failed to parse restriction ID: {option}");
-                }
-            }
-
-            Console.WriteLine($"Selected Type: {string.Join(", ", SelectedIngredients.IngredientIds)}");
-        }
-    }
-
 
     protected override async Task OnInitializedAsync()
     {
@@ -407,6 +387,18 @@
 { IngredientType.BeanOrNut, SelectedBeansOrNuts },
 { IngredientType.Condiment, SelectedCondiments },
 };
+    }
+
+    protected async Task GetRecipesByRestrictions(List<int> restrictionsIDs)
+    {
+        try
+        {
+            recipes = await RecipeService.GetRecipesByRestrictions(restrictionsIDs);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error fetching recipes: {ex.Message}");
+        }
     }
 
     protected async Task GetRestrictions()
