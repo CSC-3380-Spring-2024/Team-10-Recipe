@@ -4,8 +4,8 @@ INSERT INTO recipe (recipeID, recipeName, shortDescription, recipeInstructions, 
 (1003, 'Chicken Veggie and Rice Stir-fry', 'a quick and versatile dish where diced meat, assorted vegetables, and cooked rice are stir-fried together with flavorful sauces, offering a balanced and delicious meal', 'chicken_veggie_rice_stirfry.json', 'chicken_veggie_rice_stirfry', 30, 760.00, 23.00, 5.00, 0, 85.00, 1050.00, 65.00, 7.00, 5.00, 40.00),
 (1004, 'Salmon Sushi Bake', 'a salmon sushi bake combines seasoned sushi rice, flaked smoked salmon with spicy mayo, cucumber, avocado, and nori, all baked together and served with soy sauce, pickled ginger, and wasabi.', 'salmon_sushi_bake.json', 'salmon_sushi_bake', 30, 540, 28, 4, 0, 30, 1100, 58, 5, 6, 22),
 (1005, 'Steak, Green Beans, and Potatoes', 'savor a classic dinner of juicy steak paired with crispy roasted potatoes and tender-crisp green beans, all seasoned to perfection', 'steak_greenbeans_potatoes.json', 'steak_greenbeans_potatoes', 40, 700, 35, 12, 0.5, 115, 600, 45, 6, 3, 45),
-(1006, 'Meat Lasagna', 'savor this classic Meat Lasagna, featuring layers of Italian sausage, ground beef, rich cheeses, and a flavorful tomato sauce, all baked to perfection for a comforting dinner delight.', 'meat_lasagna.json', 'meat_lasagna', 70, 810, 40, 18, 1, 153, 1440, 63, 5.5, 11, 57.5);
-
+(1006, 'Meat Lasagna', 'savor this classic Meat Lasagna, featuring layers of Italian sausage, ground beef, rich cheeses, and a flavorful tomato sauce, all baked to perfection for a comforting dinner delight.', 'meat_lasagna.json', 'meat_lasagna', 70, 810, 40, 18, 1, 153, 1440, 63, 5.5, 11, 57.5),
+(1007, 'Creamy Vegan Pasta with Broccoli', 'a delightful blend of al dente pasta and vibrant broccoli smothered in a lush, vegan white bean sauce, enhanced with a sprinkle of crunchy pine nuts', 'creamy_vegan_pasta_broccoli.json', 'creamy_vegan_pasta_broccoli', 30, 675, 18, 2.25, 0, 0, 225, 100.5, 18, 6, 27);
 
 INSERT INTO restriction (restrictionID, restrictionName) VALUES 
 (1001, 'Low-carb'),
@@ -50,7 +50,12 @@ INSERT INTO recipe_restriction (recipeID, restrictionID) VALUES
 (1005, 1014), -- Soy-free
 (1005, 1015), -- Grain-free
 (1006, 1012), -- Nut-free
-(1006, 1014); -- Soy-free
+(1006, 1014), -- Soy-free
+(1007, 1003), -- Vegan
+(1007, 1004), -- Vegetarian
+(1007, 1011), -- Dairy-free
+(1007, 1013), -- Egg-free
+(1007, 1014); -- Soy-free
 
 
 INSERT INTO ingredient (ingredientID, ingredientName) VALUES 
@@ -75,17 +80,21 @@ INSERT INTO ingredient (ingredientID, ingredientName) VALUES
 (2013, 'Green Beans'),
 (2014, 'Onion'),
 (2015, 'Crushed tomatoes'),
+(2016, 'Broccoli'),
 (4001, 'Spaghetti Pasta'),
 (4002, 'Rice'),
 (4003, 'Brown rice'),
 (4004, 'Breadcrumbs'),
 (4005, 'Potatoes'),
 (4006, 'Lasagna noodles'),
+(4007, 'Pasta'),
 (5001, 'Parmesan cheese'),
 (5002, 'Mozzarella cheese'),
 (5003, 'Shredded cheese'),
 (5004, 'Butter'),
 (5005, 'Ricotta cheese'),
+(6001, 'Pine nuts'),
+(6002, 'White beans'),
 (7001, 'Soy sauce'),
 (7002, 'Oyster sauce'),
 (7003, 'Marinara sauce'),
@@ -93,6 +102,7 @@ INSERT INTO ingredient (ingredientID, ingredientName) VALUES
 (7005, 'Sriracha'),
 (7006, 'Tomato sauce'),
 (7007, 'Tomato paste'),
+(7008, 'Vegetable broth'),
 (8001, 'Salt'),
 (8002, 'Vegetable oil'),
 (8003, 'Black pepper'),
@@ -107,6 +117,11 @@ INSERT INTO ingredient (ingredientID, ingredientName) VALUES
 (8012, 'Dried basil leaves'),
 (8013, 'Italian seasoning'),
 (8014, 'Fennel seeds'),
+(8015, 'Garlic powder'),
+(8016, 'Lemon juice'),
+(8017, 'Nutritional yeast'),
+(8018, 'Olive oil'),
+(8019, 'Onion powder'),
 (9001, 'Furikake');
 
 
@@ -140,7 +155,6 @@ INSERT INTO recipe_ingredient (recipeID, ingredientID) VALUES
 (1003, 2006), -- Broccoli
 (1003, 2008), -- Yellow bell pepper
 (1003, 4003), -- Brown rice
-(1003, 5003), -- Shredded cheese
 (1003, 7001), -- Soy sauce
 (1003, 7002), -- Oyster sauce
 (1003, 8001), -- Salt
@@ -188,4 +202,14 @@ INSERT INTO recipe_ingredient (recipeID, ingredientID) VALUES
 (1006, 8011), -- Fresh parsley
 (1006, 8012), -- Dried basil leaves
 (1006, 8013), -- Italian seasoning
-(1006, 8014); -- Fennel seeds
+(1006, 8014), -- Fennel seeds
+(1007, 2016), -- Broccoli
+(1007, 4007), -- Pasta
+(1007, 6001), -- Pine nuts
+(1007, 6002), -- White beans
+(1007, 7008), -- Vegetable broth
+(1007, 8015), -- Garlic powder
+(1007, 8016), -- Lemon juice
+(1007, 8017), -- Nutritional yeast
+(1007, 8018), -- Olive oil
+(1007, 8019); -- Onion powder
