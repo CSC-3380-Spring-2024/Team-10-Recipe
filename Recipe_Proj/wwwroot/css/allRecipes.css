@@ -3,5 +3,12 @@
     text-align: center;
 }
 
+body{
+    background-color: #333;
+    /* color: #fff; */
+}
 
+.title {
+    color: #fff;
+}
 

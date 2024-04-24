@@ -6,7 +6,7 @@
 <link href="/css/allRecipes.css" rel="stylesheet" />
 
 <head>
-    <!-- Bootstrap CSS -->
+
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.x/css/bootstrap.min.css" rel="stylesheet">
     <style>
         #carouselControls {
@@ -56,7 +56,7 @@
     <div class="row justify-content-center"> <!-- Ensures the column below is centered -->
         <div class="container">
             <div class="row justify-content-center"> <!-- Ensures the column below is centered -->
-                <div class="col-md-8">
+                <div class="col-md-10">
                     <div id="carouselControls" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
@@ -92,7 +92,7 @@
                         <form @onsubmit="HandleFormSubmit">
                             <div class="row">
                                 <div class="col-md-4 d-flex justify-content-center align-items-center">
-                                    <h2>All Recipes</h2>
+                                    <h2 class="title">All Recipes</h2>
                                 </div>
                                 <div class="col-md-2"></div> <!-- Seems unused, consider removing if not needed -->
                                 <div class="col-md-6 d-flex justify-content-end">
