@@ -7,9 +7,9 @@
 
 <style>
 body {
-    font-family: 'Poppins', sans-serif;
+    @* font-family: 'Poppins', sans-serif;
     font-weight: normal;
-    color: #000;
+    color: #000; *@
     background-color: #f8f9fa;
     background-image:  url('/images/ella-olsson-rD3YrnhTmf0-unsplash.jpg'); ;
     background-size: cover;
@@ -19,6 +19,15 @@ body {
     margin: 0;
     padding: 0;
 }
+
+.textFont {
+    font-family: 'Poppins', sans-serif;
+    font-weight: normal;
+    color: black;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
 .centered-container {
     display: flex;
     justify-content: center;
@@ -27,7 +36,7 @@ body {
     flex-direction: column; /* Stack items vertically */
     margin: 0 auto; /* This ensures the container is centered within its parent */
     padding: 20px; 
-    max-width: fit-content; 
+    @* max-width: fit-content;  *@
     box-sizing: border-box; 
 
 }
@@ -43,12 +52,19 @@ h1, h3 {
     display: inline-block;
 }
 
+h1 {
+    max-width: 600px;
+}
+h3 {
+    max-width: 700px;
+}
+
 
 
 </style>
-<div style="height: 0.5in;"></div>
+<div style="height: 1in;"></div>
 <div class="centered-container">
-  <h1>Discover Delicious Recipes!</h1>
+  <h1 class="textFont">Discover Delicious Recipes!</h1>
 </div>
 
 <div class="container mt-3">
@@ -141,33 +157,38 @@ h1, h3 {
                 </div>
 
                 <div class="centered-container">
-                    <h3>Use the search bar to search for more ingredients!</h3>
-                    </div>
+                    <h3 class="textFont" >Use the search bar to search for more ingredients!</h3>
+                </div>
 
                 <!-- Restrictions, Search, and Submit Button Row -->
-                <div class="row justify-content-center mt-">
-                    <!-- Restrictions Dropdown -->
-                    <div class="input-group">
+                <div class="container">
+                    <div class="row justify-content-center">
                         <div class="col-md-1"></div>
-                        <div class="col-md-2">
-                            <select id="restriction-multi-select" class="form-select" multiple
-                                data-placeholder="Select Restrictions" @onchange="HandleRestrictionsChange">
-                                @foreach (var restriction in AllRestrictions)
-                                {
-                                    <option value="@restriction.RestrictionID">@restriction.RestrictionName</option>
-                                }
-                            </select>
-                        </div>
-
-                        <!-- Search Bar -->
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" @bind='searchKeywords'
-                                placeholder="Search for ingredients to add...">
-                        </div>
-
-                        <!-- Submit Button -->
-                        <div class="col-md-3">
-                            <button type="submit" class="btn btn-primary">Search</button>
+                        <div class="col-md-11">
+                            <!-- Restrictions Dropdown -->
+                            <div class="input-group">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-2">
+                                    <select id="restriction-multi-select" class="form-select" multiple
+                                        data-placeholder="Select Restrictions" @onchange="HandleRestrictionsChange">
+                                        @foreach (var restriction in AllRestrictions)
+                                        {
+                                            <option value="@restriction.RestrictionID">@restriction.RestrictionName</option>
+                                        }
+                                    </select>
+                                </div>
+                            
+                                <!-- Search Bar -->
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" @bind='searchKeywords'
+                                        placeholder="Search for ingredients to add...">
+                                </div>
+                            
+                                <!-- Submit Button -->
+                                <div class="col-md-3">
+                                    <button type="submit" class="btn btn-primary">Search</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

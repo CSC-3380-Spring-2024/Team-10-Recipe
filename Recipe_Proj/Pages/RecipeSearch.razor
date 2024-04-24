@@ -33,31 +33,38 @@ color: white;
 text-align: center;
 }
 </style>
-<div style="height: 0.5in;"></div>
+
+
+<div style="height: 1in;"></div>
 <h1>Discover Delicious Recipes!</h1>
-<div class="container mt-4">
+<div class="container mt-3">
     <div class="row justify-content-center">
         <div class="col-md-10">
             <form @onsubmit="HandleFormSubmit"> <!-- Allows Enter Key Submit -->
-                <div class="row justify-content-center">
-                    <div class="input-group mb-2">
+                <div class="container">
+                    <div class="row justify-content-center">
                         <div class="col-md-1"></div>
-                        <div class="col-lg-2">
-                            <select id="restriction-multi-select" class="form-select" multiple
-                                data-placeholder="Select Restrictions" @onchange="HandleRestrictionsChange">
-                                @foreach (var restriction in AllRestrictions)
-                                {
-                                    <option value="@restriction.RestrictionID">@restriction.RestrictionName</option>
-                                }
-                            </select>
-                        </div>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" @bind='searchKeywords'
-                                placeholder="Search for recipes...">
-                        </div>
+                        <div class="col-md-11">
+                            <div class="input-group mb-2">
+                                <div class="col-md-1"></div>
+                                <div class="col-lg-2">
+                                    <select id="restriction-multi-select" class="form-select" multiple
+                                        data-placeholder="Select Restrictions" @onchange="HandleRestrictionsChange">
+                                        @foreach (var restriction in AllRestrictions)
+                                        {
+                                            <option value="@restriction.RestrictionID">@restriction.RestrictionName</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" @bind='searchKeywords'
+                                        placeholder="Search for recipes...">
+                                </div>
 
-                        <div class="col-md-3">
-                            <button type="submit" class="btn btn-primary">Search</button> <!-- Instead of @onclick we use the HandleFormSubmit with submit type -->
+                                <div class="col-md-3">
+                                    <button type="submit" class="btn btn-primary">Search</button> <!-- Instead of @onclick we use the HandleFormSubmit with submit type -->
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
