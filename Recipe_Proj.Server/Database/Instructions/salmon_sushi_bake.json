@@ -1,0 +1,39 @@
+{
+    "steps": [
+      {
+        "title": "Cook the Sushi Rice",
+        "instructions": [
+          "Rinse the sushi rice under cold water until the water runs clear.",
+          "Combine the rinsed rice and water in a rice cooker and cook according to the manufacturer's instructions. Once cooked, let it sit for 10 minutes.",
+          "Mix rice vinegar, sugar, and salt in a small bowl until dissolved. Gently fold this mixture into the cooked rice. Allow the rice to cool to room temperature."
+        ]
+      },
+      {
+        "title": "Prepare the Salmon Mixture",
+        "instructions": [
+          "In a bowl, combine flaked smoked salmon, mayonnaise, and sriracha. Mix well."
+        ]
+      },
+      {
+        "title": "Assemble the Bake",
+        "instructions": [
+          "Preheat your oven to 200°C (390°F).",
+          "In a baking dish, evenly spread the seasoned sushi rice. Press down slightly.",
+          "Spread the salmon mixture over the rice and sprinkle a generous amount of furikake seasoning on top.",
+          "Bake in the preheated oven for 10-15 minutes, or until the top is slightly golden and heated through."
+        ]
+      },
+      {
+        "title": "Add Toppings",
+        "instructions": [
+          "Remove from the oven and top with sliced cucumber, avocado, and strips of nori."
+        ]
+      },
+      {
+        "title": "Serve",
+        "instructions": [
+          "Serve hot with soy sauce, pickled ginger, and wasabi on the side."
+        ]
+      }
+    ]
+  }  

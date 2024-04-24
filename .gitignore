@@ -104,3 +104,12 @@ Temporary Items
 ## Blazor specific
 wwwroot/dist/
 .editorconfig
+
+## Node Modules
+node_modules/*
+package-lock.json
+package.json
+
+## Ignore the icon images of the folders
+Icon?
+Icon

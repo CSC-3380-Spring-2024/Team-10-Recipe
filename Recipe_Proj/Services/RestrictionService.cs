@@ -29,4 +29,26 @@ public class RestrictionService : IRestrictionService
         var restriction = await _httpClient.GetFromJsonAsync<RestrictionDTO>($"api/Restrictions/{restrictionID}");
         return restriction ?? new RestrictionDTO();
     }
+
+    public async Task<List<RestrictionDTO>> GetAllActiveByRecipes(string searchKeywords) {
+        var restrictions = await _httpClient.GetFromJsonAsync<List<RestrictionDTO>>($"api/Restrictions/ActiveByRecipes?searchKeywords={searchKeywords}");
+        return restrictions ?? new List<RestrictionDTO>();
+    }
+
+    public async Task<List<RestrictionDTO>> GetAllActiveByIngredients(List<int> selectedIngredients) {
+        // var restrictions = await _httpClient.GetFromJsonAsync<List<RestrictionDTO>>($"api/Restrictions/ActiveByIngredients?selectedIngredients={selectedIngredients}");
+        var queryString = $"api/Restrictions/ActiveByIngredients?";
+        foreach (var id in selectedIngredients)
+        {
+            queryString += $"&selectedIngredients={id}";
+        }
+
+        var response = await _httpClient.GetAsync(queryString);
+
+        response.EnsureSuccessStatusCode();
+
+        var restrictions = await response.Content.ReadFromJsonAsync<List<RestrictionDTO>>();
+        
+        return restrictions ?? new List<RestrictionDTO>();
+    }
 }

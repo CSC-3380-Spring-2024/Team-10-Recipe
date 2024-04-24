@@ -1,0 +1,34 @@
+{
+    "steps": [
+      {
+        "title": "Cook Pasta",
+        "instructions": [
+          "Bring a large pot of salted water to a boil. Add pasta and cook according to package instructions.",
+          "In the last 2-3 minutes of cooking, add the broccoli florets to the boiling water.",
+          "Drain and set aside, reserving some pasta water."
+        ]
+      },
+      {
+        "title": "Make the Sauce",
+        "instructions": [
+          "In a blender, combine the cooked white beans, lemon juice, olive oil, nutritional yeast, onion powder, garlic powder, and vegetable broth.",
+          "Blend until smooth and creamy.",
+          "If the sauce is too thick, add a bit more broth or some reserved pasta water to achieve your desired consistency."
+        ]
+      },
+      {
+        "title": "Combine and Serve",
+        "instructions": [
+          "Return the cooked pasta and broccoli to the pot.",
+          "Pour over the creamy white bean sauce and heat over medium, stirring until everything is heated through and well coated.",
+          "Season with salt and pepper to taste."
+        ]
+      },
+      {
+        "title": "Garnish and Serve",
+        "instructions": [
+          "Serve the pasta in bowls, sprinkled with toasted pine nuts."
+        ]
+      }
+    ]
+}

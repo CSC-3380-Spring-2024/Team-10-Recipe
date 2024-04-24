@@ -173,8 +173,14 @@
     private List<RestrictionDTO> AllRestrictions = new List<RestrictionDTO>();
     private RestrictionSelectionDTO SelectedRestrictions = new RestrictionSelectionDTO();
 
+    //From Drop Down for eatch Ingredient Type
     private IngredientSelectionDTO SelectedIngredients = new IngredientSelectionDTO();
+
+    //From search bar
     private IngredientSelectionDTO IngredientsSearched = new IngredientSelectionDTO();
+
+
+
     private List<ProteinIngredient> AllProteins = new List<ProteinIngredient>();
     private IngredientSelectionDTO SelectedProteins = new IngredientSelectionDTO();
     private List<VegetableIngredient> AllVegetables = new List<VegetableIngredient>();
@@ -208,25 +214,29 @@
             IngredientsSearched.IngredientIds.Clear();
             SelectedIngredients.IngredientIds.Clear();
 
+
+            // add to SelectedIngredients
             await SearchIngredients(searchKeywords);
 
 
             // adds each type to SelectedIngredients
             AddIngredientsToSelection();
 
+            //Gets updated restrictions list
+            await GetRestrictions(SelectedIngredients.IngredientIds);
 
-            if (IngredientsSearched.IngredientIds.Count > 0 || SelectedIngredients.IngredientIds.Count > 0)
+            if (SelectedIngredients.IngredientIds.Count > 0)
             {
+                foreach (var i in SelectedIngredients.IngredientIds)
+                {
+                    IngredientsSearched.IngredientIds.Add(i);
+                }
                 if (SelectedRestrictions.RestrictionIds.Count > 0)
                 {
-                    foreach (var i in SelectedIngredients.IngredientIds)
-                    {
-                        IngredientsSearched.IngredientIds.Add(i);
-                    }
-                    Console.WriteLine($"Restrictions Searching...");
+                    @* Console.WriteLine($"Restrictions Searching..."); *@
                     foreach (var id in IngredientsSearched.IngredientIds)
                     {
-                        Console.WriteLine($"{id}");
+                        @* Console.WriteLine($"Ingredient: {id}"); *@
                     }
                     recipes = await RecipeService.SearchBySelectedIngredientsWithRestrictions(IngredientsSearched,
                     SelectedRestrictions.RestrictionIds);
@@ -234,14 +244,10 @@
                 }
                 else
                 {
-                    foreach (var i in SelectedIngredients.IngredientIds)
-                    {
-                        IngredientsSearched.IngredientIds.Add(i);
-                    }
-                    Console.WriteLine($"Ingredients Searching...");
+                    @* Console.WriteLine($"Ingredients Searching..."); *@
                     foreach (var id in IngredientsSearched.IngredientIds)
                     {
-                        Console.WriteLine($"{id}");
+                        @* Console.WriteLine($"Ingredient => {id}"); *@
                     }
                     recipes = await RecipeService.SearchRecipesBySelectedIngredients(IngredientsSearched);
                 }
@@ -250,6 +256,10 @@
             {
                 recipes = new(); // clear the list
                 searchKeywords = string.Empty;
+                await GetRestrictions();
+                if (SelectedRestrictions.RestrictionIds.Count > 0) {
+                    await GetRecipesByRestrictions(SelectedRestrictions.RestrictionIds);
+                }
             }
 
         }
@@ -264,11 +274,14 @@
     {
         if (searchKeywords != string.Empty)
         {
+            @* Console.WriteLine("searchKeywords != string.Empty"); *@
             var ingredients = await IngredientService.SearchIngredientsForKeyword(searchKeywords);
 
             foreach (var i in ingredients)
             {
-                IngredientsSearched.IngredientIds.Add(i.IngredientID);
+                @* Console.WriteLine($"***{i.IngredientID}"); *@
+                @* IngredientsSearched.IngredientIds.Add(i.IngredientID); *@
+                SelectedIngredients.IngredientIds.Add(i.IngredientID);
             }
         }
     }
@@ -286,6 +299,7 @@
                 {
                     foreach (var id in ids)
                     {
+                        @* Console.WriteLine($"{id}****"); *@
                         SelectedIngredients.IngredientIds.Add(id);
                     }
                 }
@@ -332,7 +346,6 @@
             Console.WriteLine($"Selected Restrictions: {string.Join(", ", SelectedRestrictions.RestrictionIds)}");
         }
 
-        @* await SearchRecipes(); *@
     }
 
     private void HandleIngredientsChange(ChangeEventArgs e, IngredientType type)
@@ -358,30 +371,6 @@
             Console.WriteLine($"Selected Type: {string.Join(", ", ingredientMap[type].IngredientIds)}");
         }
     }
-    private void HandleProteinsChange(ChangeEventArgs e)
-    {
-        var selectedOptions = e.Value as IEnumerable<string>;
-        if (selectedOptions != null)
-        {
-            // Clear the existing list
-            SelectedIngredients.IngredientIds.Clear();
-
-            foreach (var option in selectedOptions)
-            {
-                if (int.TryParse(option, out var id))
-                {
-                    SelectedIngredients.IngredientIds.Add(id);
-                }
-                else
-                {
-                    Console.WriteLine($"Failed to parse restriction ID: {option}");
-                }
-            }
-
-            Console.WriteLine($"Selected Type: {string.Join(", ", SelectedIngredients.IngredientIds)}");
-        }
-    }
-
 
     protected override async Task OnInitializedAsync()
     {
@@ -400,10 +389,23 @@
 };
     }
 
+    protected async Task GetRecipesByRestrictions(List<int> restrictionsIDs)
+    {
+        try
+        {
+            recipes = await RecipeService.GetRecipesByRestrictions(restrictionsIDs);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error fetching recipes: {ex.Message}");
+        }
+    }
+
     protected async Task GetRestrictions()
     {
         try
         {
+            @* Console.WriteLine($"EMPTYYY"); *@
             AllRestrictions = await RestrictionService.GetAllRestrictions();
         }
         catch (Exception ex)
@@ -411,6 +413,23 @@
             Console.WriteLine($"Error fetching restrictions: {ex.Message}");
         }
     }
+
+    protected async Task GetRestrictions(List<int> selectedIngredients)
+    {
+        try
+        {
+            @* Console.WriteLine($"NOTT EMPTYY"); *@
+            foreach (var id in selectedIngredients) {
+               @* Console.WriteLine($"{id} + || ahhh");  *@
+            }
+            AllRestrictions = await RestrictionService.GetAllActiveByIngredients(selectedIngredients);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error fetching restrictions: {ex.Message}");
+        }
+    }
+
     protected async Task GetIngredients()
     {
         try
