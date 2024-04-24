@@ -80,7 +80,6 @@ INSERT INTO ingredient (ingredientID, ingredientName) VALUES
 (2013, 'Green Beans'),
 (2014, 'Onion'),
 (2015, 'Crushed tomatoes'),
-(2016, 'Broccoli'),
 (4001, 'Spaghetti Pasta'),
 (4002, 'Rice'),
 (4003, 'Brown rice'),
@@ -203,7 +202,7 @@ INSERT INTO recipe_ingredient (recipeID, ingredientID) VALUES
 (1006, 8012), -- Dried basil leaves
 (1006, 8013), -- Italian seasoning
 (1006, 8014), -- Fennel seeds
-(1007, 2016), -- Broccoli
+(1007, 2006), -- Broccoli
 (1007, 4007), -- Pasta
 (1007, 6001), -- Pine nuts
 (1007, 6002), -- White beans

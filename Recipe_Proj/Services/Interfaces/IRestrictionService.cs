@@ -11,4 +11,8 @@ public interface IRestrictionService
 
     Task<RestrictionDTO> GetRestrictionById(int restrictionID);
 
+    Task<List<RestrictionDTO>> GetAllActiveByRecipes(string searchKeywords);
+
+    Task<List<RestrictionDTO>> GetAllActiveByIngredients(List<int> selectedIngredients);
+
 }

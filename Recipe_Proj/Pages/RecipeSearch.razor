@@ -87,23 +87,32 @@
         clicked = true;
         waiting = true;
 
+        
+        @* await RestrictionService.GetAllActiveByRecipes(searchKeywords); *@
+
         if (searchKeywords == string.Empty) {
             recipes = new();
+            await GetRestrictions();
+            
         }
         else {
             try
             {
+
+                // get new restrictions list
+                await GetRestrictions(searchKeywords);
+
                 // Filtering out recipes
                 if (SelectedRestrictions.RestrictionIds != null)
                 {
                     if (SelectedRestrictions.RestrictionIds.Count > 0)
                     {
-                        Console.WriteLine($"Restrictions");
+                        @* Console.WriteLine($"Restrictions"); *@
                         recipes = await RecipeService.SearchRecipesWithRestrictions(searchKeywords, SelectedRestrictions.RestrictionIds);
                     }
                     else
                     {
-                        Console.WriteLine($"Keywords");
+                        @* Console.WriteLine($"Keywords"); *@
                         recipes = await RecipeService.SearchRecipesByKeywords(searchKeywords);
                     }
                 }
@@ -150,7 +159,6 @@
             Console.WriteLine($"Selected Restrictions: {string.Join(", ", SelectedRestrictions.RestrictionIds)}");
         }
 
-        @* await SearchRecipes(); *@
     }
 
 
@@ -165,6 +173,18 @@
         try
         {
             AllRestrictions = await RestrictionService.GetAllRestrictions();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error fetching restrictions: {ex.Message}");
+        }
+    }
+
+    protected async Task GetRestrictions(string searchKeywords)
+    {
+        try
+        {
+            AllRestrictions = await RestrictionService.GetAllActiveByRecipes(searchKeywords);
         }
         catch (Exception ex)
         {
