@@ -4,11 +4,17 @@
 }
 
 body{
-    background-color: #333;
+    /* background-color: #333; */
+    background-color: #99bbab;
     /* color: #fff; */
 }
 
 .title {
     color: #fff;
+    text-shadow: 
+            -.5px -.5px 0 #000,  
+            .5px -.5px 0 #000,
+            -.5px .5px 0 #000,
+            .5px .5px 0 #000; /* Black border effect */
 }
 
