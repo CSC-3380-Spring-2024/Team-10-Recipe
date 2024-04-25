@@ -1,21 +1,30 @@
 ﻿<style>
     .navbar .nav-link.active {
-        color: white !important; /* Lights up active page link in blue */
+        color: #ffffff !important; /* Lights up active page link in blue */
         text-shadow: 
             -.5px -.5px 0 #000,  
             .5px -.5px 0 #000,
             -.5px .5px 0 #000,
             .5px .5px 0 #000;
     }
+    .navBarFont {
+        font-weight: 600 !important;
+        color: black !important;
+        text-shadow: 
+            -.5px -.5px 0 #ffffff,  
+            .5px -.5px 0 #ffffff,
+            -.5px .5px 0 #ffffff,
+            .5px .5px 0 #ffffff;
+    }
 </style>
 
 
 
-<nav class="navbar navbar-expand-md navbar-light bg-success fixed-top">
+<nav class="navbar navbar-expand-md navbar-light bg-transparent fixed-top">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">
             <img src="favicon_transparent.png" alt="" width="32" height="32">
-            <span>Pushin' P<span class="fs-6">antry</span></span>
+            <span class="navBarFont">Pushin' P<span class="fs-6 navBarFont">antry</span></span>
         </a>
         <button class="navbar-toggler @NavButtonCssClass" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-label="Toggle navigation" @onclick="ToggleNavMenu">
@@ -24,27 +33,27 @@
         <div class="collapse navbar-collapse @NavBarCssClass" id="navbarCollapse" @onclick="ToggleNavMenu">
             <ul class="navbar-nav ms-auto mb-2 mb-md-0">
                 <li class="nav-item">
-                    <NavLink class="nav-link" href="/" Match="NavLinkMatch.All">
+                    <NavLink class="nav-link navBarFont" href="/" Match="NavLinkMatch.All">
                         <span class="oi oi-home" aria-hidden="true"></span> Home
                     </NavLink>
                 </li>
                 <li class="nav-item">
-                    <NavLink class="nav-link" href="allRecipes">
+                    <NavLink class="nav-link navBarFont" href="allRecipes">
                         <span class="oi oi-plus" aria-hidden="true"></span> All Recipes
                     </NavLink>
                 </li>
                 <li class="nav-item">
-                    <NavLink class="nav-link" href="recipeSearch">
+                    <NavLink class="nav-link navBarFont" href="recipeSearch">
                         <span class="oi oi-list-rich" aria-hidden="true"></span> Recipe Search
                     </NavLink>
                 </li>
                 <li class="nav-item">
-                    <NavLink class="nav-link" href="ingredientSearch">
+                    <NavLink class="nav-link navBarFont" href="ingredientSearch">
                         <span class="oi oi-list-rich" aria-hidden="true"></span> Ingredients Search
                     </NavLink>
                 </li>
                 <li class="nav-item">
-                    <NavLink class="nav-link" href="aboutUs">
+                    <NavLink class="nav-link navBarFont" href="aboutUs">
                         <span class="oi oi-list-rich" aria-hidden="true"></span> About Us
                     </NavLink>
                 </li>

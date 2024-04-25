@@ -3,41 +3,60 @@
 @layout MainLayout
 
 <link href="/css/cards.css" rel="stylesheet" />
-<link href="css/recipeSearch.css" rel="stylesheet" />
+@* <link href="css/recipeSearch.css" rel="stylesheet" /> *@
 <style>
     body {
-    font-family: 'Poppins', sans-serif; 
-    font-weight: normal; 
-    color: #000; 
-    background-image: url('/images/brooke-lark-jUPOXXRNdcA-unsplash.jpg'); 
-    background-size: cover;
-    background-position: center 20%;
-    background-repeat: no-repeat;
-    background-color: #f8f9fa;
-    margin: 0 auto 20px;
-    padding: 20px;
-}
-h1 {
-    color: black; 
-    text-align: center; 
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.5); 
-    backdrop-filter: blur(5px); 
-    border-radius: 10px;
-    max-width: 700px; 
-    margin: 0 auto 20px; 
-    display: block; 
-}
-.no-recipes-message {
-color: white; 
-text-align: center;
-}
+        background-image: url('/images/brooke-lark-jUPOXXRNdcA-unsplash.jpg'); 
+        background-size: cover;
+        background-position: center 20%;
+        background-repeat: no-repeat;
+        background-color: #f8f9fa;
+        margin: 0 auto 20px;
+        padding: 20px;
+    }
+    .textFont {
+        font-weight: normal;
+        font-size: 50px;
+        color: black;
+        text-align: center;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .centered-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column; 
+        margin: 0 auto; 
+        padding: 20px; 
+        box-sizing: border-box; 
+
+    }
+
+    .shadowww {
+        margin: 0 auto 20px; 
+        padding: 10px; 
+        background-color: rgba(255, 255, 255, 0.5); 
+        backdrop-filter: blur(5px);
+        border-radius: 10px;
+    }
+
+    .h1_Width {
+        max-width: 800px;
+    }
+
+    .no-recipes-message {
+    color: white; 
+    text-align: center;
+    }
 </style>
 
 
 <div style="height: 1in;"></div>
-<h1>Discover Delicious Recipes!</h1>
+<div class="centered-container">
+  <h1 class="textFont shadowww h1_Width">Discover Delicious Recipes!</h1>
+</div>
 <div class="container mt-3">
     <div class="row justify-content-center">
         <div class="col-md-10">

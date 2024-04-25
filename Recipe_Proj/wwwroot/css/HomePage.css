@@ -1,7 +1,5 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #fff;
-    /* background-image: url('/images/home-page-background.png'); */
     background-image: url('/images/recipeHomePageBackground.jpeg');
     background-size: cover;
     background-position: center;
@@ -48,4 +46,4 @@ body {
 
 .btn.custom-btn:hover {
     box-shadow: 4px 4px 10px #024816;
-}
+} 

@@ -3,68 +3,68 @@
 @layout MainLayout
 
 <link href="/css/cards.css" rel="stylesheet" />
-<link href="/css/ingredientSearch.css" rel="stylesheet" />
+@* <link href="/css/ingredientSearch.css" rel="stylesheet" /> *@
 
 <style>
-body {
-    @* font-family: 'Poppins', sans-serif;
-    font-weight: normal;
-    color: #000; *@
-    background-color: #f8f9fa;
-    background-image:  url('/images/ella-olsson-rD3YrnhTmf0-unsplash.jpg'); ;
-    background-size: cover;
-    background-position: center 20%;
-    background-repeat: no-repeat;
-    background-color: #f8f9fa;
-    margin: 0;
-    padding: 0;
-}
+    body {
+        font-weight: normal; 
+        background-color: #f8f9fa;
+        background-image:  url('/images/ella-olsson-rD3YrnhTmf0-unsplash.jpg'); ;
+        background-size: cover;
+        background-position: center 20%;
+        background-repeat: no-repeat;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+    }
 
-.textFont {
-    font-family: 'Poppins', sans-serif;
-    font-weight: normal;
-    color: black;
-    text-align: center;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
+    .textFont {
+        @* font-family: 'Poppins', sans-serif; *@
+        font-weight: normal;
+        color: black;
+        text-align: center;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
 
-.centered-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    flex-direction: column; /* Stack items vertically */
-    margin: 0 auto; /* This ensures the container is centered within its parent */
-    padding: 20px; 
-    @* max-width: fit-content;  *@
-    box-sizing: border-box; 
+    .centered-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column; /* Stack items vertically */
+        margin: 0 auto; /* This ensures the container is centered within its parent */
+        padding: 20px; 
+        @* max-width: fit-content;  *@
+        box-sizing: border-box; 
 
-}
+    }
 
-h1, h3 {
-    width: 100%; 
-    margin: 0 auto 20px; 
-    padding: 10px; 
-    background-color: rgba(255, 255, 255, 0.5); 
-    backdrop-filter: blur(5px);
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    display: inline-block;
-}
+    .shadowww {
+        @* width: 100%;  *@
+        margin: 0 auto 20px; 
+        padding: 10px; 
+        background-color: rgba(255, 255, 255, 0.5); 
+        backdrop-filter: blur(5px);
+        border-radius: 10px;
+        @* box-shadow: 0 4px 6px rgba(0,0,0,0.1); *@
+        @* display: inline-block; *@
+    }
 
-h1 {
-    max-width: 600px;
-}
-h3 {
-    max-width: 700px;
-}
-
-
+    .h1_Width {
+        font-size: 50px;
+        max-width: 800px;
+    }
+    .h3_Width {
+        max-width: 800px;
+    }
 
 </style>
+
+
+
 <div style="height: 1in;"></div>
 <div class="centered-container">
-  <h1 class="textFont">Discover Delicious Recipes!</h1>
+  <h1 class="textFont shadowww h1_Width">Discover Delicious Recipes!</h1>
 </div>
 
 <div class="container mt-3">
@@ -157,7 +157,7 @@ h3 {
                 </div>
 
                 <div class="centered-container">
-                    <h3 class="textFont" >Use the search bar to search for more ingredients!</h3>
+                    <h3 class="textFont shadowww h3_Width">Use the search bar to search for more ingredients!</h3>
                 </div>
 
                 <!-- Restrictions, Search, and Submit Button Row -->

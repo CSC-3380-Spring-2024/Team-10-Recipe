@@ -4,3 +4,14 @@
     border: 1px solid #ccc !important;
     border-radius: 8px !important;
 }
+body {
+    background-image: url('/images/detailedRecipeBakcground.jpeg');
+    background-size: 100vw 100vh;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+}
+
+.myBackground {
+    background-color: #98b596;
+    border-radius: 1%;
+}
