@@ -33,7 +33,7 @@ ScaffoldingReadMe.txt
 ## Visual Studio Code
 .history/
 .settings/
-tasks.json
+# tasks.json
 launch.json
 
 ## Visual Studio for Mac
