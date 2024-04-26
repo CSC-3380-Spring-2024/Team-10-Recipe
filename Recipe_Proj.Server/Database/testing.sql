@@ -10,8 +10,3 @@ select * from recipe_restriction;
 
 
 -- select * from __EFMigrationsHistory;
-
-
--- select recipeInstructions
--- from recipe
--- where recipeID = "1001";

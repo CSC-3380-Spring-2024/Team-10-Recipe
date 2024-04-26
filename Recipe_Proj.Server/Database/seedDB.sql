@@ -5,7 +5,9 @@ INSERT INTO recipe (recipeID, recipeName, shortDescription, recipeInstructions, 
 (1004, 'Salmon Sushi Bake', 'a salmon sushi bake combines seasoned sushi rice, flaked smoked salmon with spicy mayo, cucumber, avocado, and nori, all baked together and served with soy sauce, pickled ginger, and wasabi.', 'salmon_sushi_bake.json', 'salmon_sushi_bake', 30, 540, 28, 4, 0, 30, 1100, 58, 5, 6, 22),
 (1005, 'Steak, Green Beans, and Potatoes', 'savor a classic dinner of juicy steak paired with crispy roasted potatoes and tender-crisp green beans, all seasoned to perfection', 'steak_greenbeans_potatoes.json', 'steak_greenbeans_potatoes', 40, 700, 35, 12, 0.5, 115, 600, 45, 6, 3, 45),
 (1006, 'Meat Lasagna', 'savor this classic Meat Lasagna, featuring layers of Italian sausage, ground beef, rich cheeses, and a flavorful tomato sauce, all baked to perfection for a comforting dinner delight.', 'meat_lasagna.json', 'meat_lasagna', 70, 810, 40, 18, 1, 153, 1440, 63, 5.5, 11, 57.5),
-(1007, 'Creamy Vegan Pasta with Broccoli', 'a delightful blend of al dente pasta and vibrant broccoli smothered in a lush, vegan white bean sauce, enhanced with a sprinkle of crunchy pine nuts', 'creamy_vegan_pasta_broccoli.json', 'creamy_vegan_pasta_broccoli', 30, 675, 18, 2.25, 0, 0, 225, 100.5, 18, 6, 27);
+(1007, 'Creamy Vegan Pasta with Broccoli', 'a delightful blend of al dente pasta and vibrant broccoli smothered in a lush, vegan white bean sauce, enhanced with a sprinkle of crunchy pine nuts', 'creamy_vegan_pasta_broccoli.json', 'creamy_vegan_pasta_broccoli', 30, 675, 18, 2.25, 0, 0, 225, 100.5, 18, 6, 27),
+(1008, 'Blueberry Pie', 'a classic dessert featuring a flaky crust filled with sweet and tart blueberries, subtly enhanced with lemon zest and cinnamon for a delightful flavor', 'blueberry_pie.json', 'blueberry_pie', 50, 330, 15, 9, 0, 80, 300, 45, 3, 22, 3);
+
 
 INSERT INTO restriction (restrictionID, restrictionName) VALUES 
 (1001, 'Low-carb'),
@@ -55,7 +57,10 @@ INSERT INTO recipe_restriction (recipeID, restrictionID) VALUES
 (1007, 1004), -- Vegetarian
 (1007, 1011), -- Dairy-free
 (1007, 1013), -- Egg-free
-(1007, 1014); -- Soy-free
+(1007, 1014), -- Soy-free
+(1008, 1004), -- Vegetarian
+(1008, 1012), -- Nut-free
+(1008, 1014); -- Soy-free
 
 
 INSERT INTO ingredient (ingredientID, ingredientName) VALUES 
@@ -80,6 +85,9 @@ INSERT INTO ingredient (ingredientID, ingredientName) VALUES
 (2013, 'Green Beans'),
 (2014, 'Onion'),
 (2015, 'Crushed tomatoes'),
+(3001, 'Blueberries'),
+(3002, 'Lemon juice'),
+(3003, 'Lemon zest'),
 (4001, 'Spaghetti Pasta'),
 (4002, 'Rice'),
 (4003, 'Brown rice'),
@@ -87,11 +95,13 @@ INSERT INTO ingredient (ingredientID, ingredientName) VALUES
 (4005, 'Potatoes'),
 (4006, 'Lasagna noodles'),
 (4007, 'Pasta'),
+(4008, 'All-purpose flour'),
 (5001, 'Parmesan cheese'),
 (5002, 'Mozzarella cheese'),
 (5003, 'Shredded cheese'),
 (5004, 'Butter'),
 (5005, 'Ricotta cheese'),
+(5006, 'Unsalted butter'),
 (6001, 'Pine nuts'),
 (6002, 'White beans'),
 (7001, 'Soy sauce'),
@@ -121,6 +131,8 @@ INSERT INTO ingredient (ingredientID, ingredientName) VALUES
 (8017, 'Nutritional yeast'),
 (8018, 'Olive oil'),
 (8019, 'Onion powder'),
+(8020, 'Cinnamon'),
+(8021, 'Cornstarch'),
 (9001, 'Furikake');
 
 
@@ -211,4 +223,14 @@ INSERT INTO recipe_ingredient (recipeID, ingredientID) VALUES
 (1007, 8016), -- Lemon juice
 (1007, 8017), -- Nutritional yeast
 (1007, 8018), -- Olive oil
-(1007, 8019); -- Onion powder
+(1007, 8019), -- Onion powder
+(1008, 1002), -- Egg
+(1008, 3001), -- Blueberries
+(1008, 3002), -- Lemon juice
+(1008, 3003), -- Lemon zest
+(1008, 4008), -- All-purpose flour
+(1008, 5006), -- Unsalted butter
+(1008, 8001), -- Salt
+(1008, 8010), -- Sugar
+(1008, 8020), -- Cinnamon
+(1008, 8021); -- Cornstarch

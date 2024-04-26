@@ -1,0 +1,33 @@
+{
+    "steps": [
+        {
+            "title": "Prepare the Pie Crust",
+            "instructions": [
+                "In a large bowl, mix together flour, salt, and sugar. Add butter and blend until the mixture resembles coarse crumbs.",
+                "Gradually add ice water, stirring until the dough comes together. Divide into two balls, flatten into disks, and refrigerate for at least 1 hour."
+            ]
+        },
+        {
+            "title": "Make the Filling",
+            "instructions": [
+                "In a mixing bowl, combine blueberries, sugar, cornstarch, lemon juice, lemon zest, and cinnamon. Toss gently and set aside."
+            ]
+        },
+        {
+            "title": "Assemble the Pie",
+            "instructions": [
+                "Roll out one disk of dough to fit a 9-inch pie plate. Transfer dough to the pie plate and trim the edges.",
+                "Pour the blueberry filling into the crust. Roll out the second disk and cover the filling. Trim and crimp the edges to seal.",
+                "Cut slits in the top crust to allow steam to escape. Brush the top with the egg wash."
+            ]
+        },
+        {
+            "title": "Bake",
+            "instructions": [
+                "Preheat oven to 400°F (200°C).",
+                "Place the pie on a baking sheet and bake for 50 minutes, or until the crust is golden brown and the filling is bubbly.",
+                "Let cool before serving."
+            ]
+        }
+    ]
+}
