@@ -264,6 +264,6 @@ INSERT INTO recipe_restriction (recipeID, restrictionID) VALUES
 (1008, 1004), -- Vegetarian
 (1008, 1012), -- Nut-free
 (1008, 1014), -- Soy-free
-(1008, 1009), -- High-Protein
 (1009, 1012), -- Nut-free	
-(1009, 1014); -- Soy-free
+(1009, 1014), -- Soy-free
+(1009, 1009); -- High-Protein
