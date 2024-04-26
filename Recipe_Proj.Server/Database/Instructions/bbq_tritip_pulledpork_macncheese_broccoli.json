@@ -1,0 +1,32 @@
+{
+    "steps": [
+      {
+        "title": "Prepare the BBQ Tri Tip",
+        "instructions": [
+          "Rub the tri tip with a mixture of salt, black pepper, garlic powder, and smoked paprika.",
+          "Sear the tri tip on all sides over high heat on a grill, then reduce heat to medium and cook until desired doneness."
+        ]
+      },
+      {
+        "title": "Make BBQ Pulled Pork",
+        "instructions": [
+          "Season the pork shoulder with a BBQ spice mix and place it in a slow cooker.",
+          "Add apple cider vinegar and BBQ sauce, then cook on low for 8 hours until tender. Shred with forks."
+        ]
+      },
+      {
+        "title": "Cook Mac and Cheese",
+        "instructions": [
+          "Cook elbow macaroni according to package instructions, drain.",
+          "In a saucepan, melt butter and stir in flour to create a roux. Gradually add milk, stirring until thickened. Mix in grated cheddar and mix with macaroni."
+        ]
+      },
+      {
+        "title": "Roast Vegetables",
+        "instructions": [
+          "Chop broccoli into florets, toss with olive oil, salt, and pepper.",
+          "Roast in a preheated oven at 400°F (200°C) until edges are crispy and browned."
+        ]
+      }
+    ]
+}
