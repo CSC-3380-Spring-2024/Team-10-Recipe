@@ -2,13 +2,13 @@ INSERT INTO recipe (recipeID, recipeName, shortDescription, recipeInstructions, 
 (1001, 'Chicken Parmesan', 'a classic Italian-American dish consisting of breaded and fried chicken cutlets topped with marinara sauce and melted mozzarella cheese', 'chicken_parmesan.json', 'chicken_parmesan', 45, 845, 37.3, 10.8, 0, 305, 1173, 66.6, 4.8, 8.2, 56),
 (1002, 'Chicken Fried Rice', 'a savory Asian dish made by stir-frying cooked rice with diced chicken, vegetables, eggs, and soy sauce, creating a flavorful and satisfying meal', 'chicken_fried_rice.json', 'chicken_fried_rice', 60, 700, 20, 4, 0, 170, 1600, 90, 4, 6, 40),
 (1003, 'Chicken Veggie and Rice Stir-fry', 'a quick and versatile dish where diced meat, assorted vegetables, and cooked rice are stir-fried together with flavorful sauces, offering a balanced and delicious meal', 'chicken_veggie_rice_stirfry.json', 'chicken_veggie_rice_stirfry', 30, 760.00, 23.00, 5.00, 0, 85.00, 1050.00, 65.00, 7.00, 5.00, 40.00),
-(1004, 'Salmon Sushi Bake', 'a salmon sushi bake combines seasoned sushi rice, flaked smoked salmon with spicy mayo, cucumber, avocado, and nori, all baked together and served with soy sauce, pickled ginger, and wasabi.', 'salmon_sushi_bake.json', 'salmon_sushi_bake', 30, 540, 28, 4, 0, 30, 1100, 58, 5, 6, 22),
+(1004, 'Salmon Sushi Bake', 'a salmon sushi bake combines seasoned sushi rice, flaked smoked salmon with spicy mayo, cucumber, avocado, and nori, all baked together and served with soy sauce, pickled ginger, and wasabi', 'salmon_sushi_bake.json', 'salmon_sushi_bake', 30, 540, 28, 4, 0, 30, 1100, 58, 5, 6, 22),
 (1005, 'Steak, Green Beans, and Potatoes', 'savor a classic dinner of juicy steak paired with crispy roasted potatoes and tender-crisp green beans, all seasoned to perfection', 'steak_greenbeans_potatoes.json', 'steak_greenbeans_potatoes', 40, 700, 35, 12, 0.5, 115, 600, 45, 6, 3, 45),
-(1006, 'Meat Lasagna', 'savor this classic Meat Lasagna, featuring layers of Italian sausage, ground beef, rich cheeses, and a flavorful tomato sauce, all baked to perfection for a comforting dinner delight.', 'meat_lasagna.json', 'meat_lasagna', 70, 810, 40, 18, 1, 153, 1440, 63, 5.5, 11, 57.5),
+(1006, 'Meat Lasagna', 'savor this classic Meat Lasagna, featuring layers of Italian sausage, ground beef, rich cheeses, and a flavorful tomato sauce, all baked to perfection for a comforting dinner delight', 'meat_lasagna.json', 'meat_lasagna', 70, 810, 40, 18, 1, 153, 1440, 63, 5.5, 11, 57.5),
 (1007, 'Creamy Vegan Pasta with Broccoli', 'a delightful blend of al dente pasta and vibrant broccoli smothered in a lush, vegan white bean sauce, enhanced with a sprinkle of crunchy pine nuts', 'creamy_vegan_pasta_broccoli.json', 'creamy_vegan_pasta_broccoli', 30, 675, 18, 2.25, 0, 0, 225, 100.5, 18, 6, 27),
 (1008, 'Blueberry Pie', 'a classic dessert featuring a flaky crust filled with sweet and tart blueberries, subtly enhanced with lemon zest and cinnamon for a delightful flavor', 'blueberry_pie.json', 'blueberry_pie', 50, 330, 15, 9, 0, 80, 300, 45, 3, 22, 3),
-(1009, 'BBQ Tri-Tip, Pulled Pork, Mac n Cheese, Roasted Vegetables', 'a hearty meal featuring succulent BBQ tri tip, tender pulled pork, creamy mac and cheese, and roasted broccoli, offering a satisfying balance of flavors and textures', 'bbq_tritip_pulledpork_macncheese_broccoli.json', 'bbq_tritip_pulledpork_macncheese_broccoli', 120, 970, 58, 22, 0, 225, 870, 52, 5, 8, 68);
-
+(1009, 'BBQ Tri-Tip, Pulled Pork, Mac n Cheese, Roasted Vegetables', 'a hearty meal featuring succulent BBQ tri tip, tender pulled pork, creamy mac and cheese, and roasted broccoli, offering a satisfying balance of flavors and textures', 'bbq_tritip_pulledpork_macncheese_broccoli.json', 'bbq_tritip_pulledpork_macncheese_broccoli', 120, 970, 58, 22, 0, 225, 870, 52, 5, 8, 68),
+(1010, 'Pork Chashu Ramen', 'a rich Japanese noodle soup featuring tender slices of braised pork belly, served in a flavorful broth with ramen noodles, soft-boiled eggs, and fresh green onions', 'pork_chashu_ramen.json', 'pork_chashu_ramen', 180, 650, 50, 20, 0, 120, 850, 5, 0, 3, 35);
 
 
 
@@ -21,6 +21,7 @@ INSERT INTO ingredient (ingredientID, ingredientName) VALUES
 (1006, 'Italian sausage'),
 (1007, 'Tri tip'),
 (1008, 'Pork shoulder'),
+(1009, 'Pork belly'),
 (2001, 'Basil leaves'),
 (2002, 'Red bell pepper'),
 (2003, 'Green onions'),
@@ -36,6 +37,7 @@ INSERT INTO ingredient (ingredientID, ingredientName) VALUES
 (2013, 'Green Beans'),
 (2014, 'Onion'),
 (2015, 'Crushed tomatoes'),
+(2016, 'Ginger'),
 (3001, 'Blueberries'),
 (3002, 'Lemon juice'),
 (3003, 'Lemon zest'),
@@ -68,6 +70,7 @@ INSERT INTO ingredient (ingredientID, ingredientName) VALUES
 (7008, 'Vegetable broth'),
 (7009, 'BBQ sauce'),
 (7010, 'Apple cider vinegar'),
+(7011, 'Mirin'),
 (8001, 'Salt'),
 (8002, 'Vegetable oil'),
 (8003, 'Black pepper'),
@@ -91,7 +94,8 @@ INSERT INTO ingredient (ingredientID, ingredientName) VALUES
 (8021, 'Cornstarch'),
 (8022, 'Smoked paprika'),
 (8023, 'BBQ spice mix'),
-(9001, 'Furikake');
+(9001, 'Furikake'),
+(9002, 'Sake');
 
 
 
@@ -208,7 +212,16 @@ INSERT INTO recipe_ingredient (recipeID, ingredientID) VALUES
 (1009, 8015), -- Garlic powder
 (1009, 8018), -- Olive oil
 (1009, 8022), -- Smoked paprika
-(1009, 8023); -- BBQ spice mix
+(1009, 8023), -- BBQ spice mix
+(1010, 1009), -- Pork belly
+(1010, 2003), -- Green onions
+(1010, 2016), -- Ginger
+(1010, 7001), -- Soy sauce
+(1010, 7011), -- Mirin
+(1010, 8006), -- Garlic
+(1010, 8010), -- Sugar
+(1010, 9002); -- Sake
+
 
 
 INSERT INTO restriction (restrictionID, restrictionName) VALUES 
@@ -266,4 +279,7 @@ INSERT INTO recipe_restriction (recipeID, restrictionID) VALUES
 (1008, 1014), -- Soy-free
 (1009, 1012), -- Nut-free	
 (1009, 1014), -- Soy-free
-(1009, 1009); -- High-Protein
+(1009, 1009), -- High-Protein
+(1010, 1011), -- Dairy-free
+(1010, 1012), -- Nut-free
+(1010, 1013); -- Egg-free

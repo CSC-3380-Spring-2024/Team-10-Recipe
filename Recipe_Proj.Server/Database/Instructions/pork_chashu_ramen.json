@@ -1,0 +1,33 @@
+{
+    "steps": [
+      {
+        "title": "Prepare the Pork Belly",
+        "instructions": [
+          "Roll the pork belly tightly and tie with butcher's twine to secure.",
+          "Sear the pork belly roll on all sides in a hot, lightly oiled pan until golden brown."
+        ]
+      },
+      {
+        "title": "Make the Braising Sauce",
+        "instructions": [
+          "In the same pan, add minced garlic and ginger, sautéing until fragrant.",
+          "Pour in soy sauce, mirin, sake, and water, then add sugar, stirring to dissolve."
+        ]
+      },
+      {
+        "title": "Braise the Pork",
+        "instructions": [
+          "Place the seared pork belly into the braising sauce.",
+          "Add green onions and bring to a simmer.",
+          "Cover and cook on low heat for 2-3 hours until the pork is tender."
+        ]
+      },
+      {
+        "title": "Finish and Serve",
+        "instructions": [
+          "Remove the pork from the braising liquid and let it rest before slicing.",
+          "Strain the braising sauce and reduce to a thick glaze to coat the sliced pork."
+        ]
+      }
+    ]
+}
