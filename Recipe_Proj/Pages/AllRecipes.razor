@@ -57,18 +57,14 @@
             <div class="row justify-content-center"> 
                 <div class="col-md-10">
                     <div id="carouselControls" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="/RecipeImages/chicken_fried_rice_detailed.jpg" class="d-block w-100"
-                                    alt="...">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="/RecipeImages/chicken_parmesan_detailed.jpg" class="d-block w-100" alt="...">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="/RecipeImages/chicken_veggie_rice_stirfry_detailed.jpg" class="d-block w-100"
-                                    alt="...">
-                            </div>
+                       <div class="carousel-inner">
+                            @for (int i = 0; i < recipes.Count; i++) {
+                                <div class="carousel-item @(i == 0 ? "active" : "")">
+                                    <img src="@($"RecipeImages/{recipes[i].RecipeImage}_thumb.jpg")" 
+                                        alt="@($"Image of {recipes[i].RecipeName}")" 
+                                        class="d-block w-100">
+                                </div>
+                            }
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselControls"
                             data-bs-slide="prev">
