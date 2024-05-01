@@ -124,8 +124,10 @@
                                 {
                                     <div class="col-sm-4">
                                         <div class="card mb-4 shadow-sm clickable-card">
-                                            <img src="@($"RecipeImages/{recipe.RecipeImage}_thumb.jpg")" alt="Image of @recipe.RecipeName"
-                                                class="recipeImage">
+                                            <NavLink @onclick="() => RedirectToRecipe(recipe.RecipeID)">
+                                                <img src="@($"RecipeImages/{recipe.RecipeImage}_thumb.jpg")" alt="Image of @recipe.RecipeName"
+                                                    class="recipeImage">
+                                            </NavLink>
                                             <div class="card-body">
                                                 <NavLink @onclick="() => RedirectToRecipe(recipe.RecipeID)">
                                                     <h5 class="card-title clickable-card-title">@recipe.RecipeName</h5>
