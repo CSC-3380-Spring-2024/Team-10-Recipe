@@ -15,8 +15,8 @@
 }
 
 .clickable-card:hover {
-    transform: scale(1.03); /* Scales the card slightly */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Adds a shadow effect */
+    transform: scale(1.03);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
 
