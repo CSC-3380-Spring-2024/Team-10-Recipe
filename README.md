@@ -1,18 +1,35 @@
 # Team-10
 
 ### Client URL:
-[http://localhost:5155/](http://localhost:5155/)
+[localhost:5155/](http://localhost:5155/)
 
 ### API URL:
-[http://localhost:5123/swagger/index.html](http://localhost:5123/swagger/index.html)
+[localhost:5123/swagger/index.html](http://localhost:5123/swagger/index.html)
 
 ## Instructions to Run:
 
-1. Install the .Net 8 sdk [microsoft install link](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
-2. `cd Team-10-Recipe`
-3. `dotnet build`
-4. Open a new terminal
-5. In one terminal, run `cd Recipe_Proj`
-6. In the other terminal, run `cd Recipe_Proj.Server`
-7. Execute `dotnet run` in both terminals
-8. Open [http://localhost:5155](http://localhost:5155) in your browser
+1. Install the .NET 8 sdk [microsoft install link](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
+2. Install EF Core cli
+    ```sh 
+    dotnet tool install --global dotnet-ef
+    ```
+3. ```sh
+    cd Team-10-Recipe
+    ```
+4. ```sh
+    dotnet build
+    ```
+5. Open a new terminal
+6. In one terminal, run:
+    ```sh
+    cd Recipe_Proj
+    ```
+7. In the other terminal, run:
+    ```sh
+    cd Recipe_Proj.Server
+    ```
+8. In both terminals, execute:
+    ```sh
+    dotnet run
+    ```
+9. Open [localhost:5155](http://localhost:5155) in your browser
