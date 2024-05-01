@@ -124,7 +124,6 @@ public class RestrictionsController : ControllerBase
                         })
                         .ToListAsync();
 
-                // add new matches        
                 combinedMatches.AddRange(newMatches);
             }
 

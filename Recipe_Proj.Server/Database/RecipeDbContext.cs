@@ -15,17 +15,10 @@ public class RecipeDbContext : DbContext
     {
     }
 
-    // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    // {
-    //     optionsBuilder.UseMySql("your_connection_string_here", 
-    //         ServerVersion.AutoDetect("your_connection_string_here"));
-    // }
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
 
-        // Map entity to table
         modelBuilder.Entity<Recipe>().ToTable("recipe");
         modelBuilder.Entity<Ingredient>().ToTable("ingredient");
         modelBuilder.Entity<Restriction>().ToTable("restriction");
@@ -34,22 +27,17 @@ public class RecipeDbContext : DbContext
         modelBuilder.Entity<RecipeRestriction>().ToTable("recipe_restriction");
         modelBuilder.Entity<RecipeFavorite>().ToTable("recipe_Favorite");
 
-        // Configure primary keys
         modelBuilder.Entity<Recipe>().HasKey(r => r.RecipeID);
         modelBuilder.Entity<Ingredient>().HasKey(i => i.IngredientID);
         modelBuilder.Entity<Restriction>().HasKey(r => r.RestrictionID);
         modelBuilder.Entity<RecipeUser>().HasKey(ru => ru.UserID);
 
-        // RecipeIngredient composite key
         modelBuilder.Entity<RecipeIngredient>().HasKey(ri => new { ri.RecipeID, ri.IngredientID });
 
-        // RecipeRestriction composite key
         modelBuilder.Entity<RecipeRestriction>().HasKey(rr => new { rr.RecipeID, rr.RestrictionID });
 
-        // RecipeFavorite composite key
         modelBuilder.Entity<RecipeFavorite>().HasKey(rf => new { rf.UserID, rf.RecipeID });
 
-        // Configure relationships
         modelBuilder.Entity<RecipeIngredient>()
             .HasOne(ri => ri.Recipe)
             .WithMany(r => r.RecipeIngredients)

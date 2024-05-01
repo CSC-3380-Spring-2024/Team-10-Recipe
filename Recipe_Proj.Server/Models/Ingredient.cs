@@ -10,7 +10,6 @@ public class Ingredient
     [StringLength(255)]
     public string IngredientName { get; set; } = string.Empty;
 
-    // Navigation property
     public ICollection<RecipeIngredient> RecipeIngredients { get; set; } = new List<RecipeIngredient>();
 
 }

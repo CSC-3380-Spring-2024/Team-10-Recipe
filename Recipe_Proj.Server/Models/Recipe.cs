@@ -57,7 +57,6 @@ public class Recipe
     [Column(TypeName = "REAL")]
     public double Protein { get; set; }
 
-    // Navigation properties
     public ICollection<RecipeIngredient> RecipeIngredients { get; set; } = new List<RecipeIngredient>();
     public ICollection<RecipeRestriction> RecipeRestrictions { get; set; } = new List<RecipeRestriction>();
     public ICollection<RecipeFavorite> FavoritedBy { get; set; } = new List<RecipeFavorite>();

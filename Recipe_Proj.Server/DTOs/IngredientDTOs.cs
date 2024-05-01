@@ -6,7 +6,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Recipe_Proj.Server.DTOs;
 
-// Ids of ingredients user selected
 public class IngredientSelectionDTO
 {
     public List<int> IngredientIds { get; set; } = new List<int>();

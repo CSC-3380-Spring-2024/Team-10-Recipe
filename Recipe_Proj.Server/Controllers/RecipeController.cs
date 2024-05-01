@@ -170,11 +170,11 @@ public class RecipesController : ControllerBase
             {
                 combinedMatches = combinedMatches
                     .Where(r => r.Restrictions
-                        .Any(restrictionName => selectedRestrictionIds
-                            .Contains(_context.Restrictions
-                                .Where(restriction => restriction.RestrictionName == restrictionName)
-                                .Select(restriction => restriction.RestrictionID)
-                                .FirstOrDefault())))
+                    .Any(restrictionName => selectedRestrictionIds
+                    .Contains(_context.Restrictions
+                    .Where(restriction => restriction.RestrictionName == restrictionName)
+                    .Select(restriction => restriction.RestrictionID)
+                    .FirstOrDefault())))
                     .ToList();
             }
 
@@ -192,7 +192,7 @@ public class RecipesController : ControllerBase
     {
         // Gets all recipes that include any of the selected ingredients
         var matchedRecipes = await _context.Recipes
-            .Include(r => r.RecipeIngredients).ThenInclude(ri => ri.Ingredient) // Ensure you include related data
+            .Include(r => r.RecipeIngredients).ThenInclude(ri => ri.Ingredient)
             .Include(r => r.RecipeRestrictions).ThenInclude(rr => rr.Restriction)
             .Where(r => r.RecipeIngredients.Any(ri => ingredientIds.Contains(ri.IngredientID)))
             .ToListAsync();
@@ -219,11 +219,11 @@ public class RecipesController : ControllerBase
         {
             refinedMatches = refinedMatches
                 .Where(r => r.Restrictions
-                    .Any(restrictionName => selectedRestrictionIds
-                        .Contains(_context.Restrictions
-                            .Where(restriction => restriction.RestrictionName == restrictionName)
-                            .Select(restriction => restriction.RestrictionID)
-                            .FirstOrDefault())))
+                .Any(restrictionName => selectedRestrictionIds
+                .Contains(_context.Restrictions
+                .Where(restriction => restriction.RestrictionName == restrictionName)
+                .Select(restriction => restriction.RestrictionID)
+                .FirstOrDefault())))
                 .ToList();
         }
         refinedMatches = refinedMatches
@@ -239,7 +239,7 @@ public class RecipesController : ControllerBase
     {
         // Gets all recipes that include any of the selected ingredients
         var matchedRecipes = await _context.Recipes
-            .Include(r => r.RecipeIngredients).ThenInclude(ri => ri.Ingredient) // Ensure you include related data
+            .Include(r => r.RecipeIngredients).ThenInclude(ri => ri.Ingredient)
             .Include(r => r.RecipeRestrictions).ThenInclude(rr => rr.Restriction)
             .Where(r => r.RecipeIngredients.Any(ri => ingredientSelection.IngredientIds.Contains(ri.IngredientID)))
             .ToListAsync();
@@ -285,87 +285,15 @@ public class RecipesController : ControllerBase
         {
             recipes = recipes
                 .Where(r => r.Restrictions
-                    .Any(restrictionName => RestrictionIDs
-                        .Contains(_context.Restrictions
-                            .Where(restriction => restriction.RestrictionName == restrictionName)
-                            .Select(restriction => restriction.RestrictionID)
-                            .FirstOrDefault())))
+                .Any(restrictionName => RestrictionIDs
+                .Contains(_context.Restrictions
+                .Where(restriction => restriction.RestrictionName == restrictionName)
+                .Select(restriction => restriction.RestrictionID)
+                .FirstOrDefault())))
                 .ToList();
         }
 
         return Ok(recipes);
     }
-
-
-    // probably wont be using any of this
-    // [HttpPost]
-    // public async Task<ActionResult<Recipe>> CreateRecipe(CreateRecipeDTO createRecipeDto)
-    // {
-    //     var recipe = new Recipe
-    //     {
-    //         RecipeName = createRecipeDto.RecipeName,
-    //         ShortDescription = createRecipeDto.ShortDescription,
-    //         CookTime = createRecipeDto.CookTime,
-    //         // any othe properties
-    //     };
-
-    //     _context.Recipes.Add(recipe);
-    //     await _context.SaveChangesAsync();
-
-    //     return CreatedAtAction(nameof(GetDetailedRecipeById), new { id = recipe.RecipeID }, recipe);
-    // }
-
-    // private bool RecipeExists(int id) => _context.Recipes.Any(e => e.RecipeID == id);
-
-    // [HttpPut("{id}")]
-    // public async Task<IActionResult> UpdateRecipe(int id, UpdateRecipeDTO updateRecipeDto)
-    // {
-    //     var recipe = await _context.Recipes.FindAsync(id);
-    //     if (recipe == null)
-    //     {
-    //         return NotFound();
-    //     }
-
-    //     recipe.RecipeName = updateRecipeDto.RecipeName;
-    //     recipe.ShortDescription = updateRecipeDto.ShortDescription;
-    //     recipe.CookTime = updateRecipeDto.CookTime;
-    //     // any othe properties
-
-    //     _context.Entry(recipe).State = EntityState.Modified;
-
-    //     try
-    //     {
-    //         await _context.SaveChangesAsync();
-    //     }
-    //     catch (DbUpdateConcurrencyException)
-    //     {
-    //         if (!RecipeExists(id))
-    //         {
-    //             return NotFound();
-    //         }
-    //         else
-    //         {
-    //             throw;
-    //         }
-    //     }
-
-    //     return NoContent();
-    // }
-
-
-    // [HttpDelete("{id}")]
-    // public async Task<IActionResult> DeleteRecipe(int id)
-    // {
-    //     var recipe = await _context.Recipes.FindAsync(id);
-    //     if (recipe == null)
-    //     {
-    //         return NotFound();
-    //     }
-
-    //     _context.Recipes.Remove(recipe);
-    //     await _context.SaveChangesAsync();
-
-    //     return NoContent();
-    // }
 
 }
