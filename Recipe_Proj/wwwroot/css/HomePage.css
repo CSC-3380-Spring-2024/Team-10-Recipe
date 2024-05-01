@@ -1,6 +1,6 @@
 body {
     background-color: #fff;
-    background-image: url('/images/recipeHomePageBackground.jpeg');
+    background-image: url('/images/various-green-vegetables-arranged-row.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -13,11 +13,12 @@ body {
 }
 
 .title {
-    color: #ffffff;
+    color: #198754;
     font-size: 3.75em;
-    text-shadow: 2px 2px 4px #198754;
+    text-shadow: 2px 2px 4px #119822;
     text-align: center;
     text-rendering: auto;
+    
 }
 
 .button-container {
