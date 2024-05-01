@@ -1,7 +1,7 @@
 using System.Text.Json;
 using System.Net.Http.Json;
 using Recipe_Proj.DTOs;
-using System.IO; // For file reading
+using System.IO; 
 using System.Threading.Tasks;
 
 namespace Recipe_Proj.Services;
@@ -36,8 +36,7 @@ public class RestrictionService : IRestrictionService
     }
 
     public async Task<List<RestrictionDTO>> GetAllActiveByIngredients(List<int> selectedIngredients) {
-        // var restrictions = await _httpClient.GetFromJsonAsync<List<RestrictionDTO>>($"api/Restrictions/ActiveByIngredients?selectedIngredients={selectedIngredients}");
-        var queryString = $"api/Restrictions/ActiveByIngredients?";
+       var queryString = $"api/Restrictions/ActiveByIngredients?";
         foreach (var id in selectedIngredients)
         {
             queryString += $"&selectedIngredients={id}";

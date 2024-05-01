@@ -19,16 +19,13 @@ body {
     padding: 0;
 }
 
-/* Styling for the navbar */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: transparent;
-    /* or any color you prefer */
     color: white;
     padding: 20px 5%;
-    /* Adjust the padding as needed */
     position: fixed;
     width: 100%;
     top: 0;
@@ -42,14 +39,12 @@ body {
 
 .navbar-logo img {
     margin-right: 10px;
-    /* Space between logo and website name */
 }
 
 .navbar-logo span {
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
     font-size: 2.5rem;
-    /* Adjust the font size as needed */
 }
 
 .navbar-links a {
@@ -57,18 +52,14 @@ body {
     color: white;
     text-decoration: none;
     margin-left: 30px;
-    /* Space between the navigation links */
     font-size: 1.5rem;
-    /* Adjust the font size as needed */
     transition: color 0.3s ease-in-out;
 }
 
 .navbar-links a:hover {
     color: #999;
-    /* Color change on hover */
+    
 }
-
-/* Need to add code to change based on screen size */
 
 .homepage {
     background-image: url('../images/jason-leung-jWU9FpLW7fI-unsplash.jpg');
@@ -128,7 +119,6 @@ body {
     cursor: pointer;
 }
 
-/* Button Styles */
 .btn {
     background-color: #4CAF50;
     color: white;

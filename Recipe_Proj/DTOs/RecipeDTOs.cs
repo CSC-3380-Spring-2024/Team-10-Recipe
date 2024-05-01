@@ -68,27 +68,3 @@ public class InstructionStep
     public string Title { get; set; } = string.Empty;
     public List<string> Instructions { get; set; } = new();
 }
-
-
-// I dont think we are gonna need to do any creating or updating
-public class CreateRecipeDTO
-{
-    [Required]
-    public string RecipeName { get; set; } = string.Empty;
-    public string? ShortDescription { get; set; }
-    public double CookTime { get; set; }
-
-    // Will probably need some other properties
-    // Might need Ingredients and Restriction IDs
-}
-
-public class UpdateRecipeDTO
-{
-    [Required]
-    public string RecipeName { get; set; } = string.Empty;
-    public string? ShortDescription { get; set; }
-    public double CookTime { get; set; }
-
-    // Will probably need some other properties
-    // Might need lists of Ingredient and Restriction IDs to update associations
-}

@@ -3,20 +3,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Recipe_Proj.DTOs;
 
-/*
-
-Protein starting with 1001
-Vegetables 2001
-fruits 3001
-carbs like bread or pasta or potato 4001
-dairy 5001
-beans or nuts 6001
-condiments (sauces included) 7001
-oils and seasonings 8001
-anything else 9001
-
-*/
-
 public enum IngredientType
 {
     Protein,

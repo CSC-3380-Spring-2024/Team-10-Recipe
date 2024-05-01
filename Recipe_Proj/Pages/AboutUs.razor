@@ -26,14 +26,14 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.12);
         }
         h1, h2 {
-            color: #5a2a27; /* deep reddish-brown */
-            font-family: 'Playfair Display', serif; /* Fancy heading font */
+            color: #5a2a27;
+            font-family: 'Playfair Display', serif; 
             font-weight: 700;
         }
         h1 {
             margin-bottom: 40px;
             font-size: 2.5em;
-            letter-spacing: 1px; /* Add some spacing between letters */
+            letter-spacing: 1px; 
         }
         h2 {
             margin-top: 50px;
@@ -42,37 +42,37 @@
         }
         .team-photo-row {
             display: flex;
-            justify-content: space-around; /* evenly space out photos */
+            justify-content: space-around; 
             margin-bottom: 50px;
         }
         .team-photo {
-            width: 120px; /* slightly larger photo */
+            width: 120px; 
             height: 120px;
             border-radius: 50%;
             display: inline-block;
             background-size: cover;
             background-position: center;
             position: relative;
-            border: 4px solid #5a2a27; /* thicker border color matches heading */
-            margin: 0 10px; /* spacing between photos */
+            border: 4px solid #5a2a27; 
+            margin: 0 10px;
         }
         .team-photo::after {
             content: attr(data-name);
             position: absolute;
             min-width: 100%;
             left: 50%;
-            bottom: -50px; /* lower tooltip position */
-            font-size: 15px; /* larger font size */
-            color: #fff; /* text color */
-            background-color: #5a2a27; /* background color for text */
+            bottom: -50px; 
+            font-size: 15px; 
+            color: #fff; 
+            background-color: #5a2a27; 
             opacity: 0;
             transition: all 0.3s ease;
             transform: translateX(-50%) translateY(10px);
-            padding: 5px 10px; /* more padding for the tooltip */
+            padding: 5px 10px; 
             border-radius: 5px;
             white-space: nowrap;
             visibility: hidden;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* subtle shadow for depth */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
         }
         .team-photo:hover::after {
             opacity: 1;
@@ -80,10 +80,10 @@
             transform: translateX(-50%) translateY(0px);
         }
         p {
-            font-size: 18px; /* slightly larger paragraph text */
-            padding: 0 50px; /* padding on the sides for better text block */
-            margin-bottom: 20px; /* space below the paragraph */
-            color: #555; /* softer text color */
+            font-size: 18px; 
+            padding: 0 50px; 
+            margin-bottom: 20px; 
+            color: #555; 
         }
     </style>
 </head>
@@ -91,7 +91,6 @@
     <div class="container">
         <h1>About Us</h1>
         <div class="team-photo-row">
-            <!-- Replace image URLs with the actual paths to your images -->
             <div class="team-photo" data-name="Lillian Beck" style="background-image: url('lillian-url.jpg');"></div>
             <div class="team-photo" data-name="Ethan Lancaster" style="background-image: url('ethan-url.jpg');"></div>
             <div class="team-photo" data-name="Noah Bourque" style="background-image: url('noah-url.jpg');"></div>

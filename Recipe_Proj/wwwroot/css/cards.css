@@ -14,7 +14,6 @@
 
 
 .clickable-card-title:hover {
-    /* font-weight: bold; */
     text-decoration: underline;
 }
 
@@ -23,6 +22,6 @@
     max-height: 200px;
     height: auto;
     border: 1px solid #ccc;
-    border-radius: 0.25rem; /* Standard Bootstrap border-radius for cards */
+    border-radius: 0.25rem; 
     object-fit: cover;
 }

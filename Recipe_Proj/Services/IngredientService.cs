@@ -1,7 +1,7 @@
 using System.Text.Json;
 using System.Net.Http.Json;
 using Recipe_Proj.DTOs;
-using System.IO; // For file reading
+using System.IO; 
 using System.Threading.Tasks;
 
 namespace Recipe_Proj.Services;
@@ -43,7 +43,6 @@ public class IngredientService : IIngredientService
     {
         var ingredients = await _httpClient.GetFromJsonAsync<List<IngredientDTO>>($"api/Ingredients/GetIngredientByType/{IngredientType.Protein}");
 
-        // Check if ingredientDTOs is null to avoid a NullReferenceException
         if (ingredients == null) return new List<ProteinIngredient>();
 
         var proteins = ingredients.Select(i => new ProteinIngredient

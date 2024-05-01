@@ -3,7 +3,6 @@
 @layout MainLayout
 
 <link href="/css/cards.css" rel="stylesheet" />
-@* <link href="css/recipeSearch.css" rel="stylesheet" /> *@
 <style>
     body {
         background-image: url('/images/brooke-lark-jUPOXXRNdcA-unsplash.jpg'); 
@@ -60,7 +59,7 @@
 <div class="container mt-3">
     <div class="row justify-content-center">
         <div class="col-md-10">
-            <form @onsubmit="HandleFormSubmit"> <!-- Allows Enter Key Submit -->
+            <form @onsubmit="HandleFormSubmit">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-md-1"></div>
@@ -82,7 +81,7 @@
                                 </div>
 
                                 <div class="col-md-3">
-                                    <button type="submit" class="btn btn-primary">Search</button> <!-- Instead of @onclick we use the HandleFormSubmit with submit type -->
+                                    <button type="submit" class="btn btn-primary">Search</button>
                                 </div>
                             </div>
                         </div>
@@ -143,7 +142,6 @@
         waiting = true;
 
         
-        @* await RestrictionService.GetAllActiveByRecipes(searchKeywords); *@
 
         if (searchKeywords == string.Empty) {
             recipes = new();
@@ -156,20 +154,16 @@
             try
             {
 
-                // get new restrictions list
                 await GetRestrictions(searchKeywords);
 
-                // Filtering out recipes
                 if (SelectedRestrictions.RestrictionIds != null)
                 {
                     if (SelectedRestrictions.RestrictionIds.Count > 0)
                     {
-                        @* Console.WriteLine($"Restrictions"); *@
                         recipes = await RecipeService.SearchRecipesWithRestrictions(searchKeywords, SelectedRestrictions.RestrictionIds);
                     }
                     else
                     {
-                        @* Console.WriteLine($"Keywords"); *@
                         recipes = await RecipeService.SearchRecipesByKeywords(searchKeywords);
                     }
                 }
@@ -178,7 +172,6 @@
             catch (Exception ex)
             {
                 Console.WriteLine($"Error fetching recipes: {ex.Message}");
-                // Probably need to make a UI alert for errors
             }
         }
     }
@@ -198,7 +191,6 @@
         var selectedOptions = e.Value as IEnumerable<string>;
         if (selectedOptions != null)
         {
-            // Clear the existing list
             SelectedRestrictions.RestrictionIds.Clear();
 
             foreach (var option in selectedOptions)

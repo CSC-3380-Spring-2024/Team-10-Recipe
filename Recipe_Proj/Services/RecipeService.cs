@@ -1,8 +1,7 @@
-// using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
 using System.Net.Http.Json;
 using Recipe_Proj.DTOs;
-using System.IO; // For file reading
+using System.IO; 
 using System.Threading.Tasks;
 
 namespace Recipe_Proj.Services;
@@ -41,10 +40,8 @@ public class RecipeService : IRecipeService
     }
     public async Task<List<SimpleRecipeDTO>> SearchRecipesWithRestrictions(string searchKeywords, List<int> selectedRestrictionIds)
     {
-        // Encode the searchKeywords to ensure it's safe for URL use
         var encodedKeywords = Uri.EscapeDataString(searchKeywords ?? string.Empty);
 
-        // Construct the URL with all selectedRestrictionIds
         var queryString = $"api/Recipes/SearchRecipesWithRestrictions?searchKeywords={encodedKeywords}";
         foreach (var id in selectedRestrictionIds)
         {
@@ -103,29 +100,5 @@ public class RecipeService : IRecipeService
         var recipes = await response.Content.ReadFromJsonAsync<List<SimpleRecipeDTO>>();
         return recipes ?? new List<SimpleRecipeDTO>();
     }
-
-
-
-    // public async Task<RecipeInstructionsDTO> GetRecipeInstructions(int recipeID)
-    // {
-    //     return new RecipeInstructionsDTO();
-    // }
-
-    // // creates an error Instruction object to send back
-    // public RecipeInstructionsDTO GetErrorInstructions(string message)
-    // {
-
-    //     return new RecipeInstructionsDTO
-    //     {
-    //         Steps = new List<InstructionStep>
-    //         {
-    //             new InstructionStep
-    //             {
-    //                 Title = "Error",
-    //                 Instructions = new List<string> { message }
-    //             }
-    //         }
-    //     };
-    // }
 
 }

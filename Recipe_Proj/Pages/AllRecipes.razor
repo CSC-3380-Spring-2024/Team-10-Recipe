@@ -7,7 +7,6 @@
 
 
 
-    @* <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.x/css/bootstrap.min.css" rel="stylesheet"> *@
 <style>
     #carouselControls {
         width: 80%;
@@ -19,12 +18,11 @@
     }
 
     .carousel-item img {
-        @* height: 100%; *@
         max-width: 100%;
         max-height: 350px;
         height: auto;
         border: 1px solid #ccc;
-        border-radius: 0.5rem; /* Standard Bootstrap border-radius for cards */
+        border-radius: 0.5rem;
         object-fit: cover;
     }
 
@@ -35,15 +33,15 @@
 
     .carousel-control-prev-icon,
     .carousel-control-next-icon {
-    background-color: transparent; /* Set initial background to transparent */
+    background-color: transparent; 
     border-radius: 50%;
     padding: 10px;
-    transition: background-color 0.3s; /* Smooth transition for background color change */
+    transition: background-color 0.3s;
     }
 
     .carousel-control-prev:hover .carousel-control-prev-icon,
     .carousel-control-next:hover .carousel-control-next-icon {
-        background-color: #000; /* Change background color on hover */
+        background-color: #000; 
     }
 
     
@@ -54,9 +52,9 @@
 
 <div style="height: 0.2in;"></div>
 <div class="container">
-    <div class="row justify-content-center"> <!-- Ensures the column below is centered -->
+    <div class="row justify-content-center"> 
         <div class="container">
-            <div class="row justify-content-center"> <!-- Ensures the column below is centered -->
+            <div class="row justify-content-center"> 
                 <div class="col-md-10">
                     <div id="carouselControls" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
@@ -89,15 +87,13 @@
         <div class="row justify-content-center">
             <div class="col-md-10">
                 <div class="container mt-4">
-                    @* <div class="col-md-10"> *@
                         <form @onsubmit="HandleFormSubmit">
                             <div class="row">
                                 <div class="col-md-4 d-flex justify-content-center align-items-center">
                                     <h2 class="title">All Recipes</h2>
                                 </div>
-                                <div class="col-md-2"></div> <!-- Seems unused, consider removing if not needed -->
+                                <div class="col-md-2"></div> 
                                 <div class="col-md-6 d-flex justify-content-end">
-                                    @* <div class="row"> <!-- Added to properly contain the columns within it --> *@
                                     <div class="col-md-8">
                                         <select id="restriction-multi-select" class="form-select" multiple
                                             data-placeholder="Select Restrictions" @onchange="HandleRestrictionsChange">
@@ -110,7 +106,6 @@
                                     <div class="col-md-4">
                                         <button type="submit" class="btn btn-primary">Search</button>
                                     </div>
-                                    @* </div> *@
                                 </div>
                             </div>
                         </form>
@@ -145,7 +140,6 @@
                                 }
                             </div>
                         }
-                    @* </div> *@
                 </div>
             </div>
         </div>
@@ -171,7 +165,6 @@
         clicked = true;
         try
         {
-            // Filtering out recipes
 
             if (SelectedRestrictions.RestrictionIds.Count > 0)
             {
@@ -189,7 +182,6 @@
         catch (Exception ex)
         {
             Console.WriteLine($"Error fetching recipes: {ex.Message}");
-            // Probably need to make a UI alert for errors
         }
 
     }
@@ -216,7 +208,6 @@
         var selectedOptions = e.Value as IEnumerable<string>;
         if (selectedOptions != null)
         {
-            // Clear the existing list
             SelectedRestrictions.RestrictionIds.Clear();
 
             foreach (var option in selectedOptions)
@@ -234,7 +225,6 @@
             Console.WriteLine($"Selected Restrictions: {string.Join(", ", SelectedRestrictions.RestrictionIds)}");
         }
 
-        @* await SearchRecipes(); *@
     }
 
     protected override async Task OnInitializedAsync()

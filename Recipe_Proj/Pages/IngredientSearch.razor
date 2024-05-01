@@ -19,7 +19,6 @@
     }
 
     .textFont {
-        @* font-family: 'Poppins', sans-serif; *@
         font-weight: normal;
         color: black;
         text-align: center;
@@ -34,20 +33,16 @@
         flex-direction: column; 
         margin: 0 auto; 
         padding: 20px; 
-        @* max-width: fit-content;  *@
         box-sizing: border-box; 
 
     }
 
     .shadowww {
-        @* width: 100%;  *@
         margin: 0 auto 20px; 
         padding: 10px; 
         background-color: rgba(255, 255, 255, 0.5); 
         backdrop-filter: blur(5px);
         border-radius: 10px;
-        @* box-shadow: 0 4px 6px rgba(0,0,0,0.1); *@
-        @* display: inline-block; *@
     }
 
     .h1_Width {
@@ -71,10 +66,8 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <form @onsubmit="HandleFormSubmit">
-                <!-- Ingredients Row -->
-                <div class="row mb-3">
-                    <!-- Proteins -->
-                    <div class="col-md-3">
+                <div class="row mb-3"> @* row for displaying ingredients *@
+                    <div class="col-md-3"> @* proteins column *@
                         <select id="protein-multi-select" class="form-select" multiple
                             data-placeholder="Select Proteins"
                             @onchange="(e) => HandleIngredientsChange(e, IngredientType.Protein)">
@@ -85,8 +78,7 @@
                         </select>
                     </div>
 
-                    <!-- Vegetables -->
-                    <div class="col-md-3">
+                    <div class="col-md-3"> @* vegetables column *@
                         <select id="vegetable-multi-select" class="form-select" multiple
                             data-placeholder="Select Vegetables"
                             @onchange="(e) => HandleIngredientsChange(e, IngredientType.Vegetable)">
@@ -96,8 +88,8 @@
                             }
                         </select>
                     </div>
-                    <!-- Fruits -->
-                    <div class="col-md-3">
+
+                    <div class="col-md-3"> @* fruit salad, yummy yummy*@
                         <select id="fruit-multi-select" class="form-select" multiple data-placeholder="Select Fruits"
                             @onchange="(e) => HandleIngredientsChange(e, IngredientType.Fruit)">
                             @foreach (var fruit in AllFruits)
@@ -107,8 +99,7 @@
                         </select>
                     </div>
 
-                    <!-- Carbs -->
-                    <div class="col-md-3">
+                    <div class="col-md-3"> @* carbs column *@
                         <select id="carb-multi-select" class="form-select" multiple data-placeholder="Select Carbs"
                             @onchange="(e) => HandleIngredientsChange(e, IngredientType.Carb)">
                             @foreach (var carb in AllCarbs)
@@ -120,8 +111,8 @@
                 </div>
 
                 <div class="row justify-content-center mb-5">
-                    <!-- Dairy -->
-                    <div class="col-md-3">
+                    
+                    <div class="col-md-3"> @* milkies *@
                         <select id="dairy-multi-select" class="form-select" multiple data-placeholder="Select Dairy"
                             @onchange="(e) => HandleIngredientsChange(e, IngredientType.Dairy)">
                             @foreach (var dairy in AllDairy)
@@ -131,8 +122,7 @@
                         </select>
                     </div>
 
-                    <!-- Beans or Nuts -->
-                    <div class="col-md-3">
+                    <div class="col-md-3"> @* beans and NUTsss *@
                         <select id="beanornut-multi-select" class="form-select" multiple
                             data-placeholder="Select Beans/Nuts"
                             @onchange="(e) => HandleIngredientsChange(e, IngredientType.BeanOrNut)">
@@ -143,8 +133,7 @@
                         </select>
                     </div>
 
-                    <!-- Condiments -->
-                    <div class="col-md-3">
+                    <div class="col-md-3"> @* condominents column *@
                         <select id="condiment-multi-select" class="form-select" multiple
                             data-placeholder="Select Condiments"
                             @onchange="(e) => HandleIngredientsChange(e, IngredientType.Condiment)">
@@ -160,12 +149,11 @@
                     <h3 class="textFont shadowww h3_Width">Use the search bar to search for more ingredients!</h3>
                 </div>
 
-                <!-- Restrictions, Search, and Submit Button Row -->
-                <div class="container">
+                <div class="container"> @* restrictions for softties, search & submit functions *@
                     <div class="row justify-content-center">
                         <div class="col-md-1"></div>
                         <div class="col-md-11">
-                            <!-- Restrictions Dropdown -->
+                            @* restrictions dropdown table selection *@
                             <div class="input-group">
                                 <div class="col-md-1"></div>
                                 <div class="col-md-2">
@@ -178,13 +166,11 @@
                                     </select>
                                 </div>
                             
-                                <!-- Search Bar -->
                                 <div class="col-md-6">
                                     <input type="text" class="form-control" @bind='searchKeywords'
                                         placeholder="Search for ingredients to add...">
                                 </div>
                             
-                                <!-- Submit Button -->
                                 <div class="col-md-3">
                                     <button type="submit" class="btn btn-primary">Search</button>
                                 </div>
@@ -238,13 +224,9 @@
     private List<RestrictionDTO> AllRestrictions = new List<RestrictionDTO>();
     private RestrictionSelectionDTO SelectedRestrictions = new RestrictionSelectionDTO();
 
-    //From Drop Down for eatch Ingredient Type
     private IngredientSelectionDTO SelectedIngredients = new IngredientSelectionDTO();
 
-    //From search bar
     private IngredientSelectionDTO IngredientsSearched = new IngredientSelectionDTO();
-
-
 
     private List<ProteinIngredient> AllProteins = new List<ProteinIngredient>();
     private IngredientSelectionDTO SelectedProteins = new IngredientSelectionDTO();
@@ -279,15 +261,10 @@
             IngredientsSearched.IngredientIds.Clear();
             SelectedIngredients.IngredientIds.Clear();
 
-
-            // add to SelectedIngredients
             await SearchIngredients(searchKeywords);
 
-
-            // adds each type to SelectedIngredients
             AddIngredientsToSelection();
 
-            //Gets updated restrictions list
             await GetRestrictions(SelectedIngredients.IngredientIds);
 
             if (SelectedIngredients.IngredientIds.Count > 0)
@@ -298,28 +275,19 @@
                 }
                 if (SelectedRestrictions.RestrictionIds.Count > 0)
                 {
-                    @* Console.WriteLine($"Restrictions Searching..."); *@
-                    foreach (var id in IngredientsSearched.IngredientIds)
-                    {
-                        @* Console.WriteLine($"Ingredient: {id}"); *@
-                    }
+                
                     recipes = await RecipeService.SearchBySelectedIngredientsWithRestrictions(IngredientsSearched,
                     SelectedRestrictions.RestrictionIds);
 
                 }
                 else
                 {
-                    @* Console.WriteLine($"Ingredients Searching..."); *@
-                    foreach (var id in IngredientsSearched.IngredientIds)
-                    {
-                        @* Console.WriteLine($"Ingredient => {id}"); *@
-                    }
                     recipes = await RecipeService.SearchRecipesBySelectedIngredients(IngredientsSearched);
                 }
             }
             else
             {
-                recipes = new(); // clear the list
+                recipes = new();
                 searchKeywords = string.Empty;
                 await GetRestrictions();
                 if (SelectedRestrictions.RestrictionIds.Count > 0) {
@@ -331,7 +299,6 @@
         catch (Exception ex)
         {
             Console.WriteLine($"Error fetching recipes: {ex.Message}");
-            // Probably need to make a UI alert for errors
         }
     }
 
@@ -339,13 +306,10 @@
     {
         if (searchKeywords != string.Empty)
         {
-            @* Console.WriteLine("searchKeywords != string.Empty"); *@
             var ingredients = await IngredientService.SearchIngredientsForKeyword(searchKeywords);
 
             foreach (var i in ingredients)
             {
-                @* Console.WriteLine($"***{i.IngredientID}"); *@
-                @* IngredientsSearched.IngredientIds.Add(i.IngredientID); *@
                 SelectedIngredients.IngredientIds.Add(i.IngredientID);
             }
         }
@@ -358,13 +322,12 @@
         {
             var type = (IngredientType)obj;
             if (t < 7)
-            { // we arent making a drop down for the other types
+            { 
                 var ids = ingredientMap[type].IngredientIds;
                 if (ids.Count > 0)
                 {
                     foreach (var id in ids)
                     {
-                        @* Console.WriteLine($"{id}****"); *@
                         SelectedIngredients.IngredientIds.Add(id);
                     }
                 }
@@ -393,7 +356,7 @@
         var selectedOptions = e.Value as IEnumerable<string>;
         if (selectedOptions != null)
         {
-            // Clear the existing list
+
             SelectedRestrictions.RestrictionIds.Clear();
 
             foreach (var option in selectedOptions)
@@ -418,7 +381,7 @@
         var selectedOptions = e.Value as IEnumerable<string>;
         if (selectedOptions != null)
         {
-            // Clear the existing list
+            
             ingredientMap[type].IngredientIds.Clear();
 
             foreach (var option in selectedOptions)
@@ -470,7 +433,6 @@
     {
         try
         {
-            @* Console.WriteLine($"EMPTYYY"); *@
             AllRestrictions = await RestrictionService.GetAllRestrictions();
         }
         catch (Exception ex)
@@ -483,10 +445,6 @@
     {
         try
         {
-            @* Console.WriteLine($"NOTT EMPTYY"); *@
-            foreach (var id in selectedIngredients) {
-               @* Console.WriteLine($"{id} + || ahhh");  *@
-            }
             AllRestrictions = await RestrictionService.GetAllActiveByIngredients(selectedIngredients);
         }
         catch (Exception ex)
@@ -527,7 +485,6 @@
             var select2Options = System.Text.Json.JsonSerializer.Serialize(options);
 
 
-            // Initialize dropdowns
             await InitializeSelect2("restriction-multi-select", select2Options);
             await InitializeSelect2("protein-multi-select", select2Options);
             await InitializeSelect2("vegetable-multi-select", select2Options);
