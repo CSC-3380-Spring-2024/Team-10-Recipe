@@ -1,5 +1,8 @@
 # Team-10
 
+This is our group's recipe search website, Pushin' Pantry
+
+
 ### Client URL:
 [localhost:5155/](http://localhost:5155/)
 
@@ -8,11 +11,13 @@
 
 ## Instructions to Run:
 
-1. Install the .NET 8 sdk [microsoft install link](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
-2. Install EF Core cli
-    ```sh 
-    dotnet tool install --global dotnet-ef
+1. Clone
+    ```sh
+    https://github.com/CSC-3380-Spring-2024/Team-10-Recipe.git
     ```
+
+2. Install the .NET 8 sdk [microsoft install link](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
+
 3. ```sh
     cd Team-10-Recipe
     ```
