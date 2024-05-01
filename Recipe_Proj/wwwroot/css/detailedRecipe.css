@@ -5,13 +5,13 @@
     border-radius: 8px !important;
 }
 body {
-    background-image: url('/images/detailedRecipeBakcground.jpeg');
+    background-image: url('/images/premium_photo-1667899358081-bd3131cc6bb3_copy-transformed.jpeg');
     background-size: 100vw 100vh;
     background-repeat: no-repeat;
     background-attachment: fixed; 
 }
 
 .myBackground {
-    background-color: #dbfeb8;
+    background-color: #f2fbe0;
     border-radius: 1%;
 }
