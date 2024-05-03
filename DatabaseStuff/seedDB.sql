@@ -8,7 +8,10 @@ INSERT INTO recipe (recipeID, recipeName, shortDescription, recipeInstructions, 
 (1007, 'Creamy Vegan Pasta with Broccoli', 'a delightful blend of al dente pasta and vibrant broccoli smothered in a lush, vegan white bean sauce, enhanced with a sprinkle of crunchy pine nuts', 'creamy_vegan_pasta_broccoli.json', 'creamy_vegan_pasta_broccoli', 30, 675, 18, 2.25, 0, 0, 225, 100.5, 18, 6, 27),
 (1008, 'Blueberry Pie', 'a classic dessert featuring a flaky crust filled with sweet and tart blueberries, subtly enhanced with lemon zest and cinnamon for a delightful flavor', 'blueberry_pie.json', 'blueberry_pie', 50, 330, 15, 9, 0, 80, 300, 45, 3, 22, 3),
 (1009, 'BBQ Tri-Tip, Pulled Pork, Mac n Cheese, Roasted Vegetables', 'a hearty meal featuring succulent BBQ tri tip, tender pulled pork, creamy mac and cheese, and roasted broccoli, offering a satisfying balance of flavors and textures', 'bbq_tritip_pulledpork_macncheese_broccoli.json', 'bbq_tritip_pulledpork_macncheese_broccoli', 120, 970, 58, 22, 0, 225, 870, 52, 5, 8, 68),
-(1010, 'Pork Chashu Ramen', 'a rich Japanese noodle soup featuring tender slices of braised pork belly, served in a flavorful broth with ramen noodles, soft-boiled eggs, and fresh green onions', 'pork_chashu_ramen.json', 'pork_chashu_ramen', 180, 650, 50, 20, 0, 120, 850, 5, 0, 3, 35);
+(1010, 'Pork Chashu Ramen', 'a rich Japanese noodle soup featuring tender slices of braised pork belly, served in a flavorful broth with ramen noodles, soft-boiled eggs, and fresh green onions', 'pork_chashu_ramen.json', 'pork_chashu_ramen', 180, 650, 50, 20, 0, 120, 850, 5, 0, 3, 35),
+(1011, 'Pancakes', 'a comforting breakfast favorite, pancakes are light, fluffy treats made by frying a simple batter of flour, eggs, milk, and sugar, often enjoyed with syrup, butter, or fresh fruit toppings.', 'pancakes.json', 'pancakes', 15, 158, 2, 1, 0, 24, 407, 28, 1, 6, 4),
+(1012, 'French Toast', 'a sweet breakfast favorite, features cinnamon-spiced, egg-soaked bread fried to golden perfection and served with syrup and berries', 'french_toast.json', 'french_toast', 15, 250, 9, 4, 0, 94, 210, 30, 2, 12, 8),
+(1013, 'Bison Burger', 'a hearty and lean alternative to beef, featuring a juicy, grilled patty topped with cheddar cheese, fresh lettuce, tomato, and onion, served on a toasted bun', 'bison_burger.json', 'bison_burger', 30, 500, 26, 10, 0, 100, 400, 40, 2, 6, 40);
 
 
 
@@ -22,11 +25,12 @@ INSERT INTO ingredient (ingredientID, ingredientName) VALUES
 (1007, 'Tri tip'),
 (1008, 'Pork shoulder'),
 (1009, 'Pork belly'),
+(1010, 'Ground bison'),
 (2001, 'Basil leaves'),
 (2002, 'Red bell pepper'),
 (2003, 'Green onions'),
 (2004, 'Carrot'),
-(2005, 'Green onions'),
+(2005, 'Lettuce'),
 (2006, 'Broccoli'),
 (2007, 'Pickled ginger'),
 (2008, 'Yellow bell pepper'),
@@ -38,9 +42,14 @@ INSERT INTO ingredient (ingredientID, ingredientName) VALUES
 (2014, 'Onion'),
 (2015, 'Crushed tomatoes'),
 (2016, 'Ginger'),
+(2017, 'Pickles'),
+(2018, 'Tomato'),
 (3001, 'Blueberries'),
 (3002, 'Lemon juice'),
 (3003, 'Lemon zest'),
+(3004, 'Strawberries'),
+(3005, 'Blackberries'),
+(3006, 'Raspberries'),
 (4001, 'Spaghetti Pasta'),
 (4002, 'Rice'),
 (4003, 'Brown rice'),
@@ -50,6 +59,9 @@ INSERT INTO ingredient (ingredientID, ingredientName) VALUES
 (4007, 'Pasta'),
 (4008, 'All-purpose flour'),
 (4009, 'Macaroni'),
+(4010, 'Flour'),
+(4011, 'Bread'),
+(4012, 'Burger buns'),
 (5001, 'Parmesan cheese'),
 (5002, 'Mozzarella cheese'),
 (5003, 'Shredded cheese'),
@@ -71,6 +83,7 @@ INSERT INTO ingredient (ingredientID, ingredientName) VALUES
 (7009, 'BBQ sauce'),
 (7010, 'Apple cider vinegar'),
 (7011, 'Mirin'),
+(7012, 'Maple syrup'),
 (8001, 'Salt'),
 (8002, 'Vegetable oil'),
 (8003, 'Black pepper'),
@@ -94,6 +107,10 @@ INSERT INTO ingredient (ingredientID, ingredientName) VALUES
 (8021, 'Cornstarch'),
 (8022, 'Smoked paprika'),
 (8023, 'BBQ spice mix'),
+(8024, 'Baking powder'),
+(8025, 'Vanilla extract'),
+(8026, 'Powdered sugar'),
+(8027, 'Worcestershire sauce'),
 (9001, 'Furikake'),
 (9002, 'Sake');
 
@@ -220,7 +237,39 @@ INSERT INTO recipe_ingredient (recipeID, ingredientID) VALUES
 (1010, 7011), -- Mirin
 (1010, 8006), -- Garlic
 (1010, 8010), -- Sugar
-(1010, 9002); -- Sake
+(1010, 9002), -- Sake
+(1011, 1002), -- Egg
+(1011, 4010), -- Flour
+(1011, 5004), -- Butter
+(1011, 5007), -- Milk
+(1011, 8001), -- Sugar
+(1011, 8010), -- Salt
+(1011, 8024), -- Baking powder
+(1011, 8025),  -- Vanilla extract
+(1012, 1002), -- Egg
+(1012, 3001), -- Blueberries
+(1012, 3004), -- Strawberries
+(1012, 3005), -- Blackberries
+(1012, 3006), -- Raspberries
+(1012, 4011), -- Bread
+(1012, 5004), -- Butter
+(1012, 5007), -- Milk
+(1012, 7012), -- Maple syrup
+(1012, 8001), -- Salt
+(1012, 8020), -- Cinnamon
+(1012, 8025), -- Vanilla extract
+(1012, 8026), -- Powdered sugar
+(1013, 1010), -- Ground bison
+(1013, 2005), -- Lettuce
+(1013, 2014), -- Onion
+(1013, 2017), -- Pickles
+(1013, 2018), -- Tomato
+(1013, 4012), -- Burger buns
+(1013, 5008), -- Cheddar cheese
+(1013, 8001), -- Salt
+(1013, 8003), -- Black pepper
+(1013, 8006), -- Garlic
+(1013, 8027); -- Worcestershire sauce
 
 
 
@@ -282,4 +331,14 @@ INSERT INTO recipe_restriction (recipeID, restrictionID) VALUES
 (1009, 1009), -- High-Protein
 (1010, 1011), -- Dairy-free
 (1010, 1012), -- Nut-free
-(1010, 1013); -- Egg-free
+(1010, 1013), -- Egg-free
+(1011, 1004), -- Vegetarian
+(1011, 1012), -- Nut-free
+(1011, 1014), -- Soy-free
+(1012, 1004), -- Vegetarian
+(1012, 1012), -- Nut-free
+(1012, 1014), -- Soy-free
+(1013, 1009), -- High Protein
+(1013, 1013), -- Egg Free
+(1013, 1014); -- Soy Free
+

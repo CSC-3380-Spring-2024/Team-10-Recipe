@@ -1,0 +1,28 @@
+{
+    "steps": [
+      {
+        "title": "Mix Dry Ingredients",
+        "instructions": [
+          "In a large bowl, sift together the flour, baking powder, sugar, and salt."
+        ]
+      },
+      {
+        "title": "Combine Wet Ingredients",
+        "instructions": [
+          "In another bowl, whisk together the milk, egg, melted butter, and vanilla extract."
+        ]
+      },
+      {
+        "title": "Make Batter",
+        "instructions": [
+          "Pour the wet ingredients into the dry ingredients and stir just until combined. The batter should have small lumps."
+        ]
+      },
+      {
+        "title": "Cook Pancakes",
+        "instructions": [
+          "Heat a non-stick skillet over medium heat and lightly grease with butter. Pour 1/4 cup of batter for each pancake. Cook until bubbles form on the surface, then flip and cook until golden brown on the other side."
+        ]
+      }
+    ]
+}
