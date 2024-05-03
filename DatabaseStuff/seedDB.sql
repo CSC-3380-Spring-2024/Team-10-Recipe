@@ -11,7 +11,9 @@ INSERT INTO recipe (recipeID, recipeName, shortDescription, recipeInstructions, 
 (1010, 'Pork Chashu Ramen', 'a rich Japanese noodle soup featuring tender slices of braised pork belly, served in a flavorful broth with ramen noodles, soft-boiled eggs, and fresh green onions', 'pork_chashu_ramen.json', 'pork_chashu_ramen', 180, 650, 50, 20, 0, 120, 850, 5, 0, 3, 35),
 (1011, 'Pancakes', 'a comforting breakfast favorite, pancakes are light, fluffy treats made by frying a simple batter of flour, eggs, milk, and sugar, often enjoyed with syrup, butter, or fresh fruit toppings.', 'pancakes.json', 'pancakes', 15, 158, 2, 1, 0, 24, 407, 28, 1, 6, 4),
 (1012, 'French Toast', 'a sweet breakfast favorite, features cinnamon-spiced, egg-soaked bread fried to golden perfection and served with syrup and berries', 'french_toast.json', 'french_toast', 15, 250, 9, 4, 0, 94, 210, 30, 2, 12, 8),
-(1013, 'Bison Burger', 'a hearty and lean alternative to beef, featuring a juicy, grilled patty topped with cheddar cheese, fresh lettuce, tomato, and onion, served on a toasted bun', 'bison_burger.json', 'bison_burger', 30, 500, 26, 10, 0, 100, 400, 40, 2, 6, 40);
+(1013, 'Bison Burger', 'a hearty and lean alternative to beef, featuring a juicy, grilled patty topped with cheddar cheese, fresh lettuce, tomato, and onion, served on a toasted bun', 'bison_burger.json', 'bison_burger', 30, 500, 26, 10, 0, 100, 400, 40, 2, 6, 40),
+(1014, 'Margherita Pizza', 'a timeless Margherita Pizza, featuring a thin, crispy crust topped with aromatic tomato sauce, creamy mozzarella cheese, and fresh basil, baked to golden perfection', 'margherita_pizza.json', 'margherita_pizza', 30, 550, 20, 8.5, 0, 44, 1200, 66.5, 5, 10, 25),
+(1015, 'Club Sandwich', 'a classic Club Sandwich stacked with turkey, bacon, avocado, lettuce, and tomato, seasoned with creamy mayonnaise', 'club_sandwich.json', 'club_sandwich', 15, 510, 30, 6, 0, 80, 950, 32, 5, 6, 28);
 
 
 
@@ -26,6 +28,8 @@ INSERT INTO ingredient (ingredientID, ingredientName) VALUES
 (1008, 'Pork shoulder'),
 (1009, 'Pork belly'),
 (1010, 'Ground bison'),
+(1011, 'Turkey breast'),
+(1012, 'Bacon'),
 (2001, 'Basil leaves'),
 (2002, 'Red bell pepper'),
 (2003, 'Green onions'),
@@ -50,6 +54,7 @@ INSERT INTO ingredient (ingredientID, ingredientName) VALUES
 (3004, 'Strawberries'),
 (3005, 'Blackberries'),
 (3006, 'Raspberries'),
+(3007, 'Avocado'),
 (4001, 'Spaghetti Pasta'),
 (4002, 'Rice'),
 (4003, 'Brown rice'),
@@ -111,6 +116,7 @@ INSERT INTO ingredient (ingredientID, ingredientName) VALUES
 (8025, 'Vanilla extract'),
 (8026, 'Powdered sugar'),
 (8027, 'Worcestershire sauce'),
+(8028, 'Yeast'),
 (9001, 'Furikake'),
 (9002, 'Sake');
 
@@ -269,8 +275,22 @@ INSERT INTO recipe_ingredient (recipeID, ingredientID) VALUES
 (1013, 8001), -- Salt
 (1013, 8003), -- Black pepper
 (1013, 8006), -- Garlic
-(1013, 8027); -- Worcestershire sauce
-
+(1013, 8027), -- Worcestershire sauce
+(1014, 2001), -- Basil leaves
+(1014, 4010), -- Flour
+(1014, 5002), -- Mozzarella cheese
+(1014, 7006), -- Tomato sauce
+(1014, 8001), -- Sugar
+(1014, 8005), -- Olive oil
+(1014, 8010), -- Salt
+(1014, 8028), -- Yeast
+(1015, 1011), -- Turkey breast
+(1015, 1012), -- Bacon
+(1015, 2005), -- Lettuce
+(1015, 2018), -- Tomato
+(1015, 3007), -- Avocado
+(1015, 4011), -- Bread
+(1015, 7004); -- Mayonnaise
 
 
 INSERT INTO restriction (restrictionID, restrictionName) VALUES 
@@ -340,5 +360,15 @@ INSERT INTO recipe_restriction (recipeID, restrictionID) VALUES
 (1012, 1014), -- Soy-free
 (1013, 1009), -- High Protein
 (1013, 1013), -- Egg Free
-(1013, 1014); -- Soy Free
+(1013, 1014), -- Soy Free
+(1014, 1004), -- Vegetarian
+(1014, 1005), -- Pescatarian
+(1014, 1012), -- Nut-free
+(1014, 1013), -- Egg-free
+(1014, 1014), -- Soy-free
+(1015, 1005), -- Pescatarian
+(1015, 1012), -- Nut-free
+(1015, 1013), -- Egg-free
+(1015, 1014), -- Soy-free
+(1015, 1019); -- Quick Meal
 

@@ -1,0 +1,27 @@
+{
+    "steps": [
+        {
+            "title": "Prepare Ingredients",
+            "instructions": [
+                "Cook the bacon until crispy and set aside on paper towels to drain.",
+                "Thinly slice the turkey breast, avocado, lettuce, and tomato."
+            ]
+        },
+        {
+            "title": "Toast the Bread",
+            "instructions": [
+                "Toast three slices of bread until golden and crispy."
+            ]
+        },
+        {
+            "title": "Assemble the Sandwich",
+            "instructions": [
+                "Spread mayonnaise on one side of each toasted bread slice.",
+                "Layer the first slice with lettuce, turkey, and tomato. Add a second slice of bread on top.",
+                "On the second layer of bread, add bacon, avocado, and another layer of lettuce.",
+                "Top with the final slice of bread, mayonnaise side down. Secure the sandwich with toothpicks if desired.",
+                "Cut the sandwich into quarters, diagonally, creating classic club sandwich triangles."
+            ]
+        }
+    ]
+}

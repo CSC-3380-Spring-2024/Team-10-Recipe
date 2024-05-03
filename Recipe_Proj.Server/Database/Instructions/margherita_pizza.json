@@ -1,0 +1,30 @@
+{
+    "steps": [
+        {
+            "title": "Prepare the Dough",
+            "instructions": [
+                "In a large bowl, combine warm water, sugar, and yeast. Let sit for 10 minutes until foamy.",
+                "Add flour, olive oil, and salt. Mix until the dough just begins to come together.",
+                "Turn out the dough onto a lightly floured surface and knead until smooth and elastic, about 10 minutes.",
+                "Place the dough in a greased bowl, cover with a damp cloth, and let rise in a warm place until doubled in size, about 1 hour."
+            ]
+        },
+        {
+            "title": "Prepare the Toppings",
+            "instructions": [
+                "Preheat the oven to 475°F (245°C).",
+                "Slice the mozzarella and chop the basil leaves.",
+                "Once the dough has risen, punch it down and spread it out on a pizza stone or a large baking sheet."
+            ]
+        },
+        {
+            "title": "Assemble and Bake",
+            "instructions": [
+                "Spread a thin layer of tomato sauce over the prepared dough.",
+                "Arrange mozzarella slices evenly on top of the sauce.",
+                "Bake in the preheated oven for about 12-15 minutes, or until the crust is golden and cheese is bubbly.",
+                "Remove from the oven and immediately garnish with fresh basil and a drizzle of olive oil before serving."
+            ]
+        }
+    ]
+}

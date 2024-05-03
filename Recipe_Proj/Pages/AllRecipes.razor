@@ -56,12 +56,12 @@
         <div class="container">
             <div class="row justify-content-center"> 
                 <div class="col-md-10">
-                    <div id="carouselControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+                    <div id="carouselControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
                        <div class="carousel-inner">
-                            @for (int i = 0; i < recipes.Count(); i++) {
+                            @for (int i = 0; i < allRecipes.Count(); i++) {
                                 <div class="carousel-item @(i == randomRecipeIndex ? "active" : "")">
-                                    <img src="@($"RecipeImages/{recipes[i].RecipeImage}_thumb.jpg")" 
-                                        alt="@($"Image of {recipes[i].RecipeName}")" 
+                                    <img src="@($"RecipeImages/{allRecipes[i].RecipeImage}_thumb.jpg")" 
+                                        alt="@($"Image of {allRecipes[i].RecipeName}")" 
                                         class="d-block w-100">
                                 </div>
                             }
@@ -148,7 +148,7 @@
     function startCarousel() {
         var myCarousel = document.querySelector('#carouselControls');
         var bsCarousel = new bootstrap.Carousel(myCarousel, {
-            interval: 3000,
+            interval: 4000,
             ride: 'carousel'
         });
         bsCarousel.cycle();
