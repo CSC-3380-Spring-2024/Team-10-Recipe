@@ -56,10 +56,10 @@
         <div class="container">
             <div class="row justify-content-center"> 
                 <div class="col-md-10">
-                    <div id="carouselControls" class="carousel slide" data-bs-ride="carousel">
+                    <div id="carouselControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
                        <div class="carousel-inner">
-                            @for (int i = 0; i < recipes.Count; i++) {
-                                <div class="carousel-item @(i == 0 ? "active" : "")">
+                            @for (int i = 0; i < recipes.Count(); i++) {
+                                <div class="carousel-item @(i == randomRecipeIndex ? "active" : "")">
                                     <img src="@($"RecipeImages/{recipes[i].RecipeImage}_thumb.jpg")" 
                                         alt="@($"Image of {recipes[i].RecipeName}")" 
                                         class="d-block w-100">
@@ -144,8 +144,29 @@
     </div>
 </div>
 
+<script>
+    function startCarousel() {
+        var myCarousel = document.querySelector('#carouselControls');
+        var bsCarousel = new bootstrap.Carousel(myCarousel, {
+            interval: 3000,
+            ride: 'carousel'
+        });
+        bsCarousel.cycle();
+    }
+</script>
+
 
 @code {
+    private static Random random = new Random();
+
+    protected int GetRandomRecipeIndex(int recipeCount)
+    {
+        return random.Next(recipeCount);
+    }
+
+    int randomRecipeIndex;
+
+    private List<SimpleRecipeDTO> allRecipes = new();
     private List<SimpleRecipeDTO> recipes = new();
     private bool clicked = false;
     private List<RestrictionDTO> AllRestrictions = new List<RestrictionDTO>();
@@ -229,6 +250,7 @@
     {
         await GetRestrictions();
         await GetRecipes();
+        randomRecipeIndex = GetRandomRecipeIndex(allRecipes.Count());
     }
 
     protected async Task GetRecipes()
@@ -236,6 +258,7 @@
         try
         {
             recipes = await RecipeService.GetAllSimpleRecipes();
+            allRecipes = await RecipeService.GetAllSimpleRecipes();
         }
         catch (Exception ex)
         {
@@ -266,11 +289,12 @@
                 closeOnSelect = false,
             };
             await JS.InvokeVoidAsync("eval", @"
-$('#restriction-multi-select').select2(" + System.Text.Json.JsonSerializer.Serialize(options) + @");
-$('#restriction-multi-select').on('select2:select select2:unselect', function (e) {
-// Manually trigger change event for Blazor to capture
-this.dispatchEvent(new Event('change'));
-});"
+                $('#restriction-multi-select').select2(" + System.Text.Json.JsonSerializer.Serialize(options) + @");
+                $('#restriction-multi-select').on('select2:select select2:unselect', function (e) {
+                // Manually trigger change event for Blazor to capture
+                this.dispatchEvent(new Event('change'));
+                });
+                startCarousel();"
             );
         }
     }
